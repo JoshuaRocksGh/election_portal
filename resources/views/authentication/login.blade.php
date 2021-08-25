@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-5">
-                    <div class="card bg-pattern " style="background-color: rgba(245, 245, 245, 0.4);">
+                    <div class="card bg-pattern " style="background-color: rgba(245, 245, 245, 0.6);">
 
                         <div class="card-body p-4">
 
@@ -56,7 +56,11 @@
                                 </div> --}}
 
                                 <div class="form-group mb-0 text-center">
-                                    <button class="btn btn-info btn-block" type="submit"> Log In </button>
+                                    <button class="btn btn-info btn-block" type="submit">
+                                        <span id="log_in">Log In </span>
+                                        <span class="spinner-border spinner-border-sm mr-1" role="status" style="display: none"
+                                    id="spinner" aria-hidden="true"></span>
+                                    </button>
                                 </div>
 
                             </form>
@@ -104,5 +108,9 @@
 
 
 @section('scripts')
+
+    <script>
+
+    </script>
 
 @endsection
