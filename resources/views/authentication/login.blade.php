@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -8,7 +7,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-5">
-                    <div class="card bg-pattern " style="background-color: rgba(245, 245, 245, 0.4);">
+                    <div class="card bg-pattern " style="background-color: rgba(245, 245, 245, 0.6);">
 
                         <div class="card-body p-4">
 
@@ -33,13 +32,15 @@
 
                                 <div class="form-group mb-3">
                                     <label for="emailaddress">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                    <input class="form-control" type="email" id="emailaddress" required=""
+                                        placeholder="Enter your email">
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="password">Password</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                                        <input type="password" id="password" class="form-control"
+                                            placeholder="Enter your password">
                                         <div class="input-group-append" data-password="false">
                                             <div class="input-group-text">
                                                 <span class="password-eye"></span>
