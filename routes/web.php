@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Agents\AddAgentsController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Dashboard\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -20,8 +21,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //LOGIN ROUTE
-Route::get('/' ,[LoginController::class, 'index'])->name('login');
+Route::get('/', [LoginController::class, 'index'])->name('login');
 
 
 //HOME ROUTE
-Route::get('home',[HomeController::class, 'home'])->name('home');
+Route::get('home', [HomeController::class, 'home'])->name('home');
+
+//AGENTS ROUTE
+Route::get('/add-agent', [AddAgentsController::class, 'add_agent'])->name('add-agent');

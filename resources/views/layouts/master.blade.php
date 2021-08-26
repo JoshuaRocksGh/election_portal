@@ -47,19 +47,19 @@
     @yield('styles')
 </head>
 
-<body>
+<body
+    data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
     {{-- style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;" --}}
     {{-- class="loading" --}}
-    {{-- data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'> --}}
 
 
     <!-- Pre-loader -->
-    <div id="preloader">
+    {{-- <div id="preloader">
         <div id="status">
 
             <div class="spinner">Loading...</div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Preloader-->
 
     <!-- Begin page -->
