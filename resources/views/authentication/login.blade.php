@@ -57,7 +57,11 @@
                                 </div> --}}
 
                                 <div class="form-group mb-0 text-center">
-                                    <button class="btn btn-info btn-block" type="submit"> Log In </button>
+                                    <button class="btn btn-info btn-block" type="submit">
+                                        <span id="log_in">Log In </span>
+                                        <span class="spinner-border spinner-border-sm mr-1" role="status" style="display: none"
+                                    id="spinner" aria-hidden="true"></span>
+                                    </button>
                                 </div>
 
                             </form>
@@ -105,5 +109,9 @@
 
 
 @section('scripts')
+
+    <script>
+
+    </script>
 
 @endsection
