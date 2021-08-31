@@ -3,6 +3,7 @@
 use App\Http\Controllers\Agents\AddAgentsController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Requests\GetAllRequestConttroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 //LOGIN ROUTE
 Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::post('login-api', [LoginController::class, 'login'])->name('login-api');
 
 
 //HOME ROUTE
@@ -29,3 +31,8 @@ Route::get('home', [HomeController::class, 'home'])->name('home');
 
 //AGENTS ROUTE
 Route::get('/add-agent', [AddAgentsController::class, 'add_agent'])->name('add-agent');
+Route::get('/edit-agent', [AddAgentsController::class, 'edit_agent'])->name('edit-agent');
+
+//REQUEST COLLECTIONS
+Route::get('/get-regions-api', [GetAllRequestConttroller::class, 'get_regions'])->name('get-regions-api');
+Route::get('/get-constituency-api', [GetAllRequestConttroller::class, 'get_constituency'])->name('get-constituency-api');

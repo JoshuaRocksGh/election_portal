@@ -13,4 +13,9 @@ class AddAgentsController extends Controller
     {
         return view('pages.agents.add_agents');
     }
+
+    public function edit_agent()
+    {
+        return view('pages.agents.edit_agent');
+    }
 }

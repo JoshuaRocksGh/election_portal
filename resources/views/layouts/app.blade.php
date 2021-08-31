@@ -22,8 +22,7 @@
 </head>
 
 
-<body
-    style=" background-image: url('assets/images/ghana.jpg'); background-repeat: no-repeat; background-size: cover;">
+<body style=" background-image: url('assets/images/ghana.jpg'); background-repeat: no-repeat; background-size: cover;">
 
 
     @yield('content')

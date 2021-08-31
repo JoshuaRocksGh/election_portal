@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <br><br><br>
 
     <div class="account-pages mt-5 mb-5">
         <div class="container">
@@ -25,22 +25,33 @@
                                         </span>
                                     </a>
                                 </div>
-                                <p class=" mb-4 mt-1">Enter your email address and password to access admin panel.</p>
+                                <p class=" mb-4 mt-1 text-danger h4">Enter your User Id and Password to access admin
+                                    panel.</p>
                             </div>
 
-                            <form action="#">
+                            <form action="#" id="login_form">
 
+                                <div class="alert alert-success" role="alert" id="success_alert" style="display: none;">
+                                    <i class="mdi mdi-check-all mr-2 alert-success"></i> 
+
+                                </div>
+
+                                <div class="alert alert-danger" role="alert" id="error_alert" style="display: none">
+                                    <i class="mdi mdi-block-helper mr-2"></i>
+                                    {{-- <span class="error_alert_message">Hello</span> --}}
+                                </div>
+                                <p class="error_alert_message"></p>
                                 <div class="form-group mb-3">
-                                    <label for="emailaddress">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" required=""
-                                        placeholder="Enter your email">
+                                    <label for="emailaddress" class="h4">User ID</label>
+                                    <input class="form-control" type="email" id="user_id" required=""
+                                        placeholder="Enter Your User Id">
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="password">Password</label>
+                                    <label for="password" class="h4">Password</label>
                                     <div class="input-group input-group-merge">
                                         <input type="password" id="password" class="form-control"
-                                            placeholder="Enter your password">
+                                            placeholder="Enter Your Password">
                                         <div class="input-group-append" data-password="false">
                                             <div class="input-group-text">
                                                 <span class="password-eye"></span>
@@ -57,10 +68,10 @@
                                 </div> --}}
 
                                 <div class="form-group mb-0 text-center">
-                                    <button class="btn btn-info btn-block" type="submit">
-                                        <span id="log_in">Log In </span>
-                                        <span class="spinner-border spinner-border-sm mr-1" role="status" style="display: none"
-                                    id="spinner" aria-hidden="true"></span>
+                                    <button class="btn btn-info btn-block " type="submit" id="login_form_button">
+                                        <span class="log_in_text"><b>Log In </b></span>
+                                        <span class="spinner-border spinner-border-sm mr-1 spinner-text" role="status"
+                                            aria-hidden="true"></span>
                                     </button>
                                 </div>
 
@@ -110,14 +121,13 @@
 
 @section('scripts')
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-                crossorigin="anonymous"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <script>
 
-    </script>
+    <script src="{{ asset('assets/js/login.js') }}"></script>
 
 @endsection

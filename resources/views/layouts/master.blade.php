@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
 
     @include('snippets.style')
 
@@ -48,6 +48,7 @@
 </head>
 
 <body
+    style="background-image: url('assets/images/ghana.jpg'); background-repeat: no-repeat; background-size: cover;background-color: rgba(245, 245, 245, 0.6);"
     data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
     {{-- style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;" --}}
     {{-- class="loading" --}}
