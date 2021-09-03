@@ -12,20 +12,17 @@
 
 <!-- Plugins js-->
 <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
-<script
-    src="{{ asset('assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}">
+<script src="{{ asset('assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}">
 </script>
 <script src="{{ asset('assets/libs/clockpicker/bootstrap-clockpicker.min.js') }}"></script>
 <script src="{{ asset('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}">
 </script>
-<script
-    src="{{ asset('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}">
+<script src="{{ asset('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}">
 </script>
 
 {{-- <script src="{{ asset('assets/libs/bootstrap-tour/js/bootstrap-tour.min.js') }}">
 </script> --}}
-{{-- <script src="{{ asset('assets/js/jquery.userTimeout.js') }}"></script>
---}}
+{{-- <script src="{{ asset('assets/js/jquery.userTimeout.js') }}"></script> --}}
 {{-- <script src="{{ asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}">
 </script> --}}
 {{-- <script src="{{ asset('assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js') }}">
@@ -64,3 +61,5 @@
 <!-- Validation init js-->
 {{-- <script src="{{ asset('assets/js/pages/form-validation.init.js') }}">
 </script> --}}
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

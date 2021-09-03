@@ -71,6 +71,7 @@
 
         @include('../snippets.side-bar')
 
+        @include('sweetalert::alert')
         <div class="content-page">
             <div class="content" style="zoom: 0.9 ;">
                 @yield('content')

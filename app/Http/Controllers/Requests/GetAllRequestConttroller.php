@@ -28,11 +28,19 @@ class GetAllRequestConttroller extends Controller
         // return $result->api_response($return->status, $return->message, $return->data);
     }
 
-    public function get_constituency()
+    public function get_constituency(Request $request)
     {
+
+
+
+        $region = $request->region;
+
+        // return $region;
+
         $base_response = new BaseResponse();
 
-        $response = Http::post(env('API_BASE_URL') . "getConstituency");
+        $response = Http::post(env('API_BASE_URL') . "getConstituency?region=$region");
+
 
         // dd($response);
         return json_decode($response->body());
@@ -42,6 +50,24 @@ class GetAllRequestConttroller extends Controller
         $return = json_decode($response->body());
 
         // return $result->api_response($return->status, $return->message, $return->data);
+    }
 
+    public function get_polling_station(Request $request)
+    {
+
+        $constituency = $request->constituency;
+        $base_response = new BaseResponse();
+
+        $response = Http::post(env('API_BASE_URL') . "getPollingStation?constituency=$constituency");
+
+
+        // dd($response);
+        return json_decode($response->body());
+
+
+        $result = new ApiBaseResponse();
+        $return = json_decode($response->body());
+
+        // return $result->api_response($return->status, $return->message, $return->data);
     }
 }

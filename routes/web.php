@@ -36,3 +36,4 @@ Route::get('/edit-agent', [AddAgentsController::class, 'edit_agent'])->name('edi
 //REQUEST COLLECTIONS
 Route::get('/get-regions-api', [GetAllRequestConttroller::class, 'get_regions'])->name('get-regions-api');
 Route::get('/get-constituency-api', [GetAllRequestConttroller::class, 'get_constituency'])->name('get-constituency-api');
+Route::get('/get-polling-station-api', [GetAllRequestConttroller::class, 'get_polling_station'])->name('get-polling-station-api');
