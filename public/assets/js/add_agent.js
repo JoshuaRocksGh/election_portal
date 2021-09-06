@@ -80,6 +80,43 @@ function get_polling_station(constituency) {
     });
 }
 
+// $(function () {
+//     $("#datepicker").datepicker({
+//         changeMonth: true,
+//         changeYear: true,
+//         showButtonPanel: true,
+//         dateFormat: "mm yy",
+//         onClose: function (dateText, inst) {
+//             $(this).datepicker(
+//                 "setDate",
+//                 new Date(inst.selectedYear, inst.selectedMonth, 1)
+//             );
+//         },
+
+//         .on( "change", function() {
+//         to.datepicker( "option", "minDate", getDate( this ) );
+//       }),
+//     to = $( "#toDate" ).datepicker({
+//       dateFormat: "yy-mm-dd",
+//       changeMonth: true
+//     })
+//     .on( "change", function() {
+//       from.datepicker( "option", "maxDate", getDate( this ) );
+//     })
+
+//   function getDate( element ) {
+//     var date;
+//     var dateFormat = "yy-mm-dd";
+//     try {
+//       date = $.datepicker.parseDate( dateFormat, element.value );
+//     } catch( error ) {
+//       date = null;
+//     }
+
+//     return date;
+//     });
+// });
+
 $("#agent_constituency").prop("disabled", true);
 $("#agent_constituency").css("background", "#DCDCDC");
 $("#agent_electoral_area").prop("disabled", true);
@@ -150,25 +187,29 @@ $(document).ready(function () {
         get_polling_station(constituency);
     });
 
+    //Confirm Before Postin to api
+
     $("#agent_submit_form").click(function (e) {
         e.preventDefault();
-        // $("#agent_submit_form").removeAttr("data-target");
 
         // get image form phot uploaded
         var fname = $("#first_name").val();
         var middile_name = $("#middle_name").val();
         var surname = $("#surname").val();
-        var gender = $("#select_gender").val();
-        var dob = $("agent_dob").val();
-        var national_id = $("id_number").val();
-        var telephone_1 = $("telephone_number_1").val();
-        var telephone_2 = $("telephone_number_2").val();
-        // var education_level = $("#educational_level");
+        var gen = $("#select_gender").val().split("~");
+        var gender = gen[1];
+        var dob = $("#agent_dob").val();
+        var national_id = $("#id_number").val();
+        var telephone_1 = $("#telephone_number_1").val();
+        var telephone_2 = $("#telephone_number_2").val();
+        var insititution_name = $("#institution_name").val();
         var education_level = $("#educational_level").val();
         var year_completion = $("#completion_year").val();
         var agent_region = $("#agent_region").val();
-        var agent_electoral_area = $("#agent_electoral_area").val();
-        var agent_constituency = $("#agent_constituency").val();
+        var agent_elec_area = $("#agent_electoral_area").val().split("~");
+        var agent_electoral_area = agent_elec_area[0];
+        var agent_cons = $("#agent_constituency").val().split("~");
+        var agent_constituency = agent_cons[1];
 
         if (
             fname == "" ||
@@ -182,9 +223,11 @@ $(document).ready(function () {
             year_completion == "" ||
             agent_region == "" ||
             agent_electoral_area == "" ||
-            agent_constituency == ""
+            agent_constituency == "" ||
+            insititution_name == ""
         ) {
             // alert("Please fill all required fields");
+            $("#agent_submit_form").removeAttr("data-target");
             toaster("Please fill all required fields", "error", 10000);
         } else {
             $("#display_first_name").text(fname);
@@ -195,6 +238,7 @@ $(document).ready(function () {
             $("#display_dob").text(dob);
             $("#display_phone_number_1").text(telephone_1);
             $("#display_phone_number_2").text(telephone_2);
+            $("#display_institution_name").text(insititution_name);
             $("#display_educational_level").text(education_level);
             $("#display_completion_year").text(year_completion);
             $("#display_agent_region").text(agent_region);
@@ -202,8 +246,86 @@ $(document).ready(function () {
             $("#display_agent_electoral_area").text(agent_electoral_area);
         }
 
+        //POST TO API
         $("#confirm_agent").click(function (e) {
             e.preventDefault();
+            // alert("clicked");
+
+            var id_image = $("#image_upload_").val();
+
+            var first_name = $("#first_name").val();
+
+            var middile_name = $("#middle_name").val();
+
+            var surname = $("#surname").val();
+
+            var gen = $("#select_gender").val().split("~");
+            var gender = gen[1];
+
+            var dob = $("#agent_dob").val();
+
+            var national_id = $("#id_number").val();
+
+            var telephone_1 = $("#telephone_number_1").val();
+
+            var telephone_2 = $("#telephone_number_2").val();
+
+            var insititution_name = $("#institution_name").val();
+
+            var education_level = $("#educational_level").val();
+
+            var year_completion = $("#completion_year").val();
+
+            var agent_region = $("#agent_region").val();
+
+            var agent_elec_area = $("#agent_electoral_area").val().split("~");
+            var agent_electoral_area = agent_elec_area[1];
+
+            var agent_con = $("#agent_constituency").val().split("~");
+            var agent_constituency = agent_con[0];
+
+            function redirect_page() {
+                window.location.href = "{{ url('add-agent') }}";
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "create-agent-api",
+                datatype: "application/json",
+                data: {
+                    Id: national_id,
+                    PhoneNumber1: telephone_1,
+                    PhoneNumber2: telephone_2,
+                    PhoneNumber3: null,
+                    Fname: first_name,
+                    MiddleName: middile_name,
+                    SurName: surname,
+                    DOB: dob,
+                    Picture: id_image,
+                    Region: agent_region,
+                    Constituency: agent_constituency,
+                    ElectoralArea: agent_electoral_area,
+                    EducationalLevel: education_level,
+                    Institution: insititution_name,
+                    YearOfCompletion: year_completion,
+                    Gender: gender,
+                },
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                        "content"
+                    ),
+                },
+                success: function (response) {
+                    console.log(response);
+
+                    if (response.status == "ok") {
+                        Swal.fire(response.message, "", "success");
+                        redirect_page();
+                    } else {
+                        toaster(response.message, "error", 10000);
+                    }
+                },
+            });
         });
     });
 });

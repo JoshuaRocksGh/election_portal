@@ -32,6 +32,7 @@ Route::get('home', [HomeController::class, 'home'])->name('home');
 //AGENTS ROUTE
 Route::get('/add-agent', [AddAgentsController::class, 'add_agent'])->name('add-agent');
 Route::get('/edit-agent', [AddAgentsController::class, 'edit_agent'])->name('edit-agent');
+Route::post('/create-agent-api', [AddAgentsController::class, 'create_agent'])->name('create-agent-api');
 
 //REQUEST COLLECTIONS
 Route::get('/get-regions-api', [GetAllRequestConttroller::class, 'get_regions'])->name('get-regions-api');

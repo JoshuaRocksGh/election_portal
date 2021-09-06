@@ -32,7 +32,7 @@
                             <form action="#" id="login_form">
 
                                 <div class="alert alert-success" role="alert" id="success_alert" style="display: none;">
-                                    <i class="mdi mdi-check-all mr-2 alert-success"></i> 
+                                    <i class="mdi mdi-check-all mr-2 alert-success"></i>
 
                                 </div>
 
