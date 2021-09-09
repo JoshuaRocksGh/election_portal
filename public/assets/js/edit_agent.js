@@ -1,6 +1,7 @@
-// API CALLS
+// $("#edit_form").hide();
 
 function get_regions() {
+    let region = $("#agent_region_").val();
     $.ajax({
         type: "GET",
         url: "get-regions-api",
@@ -14,37 +15,56 @@ function get_regions() {
 
             $.each(data, function (index) {
                 // console.log(data[index]);
-                $("#agent_region").append(
-                    $("<option>", {
-                        value: data[index],
-                    }).text(data[index])
-                );
+                if (region == data[index]) {
+                    $("#agent_region").append(
+                        $("<option selected>", {
+                            value: data[index],
+                        }).text(data[index])
+                    );
+                } else {
+                    $("#agent_region").append(
+                        $("<option>", {
+                            value: data[index],
+                        }).text(data[index])
+                    );
+                }
             });
         },
     });
 }
 
 function get_constituency(region) {
+    let constituency_ = $("#agent_constituency_").val();
     $.ajax({
         type: "GET",
         url: "get-constituency-api?region=" + region,
         datatype: "application/json",
         success: function (response) {
-            console.log(response);
+            // console.log(response);
             let data = response.data;
             // console.log(data);
             $("#agent_constituency option").remove();
+
             if (response.status == "ok") {
                 $("#agent_constituency").prop("disabled", false);
                 $("#agent_constituency").css("background", "#fefefe");
-
                 $.each(data, function (index) {
-                    // console.log(data[index]);
-                    $("#agent_constituency").append(
-                        $("<option>", {
-                            value: data[index].name + "~" + data[index].code,
-                        }).text(data[index].name)
-                    );
+                    console.log(data[index]);
+                    if (constituency_ == data[index].name) {
+                        $("#agent_constituency").append(
+                            $("<option selected>", {
+                                value:
+                                    data[index].name + "~" + data[index].code,
+                            }).text(data[index].name)
+                        );
+                    } else {
+                        $("#agent_constituency").append(
+                            $("<option>", {
+                                value:
+                                    data[index].name + "~" + data[index].code,
+                            }).text(data[index].name)
+                        );
+                    }
                 });
             }
         },
@@ -52,6 +72,7 @@ function get_constituency(region) {
 }
 
 function get_polling_station(constituency) {
+    let polling_station = $("#electoral_area_").val();
     $.ajax({
         type: "GET",
         url: "get-polling-station-api?constituency=" + constituency,
@@ -69,64 +90,131 @@ function get_polling_station(constituency) {
 
                 $.each(data, function (index) {
                     console.log(data[index]);
-                    $("#agent_electoral_area").append(
-                        $("<option>", {
-                            value: data[index].name + "~" + data[index].code,
-                        }).text(data[index].name)
-                    );
+                    if (polling_station == data[index].code) {
+                        $("#agent_electoral_area").append(
+                            $("<option selected>", {
+                                value:
+                                    data[index].name + "~" + data[index].code,
+                            }).text(data[index].name)
+                        );
+                    } else {
+                        $("#agent_electoral_area").append(
+                            $("<option>", {
+                                value:
+                                    data[index].name + "~" + data[index].code,
+                            }).text(data[index].name)
+                        );
+                    }
                 });
             }
         },
     });
 }
 
-// $(function () {
-//     $("#datepicker").datepicker({
-//         changeMonth: true,
-//         changeYear: true,
-//         showButtonPanel: true,
-//         dateFormat: "mm yy",
-//         onClose: function (dateText, inst) {
-//             $(this).datepicker(
-//                 "setDate",
-//                 new Date(inst.selectedYear, inst.selectedMonth, 1)
-//             );
-//         },
+$("#search_agent_button").click(function (e) {
+    e.preventDefault();
 
-//         .on( "change", function() {
-//         to.datepicker( "option", "minDate", getDate( this ) );
-//       }),
-//     to = $( "#toDate" ).datepicker({
-//       dateFormat: "yy-mm-dd",
-//       changeMonth: true
-//     })
-//     .on( "change", function() {
-//       from.datepicker( "option", "maxDate", getDate( this ) );
-//     })
+    $("#edit_spinner").toggle("500");
+    $("#new_agent_form").hide();
+    var phone_number = $("#phone_number").val();
+    // alert("clicked");
+    $.ajax({
+        type: "POST",
+        url: "get-agent-details",
+        datatype: "application/json",
+        data: {
+            phone_number: phone_number,
+        },
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            console.log(response.data);
+            if (response.status == "ok") {
+                $("#new_agent_form").toggle("500");
+                $("#edit_spinner").hide();
 
-//   function getDate( element ) {
-//     var date;
-//     var dateFormat = "yy-mm-dd";
-//     try {
-//       date = $.datepicker.parseDate( dateFormat, element.value );
-//     } catch( error ) {
-//       date = null;
-//     }
+                let data = response.data;
+                $.each(data, function (index) {
+                    // console.log(data[index]);
 
-//     return date;
-//     });
-// });
+                    $("#first_name").val(data[index].Fname);
+                    $("#middle_name").val(data[index].MiddleName);
+                    $("#surname").val(data[index].SurName);
+                    $("#telephone_number_1").val(data[index].phoneNumber[0]);
+                    $("#telephone_number_2").val(data[index].phoneNumber[1]);
+
+                    $("#id_number").val(data[index].Id);
+                    $("#institution_name").val(data[index].Institution);
+                    $(".display_selected_id_image").attr(
+                        "src",
+                        data[index].Picture
+                    );
+                    $("#image_upload_").val(data[index].Picture);
+
+                    $("#agent_dob").val(data[index].DOB);
+                    $("#completion_year").val(data[index].YearOfCompletion);
+
+                    $("#select_gender").val(data[index].Gender);
+
+                    $("#educational_level").val(data[index].EducationalLevel);
+
+                    // var GENDER = data[index].Gender;
+                    // if (GENDER == "Male") {
+
+                    // }
+                    // $("#birth_month")
+                    //     .val(data[index].Gender)
+                    //     .attr("selected", "selected");
+
+                    var REGION = data[index].Region;
+                    $("#agent_region_").val(REGION);
+
+                    var CONSTITUENCY = data[index].Constituency;
+                    $("#agent_constituency_").val(CONSTITUENCY);
+
+                    var POLLING_STATION = data[index].ElectoralArea;
+                    $("#electoral_area_").val(POLLING_STATION);
+
+                    var quick_test = $("#agent_region_").val(REGION);
+                    if (quick_test != "" || quick_test != undefined) {
+                        get_regions();
+                        var region = $("#agent_region_").val();
+                        get_constituency(region);
+                        var constituency = $("#agent_constituency_").val();
+                        get_polling_station(constituency);
+                    }
+
+                    var GENDER = data[index].Gender;
+                    $("#gender_").val(GENDER);
+                    let gender = $("#gender_").val();
+
+                    // if (gender == data[index].Gender) {
+                    //     $("#select_gender").append(
+                    //         $("<option selected>", {
+                    //             value:
+                    //                 title_list[index].description +
+                    //                 "~" +
+                    //                 title_list[index].actualCode,
+                    //         }).text(title_list[index].description)
+                    //     );
+                    // }
+                });
+            } else {
+                return false;
+            }
+        },
+    });
+});
 
 $("#agent_constituency").prop("disabled", true);
 $("#agent_constituency").css("background", "#DCDCDC");
 $("#agent_electoral_area").prop("disabled", true);
 $("#agent_electoral_area").css("background", "#DCDCDC");
+
 $(document).ready(function () {
-    setTimeout(function () {
-        get_regions();
-        // get_constituency();
-        // get_polling_station();
-    }, 1000);
+    // setTimeout(function () {
+    // }, 5000);
 
     function toaster(message, icon, timer) {
         const Toast = Swal.mixin({
@@ -171,11 +259,11 @@ $(document).ready(function () {
 
     $("#agent_region").change(function () {
         var region = $(this).val();
-        if (region == "") {
-            $("#agent_constituency").prop("disabled", true);
-            $("#agent_constituency").css("background", "#DCDCDC");
-        }
-        console.log(region);
+        // if (region == "") {
+        //     $("#agent_constituency").prop("disabled", true);
+        //     $("#agent_constituency").css("background", "#DCDCDC");
+        // }
+        // console.log(region);
         get_constituency(region);
     });
 
@@ -183,11 +271,9 @@ $(document).ready(function () {
         var con = $(this).val().split("~");
         var constituency = con[1];
 
-        console.log(constituency);
+        // console.log(constituency);
         get_polling_station(constituency);
     });
-
-    //Confirm Before Postin to api
 
     $("#agent_submit_form").click(function (e) {
         e.preventDefault();
@@ -197,8 +283,8 @@ $(document).ready(function () {
         var fname = $("#first_name").val();
         var middile_name = $("#middle_name").val();
         var surname = $("#surname").val();
-        var gen = $("#select_gender").val().split("~");
-        var gender = gen[1];
+        var gender = $("#select_gender").val();
+        // var gender = gen[1];
         var dob = $("#agent_dob").val();
         var national_id = $("#id_number").val();
         var telephone_1 = $("#telephone_number_1").val();
@@ -233,6 +319,7 @@ $(document).ready(function () {
             $("#agent_submit_form").removeAttr("data-target");
             toaster("Please fill all required fields", "error", 10000);
         } else {
+            $("#display_selected_id_image").text();
             $("#display_first_name").text(fname);
             $("#display_middle_name").text(middile_name);
             $("#display_surname").text(surname);
@@ -249,6 +336,7 @@ $(document).ready(function () {
             $("#display_agent_electoral_area").text(agent_electoral_area);
         }
     });
+
     //POST TO API
     $("#confirm_agent").click(function (e) {
         e.preventDefault();
@@ -262,8 +350,8 @@ $(document).ready(function () {
 
         var surname = $("#surname").val();
 
-        var gen = $("#select_gender").val().split("~");
-        var gender = gen[1];
+        var gender = $("#select_gender").val();
+        // var gender = gen[1];
 
         var dob = $("#agent_dob").val();
 

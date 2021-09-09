@@ -3,27 +3,41 @@
 
 @section('content')
     <br>
+    {{-- style="background-color: rgba(245, 245, 245, 0.9);" --}}
+
+
 
     <div class="container-fluid">
-        <div class="card" style="background-color: rgba(245, 245, 245, 0.8);">
+        <h3 class="text-muted">Agent &nbsp; / &nbsp; <span class="text-danger">Add Agent</span> </h3>
+
+        <div class="card"
+            style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
             <div class="card-body">
                 <div class="___class_+?3___">
-                    <h2 class="text-center">New Agent Form</h2>
-                    <hr>
+                    {{-- <div class="container">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <h2 class="text-center">Add Agent</h2>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div> --}}
+
+                    {{-- <hr class="mt-0"> --}}
 
                     <div class="container">
 
                         <form action="" id="new_agent_form" autocomplete="off" aria-autocomplete="off">
-                            <b><em class="text-blue h3">Personal Details</em></b>
-                            <b class="float-right"><em class="text-blue h3">Please fll fields marked with
-                                    &nbsp;</em><span class="text-danger h3">*</span></b>
-
-                            <br><br><br>
+                            {{-- <b><em class="text-blue h3">Personal Details</em></b> --}}
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-4">
 
-                                        <div class="form-group">
+                                    </div>
+                                    <div class="col-md-4" style="">
+
+                                        <div class="form-group text-center">
                                             <img src="{{ url('assets/images/users/user.png') }}" alt="image"
                                                 id="display_selected_id_image"
                                                 class="img-fluid rounded-circle display_selected_id_image" width="200"
@@ -34,74 +48,105 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-md-8 ">
+                                    <div class="col-md-4">
+                                        {{-- <b class="float-right"><em>Please fll fields marked with
+                                                &nbsp;</em><span class="text-danger h3">*</span></b> --}}
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+
+                                    <div class="col-md-6">
                                         <div class="form-group mb-1 row">
-                                            <label for="simpleinput" class="col-md-4 h4">First Name:<span
+                                            <label for="simpleinput" class="col-md-12 h4">First Name:<span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" id="first_name" class="form-control col-md-8"
+                                            <input type="text" id="first_name" class="form-control col-md-11"
                                                 autocomplete="off" aria-autocomplete="off"
                                                 placeholder="Enter Agent First Name">
                                         </div>
+
                                         <div class="form-group mb-1 row">
-                                            <label for="simpleinput" class="col-md-4 h4">Middle Name:<span
+                                            <label for="simpleinput" class="col-md-12 h4">Middle Name:<span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" id="middle_name" class="form-control col-md-8"
+                                            <input type="text" id="middle_name" class="form-control col-md-11"
                                                 autocomplete="off" aria-autocomplete="off"
                                                 placeholder="Enter Agent Middle Name">
                                         </div>
+
                                         <div class="form-group mb-1 row">
-                                            <label for="simpleinput" class="col-md-4 h4">Surname:<span
+                                            <label for="example-select" class="col-md-12 h4">Select Gender:<span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" id="surname" class="form-control col-md-8" autocomplete="off"
-                                                aria-autocomplete="off" placeholder="Enter Agent Surname">
-                                        </div>
-                                        <div class="form-group mb-1 row">
-                                            <label for="example-select" class="col-md-4 h4">Select Gender:<span
-                                                    class="text-danger">*</span></label>
-                                            <select class="form-control col-md-8" id="select_gender">
+                                            <select class="form-control col-md-11" id="select_gender">
                                                 <option value="">-- Select Agent Gender --</option>
                                                 <option value="001~Male">Male</option>
                                                 <option value="002~Female">Female</option>
 
                                             </select>
                                         </div>
+
                                         <div class="form-group mb-1 row">
-                                            <label for="simpleinput" class="col-md-4 h4">Date of Birth:<span
+                                            <label for="simpleinput" class="col-md-12 h4">Telephone Number 1:<span
                                                     class="text-danger">*</span></label>
-                                            <input type="date" id="agent_dob" class="form-control col-md-8"
+                                            <input type="text" id="telephone_number_1" class="form-control col-md-11"
+                                                autocomplete="off" aria-autocomplete="off"
+                                                placeholder="Enter Agent Telephone Number">
+                                        </div>
+
+                                        <div class="form-group mb-1 row">
+                                            <label for="simpleinput" class="col-md-12 h4">Voter ID:<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="id_number" class="form-control col-md-11"
+                                                autocomplete="off" aria-autocomplete="off"
+                                                placeholder="Enter Agent ID Number">
+                                        </div>
+
+                                        <div class="form-group mb-1 row">
+                                            <label for="simpleinput" class="col-md-12 h4">Institution Name:<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="institution_name" class="form-control col-md-11"
+                                                autocomplete="off" aria-autocomplete="off"
+                                                placeholder="Enter Agent Institution Name">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        {{-- <div class="form-group mb-1 row">
+                                            <label for="simpleinput" class="col-md-12 h4">First Name:<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="first_name" class="form-control col-md-11"
+                                                autocomplete="off" aria-autocomplete="off"
+                                                placeholder="Enter Agent First Name">
+                                        </div> --}}
+
+                                        <div class="form-group mb-1 row">
+                                            <label for="simpleinput" class="col-md-12 h4">Surname:<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="surname" class="form-control col-md-11"
+                                                autocomplete="off" aria-autocomplete="off"
+                                                placeholder="Enter Agent Surname">
+                                        </div>
+
+                                        <div class="form-group mb-1 row">
+                                            <label for="simpleinput" class="col-md-12 h4">Date of Birth:<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="date" id="agent_dob" class="form-control col-md-11"
                                                 autocomplete="off" aria-autocomplete="off"
                                                 placeholder="Enter Agent Date of Birth">
                                         </div>
 
                                         <div class="form-group mb-1 row">
-                                            <label for="simpleinput" class="col-md-4 h4">Voter/National ID:<span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" id="id_number" class="form-control col-md-8"
-                                                autocomplete="off" aria-autocomplete="off"
-                                                placeholder="Enter Agent ID Number">
-                                        </div>
-
-
-                                        <div class="form-group mb-1 row">
-                                            <label for="simpleinput" class="col-md-4 h4">Telephone Number 1:<span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" id="telephone_number_1" class="form-control col-md-8"
-                                                autocomplete="off" aria-autocomplete="off"
-                                                placeholder="Enter Agent Telephone Number">
-                                        </div>
-                                        <div class="form-group mb-1 row">
-                                            <label for="simpleinput" class="col-md-4 h4">Telephone Number
+                                            <label for="simpleinput" class="col-md-12 h4">Telephone Number
                                                 2:(optional)</label>
-                                            <input type="text" id="telephone_number_2" class="form-control col-md-8"
+                                            <input type="text" id="telephone_number_2" class="form-control col-md-11"
                                                 autocomplete="off" aria-autocomplete="off"
                                                 placeholder="Enter Agent Telephone Number">
                                         </div>
 
-
                                         <div class="form-group mb-1 row">
-                                            <label for="simpleinput" class="col-md-4 h4">Educational Level:<span
+                                            <label for="simpleinput" class="col-md-12 h4">Educational Level:<span
                                                     class="text-danger">*</span></label>
-                                            <select class="form-control col-md-8" id="educational_level">
+                                            <select class="form-control col-md-11" id="educational_level">
                                                 <option value="">-- Select Educational Level --</option>
                                                 <option value="JHS">JHS</option>
                                                 <option value="SHS">SHS</option>
@@ -115,29 +160,23 @@
 
                                         </div>
 
-                                        <div class="form-group mb-1 row">
-                                            <label for="simpleinput" class="col-md-4 h4">Institution Name:<span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" id="institution_name" class="form-control col-md-8"
-                                                autocomplete="off" aria-autocomplete="off"
-                                                placeholder="Enter Agent Institution Name">
-                                        </div>
+
 
                                         <div class="form-group mb-1 row">
-                                            <label for="simpleinput" class="col-md-4 h4">Year of Completion:<span
+                                            <label for="simpleinput" class="col-md-12 h4">Year of Completion:<span
                                                     class="text-danger">*</span></label>
-                                            <input type="date" id="completion_year" class="form-control col-md-8"
+                                            <input type="date" id="completion_year" class="form-control col-md-11"
                                                 autocomplete="off" aria-autocomplete="off"
                                                 placeholder="Enter Agent Surname">
                                         </div>
                                     </div>
                                 </div>
 
-                                <hr class="mt-0" style="background-color: #ccc ; height:2px;border: none;">
+                                {{-- <hr class="mt-0" style="background-color: #ccc ; height:2px;border: none;"> --}}
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <b><em class="text-blue h3">Agent Details</em></b>
+                                        {{-- <b><em class="text-blue h3">Agent Details</em></b> --}}
                                         <br>
                                         {{-- <div class="form-group mb-1 row">
                                             <label for="simpleinput" class="col-md-4 h4">Agent Code:</label>
@@ -177,8 +216,8 @@
 
                                 </div>
 
-                                <hr class="mt-0" style="background-color: #ccc ; height:2px;border: none;">
-
+                                {{-- <hr class="mt-0" style="background-color: #ccc ; height:2px;border: none;"> --}}
+                                <br><br>
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4"></div>
@@ -249,7 +288,7 @@
                                             <h4 class=" col-md-4">DOB:&nbsp;</h4><span
                                                 class="col-md-8 text-primary h4" id="display_dob"></span>
 
-                                            <h4 class=" col-md-4">ID Number:&nbsp;</h4><span
+                                            <h4 class=" col-md-4">Voter ID:&nbsp;</h4><span
                                                 class="col-md-8 text-primary h4" id="display_id_number"></span>
 
                                             <h4 class=" col-md-4">Phone Number 1:&nbsp;</h4><span

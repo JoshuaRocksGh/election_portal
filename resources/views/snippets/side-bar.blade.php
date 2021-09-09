@@ -77,7 +77,7 @@
                                 <a href="{{ url('add-agent') }}">Add New Agent</a>
                             </li>
                             <li>
-                                <a href="{{ url('edit-agent') }}">Edit Existing Agent</a>
+                                <a href="{{ url('edit-agent') }}">Edit Agent Details</a>
                             </li>
                             <li>
                                 <a href="{{ url('close-account') }}">List Of Agents</a>

@@ -22,7 +22,7 @@
 </head>
 
 
-<body style=" background-image: url('assets/images/ghana.jpg'); background-repeat: no-repeat; background-size: cover;">
+<body style=" background-image: linear-gradient(#eff5f9, #e0e8f9); ">
 
 
     @yield('content')

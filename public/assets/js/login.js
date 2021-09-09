@@ -8,6 +8,12 @@ $("#error_alert").hide();
 // $(".login_form_button").attr("disabled", fale);
 // $(".spinner-text").show();
 // $(".log_in_text").hide();
+function hide_alert() {
+    setTimeout(function () {
+        $("#error_alert").hide();
+        $("#error_alert").hide();
+    }, 3000);
+}
 
 function login(email, password) {
     $.ajax({
@@ -30,16 +36,18 @@ function login(email, password) {
             // $("#error_alert").hide();
             if (response.responseCode == "ok") {
                 // alert("success");
-                $("#success_alert").show();
-                $("#success_alert").html(response.message);
+                // $("#success_alert").show();
+                // $("#success_alert").html(response.message);
 
                 window.location = "home";
+                $("#login_form_button").attr("disabled", true);
             } else {
                 $(".spinner-text").hide();
                 $(".log_in_text").show();
                 // alert(response.message);
                 $("#error_alert").html(response.message);
                 $("#error_alert").show();
+                hide_alert();
             }
         },
     });

@@ -50,14 +50,22 @@ class LoginController extends Controller
 
             $response = Http::post(env('API_BASE_URL') . "userLogin", $data);
             // $response = Http::post("localhost/laravel/parliamentary_api/public/api/user-login", $data);
-            // return json_decode($response->body());
-            $error = json_decode($response->body());
+            // return json_decode($response);
+            // $error = json_decode($response->body());
             if ($response->ok()) {
                 $result = json_decode($response->body());
+                // return $result;
 
                 // dd($result->message);
                 if ($result->message === "success") {
 
+                    $userDetail = $result->data;
+
+                    // return $userDetail;
+
+                    session([
+                        "userName" => $userDetail->username
+                    ]);
 
                     return  $base_response->api_response($result->status, $result->message,  $result->data); // return API BASERESPONSE
                 } else {

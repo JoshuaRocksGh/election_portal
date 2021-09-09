@@ -279,8 +279,8 @@
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{ url('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
-                    <span class="pro-user-name ml-1">
-                        Geneva <i class="mdi mdi-chevron-down"></i>
+                    <span class="pro-user-name ml-1 text-black-50">
+                        <b>{{ session()->get('userName') }}</b> <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -290,22 +290,22 @@
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
                         <span>My Account</span>
-                    </a>
+                    </a> --}}
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-settings"></i>
                         <span>Settings</span>
-                    </a>
+                    </a> --}}
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-lock"></i>
                         <span>Lock Screen</span>
-                    </a>
+                    </a> --}}
 
                     <div class="dropdown-divider"></div>
 
@@ -331,7 +331,7 @@
             <a href="index.html" class="logo logo-dark text-center">
                 <span class="logo-sm">
                     <img src="{{ url('assets/images/logo-sm.png') }}" alt="" height="22">
-                    <!-- <span class="logo-lg-text-light">UBold</span> -->
+                    <!-- <span class="logo-lg-text-dark">UBold</span> -->
                 </span>
                 <span class="logo-lg">
                     <img src="{{ url('assets/images/logo-dark.png') }}" alt="" height="20">
@@ -352,7 +352,7 @@
         <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
             <li>
                 <button class="button-menu-mobile waves-effect waves-light">
-                    <i class="fe-menu"></i>
+                    <i class="fe-menu text-dark"></i>
                 </button>
             </li>
 

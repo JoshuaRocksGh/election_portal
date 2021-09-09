@@ -103,4 +103,48 @@ class AddAgentsController extends Controller
 
         }
     }
+
+    public function get_agent_details(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            "phone_number" => "required"
+        ]);
+
+
+        $base_response = new BaseResponse();
+
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
+
+        $phoneNumber = $request->phone_number;
+
+
+        // return $data;
+
+        try {
+
+            $response = Http::get(env('API_BASE_URL') . "agentSearch?phoneNumber=$phoneNumber");
+            return json_decode($response);
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+            // return json_decode($response->body();
+
+        } catch (\Exception $e) {
+
+            // DB::table('tb_error_logs')->insert([
+            //     'platform' => 'ONLINE_INTERNET_BANKING',
+            //     'user_id' => 'AUTH',
+            //     'message' => (string) $e->getMessage()
+            // ]);
+
+            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+
+
+        }
+    }
 }
