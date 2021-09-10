@@ -23,6 +23,11 @@ class AddAgentsController extends Controller
         return view('pages.agents.edit_agent');
     }
 
+    public function agent_list()
+    {
+        return view('pages.agents.agent_list');
+    }
+
     public function create_agent(Request $request)
     {
 
@@ -146,5 +151,10 @@ class AddAgentsController extends Controller
 
 
         }
+    }
+
+    public function send_message()
+    {
+        return view('pages.agents.send_message');
     }
 }

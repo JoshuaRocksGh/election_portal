@@ -33,7 +33,7 @@ class LoginController extends Controller
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
-        $user_id = $request->user_id;
+        $user_id = strtoupper($request->user_id);
         $password = $request->password;
 
         $data  = [
@@ -51,7 +51,7 @@ class LoginController extends Controller
             $response = Http::post(env('API_BASE_URL') . "userLogin", $data);
             // $response = Http::post("localhost/laravel/parliamentary_api/public/api/user-login", $data);
             // return json_decode($response);
-            // $error = json_decode($response->body());
+            $error = json_decode($response->body());
             if ($response->ok()) {
                 $result = json_decode($response->body());
                 // return $result;

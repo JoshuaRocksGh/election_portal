@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdministrationController;
 use App\Http\Controllers\Agents\AddAgentsController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Dashboard\HomeController;
@@ -32,8 +33,17 @@ Route::get('home', [HomeController::class, 'home'])->name('home');
 //AGENTS ROUTE
 Route::get('/add-agent', [AddAgentsController::class, 'add_agent'])->name('add-agent');
 Route::get('/edit-agent', [AddAgentsController::class, 'edit_agent'])->name('edit-agent');
+Route::get('/agent-list', [AddAgentsController::class, 'agent_list'])->name('agent-list');
 Route::post('/create-agent-api', [AddAgentsController::class, 'create_agent'])->name('create-agent-api');
 Route::post('/get-agent-details', [AddAgentsController::class, 'get_agent_details'])->name('get-agent-details');
+Route::get('/send-agent-message', [AddAgentsController::class, 'send_message'])->name('send-agent-message');
+
+
+//ADMINiSTRATION
+Route::get('/create-admin', [AdministrationController::class, 'create_admin'])->name('create-admin');
+Route::post('/create-admin-user-api', [AdministrationController::class, 'create_admin_user'])->name('create-admin-user-api');
+
+
 
 //REQUEST COLLECTIONS
 Route::get('/get-regions-api', [GetAllRequestConttroller::class, 'get_regions'])->name('get-regions-api');

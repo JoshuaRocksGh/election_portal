@@ -61,6 +61,30 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="#sidebarLoans" data-toggle="collapse">
+                        <i class="mdi mdi-briefcase-check-outline"></i>
+                        <span> Administration </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarLoans">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ url('create-admin') }}">Create Admin</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('loan-request') }}">Loan Request</a>
+                            </li>
+                            <li>
+                                <a href="#">Loan Payment</a>
+                            </li>
+                            <li>
+                                <a href="project-create.html">Create Project</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
 
                 {{-- <li class="menu-title mt-2">Apps</li> --}}
@@ -80,7 +104,10 @@
                                 <a href="{{ url('edit-agent') }}">Edit Agent Details</a>
                             </li>
                             <li>
-                                <a href="{{ url('close-account') }}">List Of Agents</a>
+                                <a href="{{ url('agent-list') }}">List Of Agents</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('send-agent-message') }}">Send Message</a>
                             </li>
                             <li>
                                 <a href="#budgeting" data-toggle="collapse">
@@ -199,17 +226,13 @@
                             <li>
                                 <a href="{{ url('payment-type') }}">Payment Types</a>
                             </li>
-                            {{-- <li>
-                                <a href="{{ url('mobile-money') }}">Mobile Money</a>
-</li> --}}
+
                             <li>
                                 <a href="{{ url('qr-transfer') }}">
                                     <span> QR</span>
                                 </a>
                             </li>
-                            {{-- <li>
-                                <a href="{{ url('airtime-payment') }}">Airtime</a>
-</li> --}}
+
                             <li>
 
                             </li>
@@ -219,7 +242,7 @@
                             </li>
 
                             <li>
-                                {{-- <a href="{{ url('e-korpor') }}">E-Korpor</a> --}}
+                                <a href="{{ url('e-korpor') }}">E-Korpor</a>
                             <li>
                                 <a href="#korpor" data-toggle="collapse">
                                     {{-- <i class="mdi mdi-book-account-outline"></i> --}}
@@ -274,29 +297,7 @@
 
         </li>
 
-        <li>
-            <a href="#sidebarLoans" data-toggle="collapse">
-                <i class="mdi mdi-briefcase-check-outline"></i>
-                <span> Loans </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <div class="collapse" id="sidebarLoans">
-                <ul class="nav-second-level">
-                    {{-- <li>
-                        <a href="{{ url('loan-quotation') }}">Loan Quotation</a>
-</li> --}}
-                    <li>
-                        <a href="{{ url('loan-request') }}">Loan Request</a>
-                    </li>
-                    <li>
-                        <a href="#">Loan Payment</a>
-                    </li>
-                    {{-- <li>
-                                <a href="project-create.html">Create Project</a>
-                            </li> --}}
-                </ul>
-            </div>
-        </li>
+
 
         <li>
             <a href="#sidebarMyInvestments" data-toggle="collapse">

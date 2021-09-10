@@ -8,7 +8,7 @@
 
 
     <div class="container-fluid">
-        <h3 class="text-muted">Agent &nbsp; / &nbsp; <span class="text-danger">Add Agent</span> </h3>
+        <h3 class="">Agent &nbsp; > &nbsp; <span class=" text-danger">Add Agent</span> </h3>
 
         <div class="card"
             style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
