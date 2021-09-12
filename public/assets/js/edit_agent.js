@@ -143,6 +143,7 @@ $("#search_agent_button").click(function (e) {
                     $("#surname").val(data[index].SurName);
                     $("#telephone_number_1").val(data[index].phoneNumber[0]);
                     $("#telephone_number_2").val(data[index].phoneNumber[1]);
+                    $("#telephone_number_3").val(data[index].phoneNumber[2]);
 
                     $("#id_number").val(data[index].Id);
                     $("#institution_name").val(data[index].Institution);
@@ -209,6 +210,10 @@ $("#search_agent_button").click(function (e) {
 
 $("#agent_constituency").prop("disabled", true);
 $("#agent_constituency").css("background", "#DCDCDC");
+$("#id_number").prop("disabled", true);
+$("#id_number").css("background", "#DCDCDC");
+$("#telephone_number_1").prop("disabled", true);
+$("#telephone_number_1").css("background", "#DCDCDC");
 $("#agent_electoral_area").prop("disabled", true);
 $("#agent_electoral_area").css("background", "#DCDCDC");
 
@@ -289,6 +294,7 @@ $(document).ready(function () {
         var national_id = $("#id_number").val();
         var telephone_1 = $("#telephone_number_1").val();
         var telephone_2 = $("#telephone_number_2").val();
+        var telephone_3 = $("#telephone_number_3").val();
         var insititution_name = $("#institution_name").val();
         var education_level = $("#educational_level").val();
         var year_completion = $("#completion_year").val();
@@ -328,6 +334,7 @@ $(document).ready(function () {
             $("#display_dob").text(dob);
             $("#display_phone_number_1").text(telephone_1);
             $("#display_phone_number_2").text(telephone_2);
+            $("#display_phone_number_3").text(telephone_3);
             $("#display_institution_name").text(insititution_name);
             $("#display_educational_level").text(education_level);
             $("#display_completion_year").text(year_completion);
@@ -361,6 +368,8 @@ $(document).ready(function () {
 
         var telephone_2 = $("#telephone_number_2").val();
 
+        var telephone_3 = $("#telephone_number_3").val();
+
         var insititution_name = $("#institution_name").val();
 
         var education_level = $("#educational_level").val();
@@ -381,13 +390,13 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "create-agent-api",
+            url: "edit-agent-api",
             datatype: "application/json",
             data: {
                 Id: national_id,
                 PhoneNumber1: telephone_1,
                 PhoneNumber2: telephone_2,
-                PhoneNumber3: null,
+                PhoneNumber3: telephone_3,
                 Fname: first_name,
                 MiddleName: middile_name,
                 SurName: surname,
@@ -409,7 +418,8 @@ $(document).ready(function () {
 
                 if (response.status == "ok") {
                     Swal.fire(response.message, "", "success");
-                    redirect_page();
+                    // redirect_page();
+                    location.reload();
                 } else {
                     toaster(response.message, "error", 10000);
                 }

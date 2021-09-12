@@ -124,9 +124,7 @@ $("#agent_electoral_area").css("background", "#DCDCDC");
 $(document).ready(function () {
     setTimeout(function () {
         get_regions();
-        // get_constituency();
-        // get_polling_station();
-    }, 1000);
+    }, 200);
 
     function toaster(message, icon, timer) {
         const Toast = Swal.mixin({

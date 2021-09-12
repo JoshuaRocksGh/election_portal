@@ -23,29 +23,41 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //LOGIN ROUTE
-Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('login-api', [LoginController::class, 'login'])->name('login-api');
 
 
-//HOME ROUTE
-Route::get('home', [HomeController::class, 'home'])->name('home');
 
-//AGENTS ROUTE
-Route::get('/add-agent', [AddAgentsController::class, 'add_agent'])->name('add-agent');
-Route::get('/edit-agent', [AddAgentsController::class, 'edit_agent'])->name('edit-agent');
-Route::get('/agent-list', [AddAgentsController::class, 'agent_list'])->name('agent-list');
-Route::post('/create-agent-api', [AddAgentsController::class, 'create_agent'])->name('create-agent-api');
-Route::post('/get-agent-details', [AddAgentsController::class, 'get_agent_details'])->name('get-agent-details');
-Route::get('/send-agent-message', [AddAgentsController::class, 'send_message'])->name('send-agent-message');
+//MIDDLEWARE
+Route::group(['middleware' => ['userAuth']], function () {
 
 
-//ADMINiSTRATION
-Route::get('/create-admin', [AdministrationController::class, 'create_admin'])->name('create-admin');
-Route::post('/create-admin-user-api', [AdministrationController::class, 'create_admin_user'])->name('create-admin-user-api');
+    //HOME ROUTE
+    Route::get('home', [HomeController::class, 'home'])->name('home');
+
+    //AGENTS ROUTE
+    Route::get('/add-agent', [AddAgentsController::class, 'add_agent'])->name('add-agent');
+    Route::get('/edit-agent', [AddAgentsController::class, 'edit_agent'])->name('edit-agent');
+    Route::get('/agent-list', [AddAgentsController::class, 'agent_list'])->name('agent-list');
+    Route::get('/all-agents-list-api', [AddAgentsController::class, 'all_agent_list'])->name('all-agents-list-api');
+    Route::post('/create-agent-api', [AddAgentsController::class, 'create_agent'])->name('create-agent-api');
+    Route::post('/edit-agent-api', [AddAgentsController::class, 'edit_agent_api'])->name('edit-agent-api');
+    Route::post('/get-agent-details', [AddAgentsController::class, 'get_agent_details'])->name('get-agent-details');
+    Route::get('/send-agent-message', [AddAgentsController::class, 'send_message'])->name('send-agent-message');
+    Route::post('/send-agent-message-api', [AddAgentsController::class, 'message_details'])->name('send-agent-message-api');
 
 
+    //ADMINiSTRATION
+    Route::get('/create-admin', [AdministrationController::class, 'create_admin'])->name('create-admin');
+    Route::post('/create-admin-user-api', [AdministrationController::class, 'create_admin_user'])->name('create-admin-user-api');
 
-//REQUEST COLLECTIONS
-Route::get('/get-regions-api', [GetAllRequestConttroller::class, 'get_regions'])->name('get-regions-api');
-Route::get('/get-constituency-api', [GetAllRequestConttroller::class, 'get_constituency'])->name('get-constituency-api');
-Route::get('/get-polling-station-api', [GetAllRequestConttroller::class, 'get_polling_station'])->name('get-polling-station-api');
+
+    //LOGOUT
+    Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
+
+
+    //REQUEST COLLECTIONS
+    Route::get('/get-regions-api', [GetAllRequestConttroller::class, 'get_regions'])->name('get-regions-api');
+    Route::get('/get-constituency-api', [GetAllRequestConttroller::class, 'get_constituency'])->name('get-constituency-api');
+    Route::get('/get-polling-station-api', [GetAllRequestConttroller::class, 'get_polling_station'])->name('get-polling-station-api');
+});

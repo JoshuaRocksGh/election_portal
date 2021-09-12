@@ -83,7 +83,7 @@
                                 <div class="col-md-4" style="">
 
                                     <div class="form-group text-center">
-                                        <img src="{{ url('assets/images/users/user.png') }}" alt="image"
+                                        <img src="{{ url('assets/images/users/new-u.png') }}" alt="image"
                                             id="display_selected_id_image"
                                             class="img-fluid rounded-circle display_selected_id_image" width="200"
                                             style="border: groove" />
@@ -130,12 +130,13 @@
                                     </div>
 
                                     <div class="form-group mb-1 row">
-                                        <label for="simpleinput" class="col-md-12 h4">Telephone Number 1:<span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" id="telephone_number_1" class="form-control col-md-11"
+                                        <label for="simpleinput" class="col-md-12 h4">Telephone Number
+                                            2:(optional)</label>
+                                        <input type="text" id="telephone_number_2" class="form-control col-md-11"
                                             autocomplete="off" aria-autocomplete="off"
                                             placeholder="Enter Agent Telephone Number">
                                     </div>
+
 
                                     <div class="form-group mb-1 row">
                                         <label for="simpleinput" class="col-md-12 h4">Voter ID:<span
@@ -177,9 +178,17 @@
                                     </div>
 
                                     <div class="form-group mb-1 row">
-                                        <label for="simpleinput" class="col-md-12 h4">Telephone Number
-                                            2:(optional)</label>
-                                        <input type="text" id="telephone_number_2" class="form-control col-md-11"
+                                        <label for="simpleinput" class="col-md-12 h4">Telephone Number 1:<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" id="telephone_number_1" class="form-control col-md-11"
+                                            autocomplete="off" aria-autocomplete="off"
+                                            placeholder="Enter Agent Telephone Number">
+                                    </div>
+
+                                    <div class="form-group mb-1 row">
+                                        <label for="simpleinput" class="col-md-12 h4">Telephone Number 3:<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" id="telephone_number_3" class="form-control col-md-11"
                                             autocomplete="off" aria-autocomplete="off"
                                             placeholder="Enter Agent Telephone Number">
                                     </div>
@@ -297,7 +306,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <img src="{{ url('assets/images/users/user.png') }}" alt="image"
+                                    <img src="{{ url('assets/images/users/new-u.png') }}" alt="image"
                                         id="display_selected_id_image"
                                         class="img-fluid rounded-circle display_selected_id_image" width="200"
                                         style="border: groove" />
@@ -338,6 +347,9 @@
 
                             <h4 class=" col-md-4">Phone Number 2:&nbsp;</h4><span class="col-md-8 text-primary h4"
                                 id="display_phone_number_2"></span>
+
+                            <h4 class=" col-md-4">Phone Number 3:&nbsp;</h4><span class="col-md-8 text-primary h4"
+                                id="display_phone_number_3"></span>
 
                             <h4 class=" col-md-4">Educational Level:&nbsp;</h4>
                             <span class="col-md-8 text-primary h4" id="display_educational_level"></span>

@@ -57,7 +57,7 @@
                     <a href="{{ route('home') }}">
                         {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
                         <i class="mdi mdi-home-outline"></i>
-                        <span> Dashboard</span>
+                        <span> Home</span>
                     </a>
                 </li>
 
@@ -72,15 +72,15 @@
                             <li>
                                 <a href="{{ url('create-admin') }}">Create Admin</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('loan-request') }}">Loan Request</a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="#">Loan Payment</a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="project-create.html">Create Project</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>
@@ -103,13 +103,13 @@
                             <li>
                                 <a href="{{ url('edit-agent') }}">Edit Agent Details</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('agent-list') }}">List Of Agents</a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="{{ url('send-agent-message') }}">Send Message</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="#budgeting" data-toggle="collapse">
                                     <span> Budgeting </span>
                                     <span class="menu-arrow"></span>
@@ -123,32 +123,14 @@
 
                                     </ul>
                                 </div>
-                            </li>
-                            {{-- <li>
-                                <a href="#sidebarBudgeting" data-toggle="collapse">
-                                    <span>Budgeting</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <div class="collapse" id="sidebarBudgeting">
-                                    <ul class="nav-second-level">
-                                        <li>
-                                            <a href="{{ url('cheque-approvals-pending') }}">Pending</a>
-                </li>
-                <li>
-                    <a href="{{ url('cheque-approvals-approved') }}">Approved</a>
-                </li>
-                <li>
-                    <a href="{{ url('cheque-approvals-rejected') }}">Rejected</a>
-                </li>
-            </ul>
-        </div>
-        </li> --}}
+                            </li> --}}
+
                         </ul>
                     </div>
                 </li>
 
 
-                <li>
+                {{-- <li>
                     <a href="#sidebarTransfer" data-toggle="collapse">
                         <i class="mdi mdi-rotate-3d-variant"></i>
                         <span> Transfer </span>
@@ -162,12 +144,6 @@
                             <li>
                                 <a href="{{ url('same-bank') }}">Same Bank</a>
                             </li>
-
-
-                            {{-- <li>
-                                <a href="{{ url('qr-transfer') }}">QR </a>
-    </li> --}}
-
                             <li>
                                 <a href="{{ url('bulk-transfer') }}">Bulk Transfer </a>
                             </li>
@@ -176,9 +152,6 @@
                                 <a href="{{ url('local-bank') }}">Local Bank</a>
                             </li>
 
-                            {{-- <li>
-                                <a href="{{ url('ach') }}">ACH</a>
-    </li> --}}
 
                             <li>
                                 <a href="{{ url('international-bank') }}">International Bank</a>
@@ -193,29 +166,11 @@
                                 <a href="{{ url('beneficiary-list') }}">Beneficiary List</a>
                             </li>
 
-                            {{-- <li>
-                                <a href="ecommerce-customers.html">Customers</a>
-                            </li>
-                            <li>
-                                <a href="ecommerce-orders.html">Orders</a>
-                            </li>
-                            <li>
-                                <a href="ecommerce-order-detail.html">Order Detail</a>
-                            </li>
-                            <li>
-                                <a href="ecommerce-sellers.html">Sellers</a>
-                            </li>
-                            <li>
-                                <a href="ecommerce-cart.html">Shopping Cart</a>
-                            </li>
-                            <li>
-                                <a href="ecommerce-checkout.html">Checkout</a>
-                            </li> --}}
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
-                <li>
+                {{-- <li>
                     <a href="#sidebarBeneficiary" data-toggle="collapse">
                         <i class="mdi mdi-account-multiple-outline"></i>
                         <span>Payments </span>
@@ -245,7 +200,7 @@
                                 <a href="{{ url('e-korpor') }}">E-Korpor</a>
                             <li>
                                 <a href="#korpor" data-toggle="collapse">
-                                    {{-- <i class="mdi mdi-book-account-outline"></i> --}}
+                                    <i class="mdi mdi-book-account-outline"></i>
                                     <span> E-Korpor </span>
                                     <span class="menu-arrow"></span>
                                 </a>
@@ -260,11 +215,8 @@
                                     </ul>
                                 </div>
                             </li>
-                </li>
+                </li> --}}
                 {{-- <li>
-                    <a href="{{ url('utility-payment') }}">Utilities</a>
-</li> --}}
-                <li>
                     <a href="{{ url('schedule-payment') }}">Schedule Payment</a>
                 </li>
                 <li>
@@ -281,7 +233,7 @@
                 </li>
                 <li>
                     <a href="{{ url('payment-beneficiary-list') }}">Beneficiary List</a>
-                </li>
+                </li> --}}
                 {{-- <li>
                                 <a href="{{ url('saved-beneficiary') }}">Saved Beneficiary</a>
 </li>
@@ -292,14 +244,14 @@
     <a href="{{ url('payment-add-beneficiary') }}">Add Beneficiary</a>
 </li> --}}
 
-            </ul>
+                {{-- </ul>
         </div>
 
-        </li>
+        </li> --}}
 
 
 
-        <li>
+                {{-- <li>
             <a href="#sidebarMyInvestments" data-toggle="collapse">
                 <i class="mdi mdi-domain"></i>
                 <span> Investments </span>
@@ -315,8 +267,8 @@
                     </li>
                 </ul>
             </div>
-        </li>
-        <li>
+        </li> --}}
+                {{-- <li>
             <a href="#sidebarTradeFinance" data-toggle="collapse">
                 <i class="mdi mdi-briefcase-check-outline"></i>
                 <span> Trade Finance </span>
@@ -329,19 +281,11 @@
                     </li>
                 </ul>
             </div>
-        </li>
-
-        {{-- <li>
-                    <a href="#"> --}}
-        {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
-        {{-- <i class="mdi mdi-printer-pos"></i>
-                        <span> POS</span>
-                    </a>
-                </li> --}}
+        </li> --}}
 
 
 
-        <li>
+                {{-- <li>
             <a href="#sidebarAccountServices" data-toggle="collapse">
                 <i class="mdi mdi-email-multiple-outline"></i>
                 <span> Account Services </span>
@@ -382,7 +326,7 @@
                     </li>
                     <li>
                         <a href="#sidebarTasks" data-toggle="collapse">
-                            {{-- <i class="mdi mdi-credit-card-multiple-outline"></i> --}}
+                            <i class="mdi mdi-credit-card-multiple-outline"></i>
                             <span> Card Services </span>
                             <span class="menu-arrow"></span>
                         </a>
@@ -420,8 +364,7 @@
                     </li>
                     <li>
                         <a href="{{ url('kyc-update') }}">
-                            {{-- <span class="badge badge-primary float-right">Hot</span> --}}
-                            {{-- <i class="mdi mdi-contacts-outline"></i> --}}
+
                             <span> Update Company Info </span>
                         </a>
                     </li>
@@ -431,18 +374,12 @@
                         </a>
                     </li>
 
-
-
-                    {{-- <li>
-                                <a href="{{ url('kyc-update') }}">KYC Update</a>
-</li> --}}
-
                 </ul>
             </div>
-        </li>
-        <li>
+        </li> --}}
+                {{-- <li>
             <a href="#approvals" data-toggle="collapse">
-                {{-- <i class="mdi mdi-account-circle-outline"></i> --}}
+                <i class="mdi mdi-account-circle-outline"></i>
                 <i class="mdi mdi-checkbox-multiple-marked-outline"></i>
                 <span> Approvals </span>
                 <span class="menu-arrow"></span>
@@ -463,9 +400,9 @@
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> --}}
 
-        {{-- <li>
+                {{-- <li>
                     <a href="#sidebarChatbot" data-toggle="collapse">
 
                         <i class="mdi mdi-chat-processing-outline"></i>
@@ -488,9 +425,9 @@
 </li> --}}
 
 
-        <li>
+                {{-- <li>
             <a href="#sidebarSetting" data-toggle="collapse">
-                {{-- <i class="mdi mdi-account-circle-outline"></i> --}}
+                <i class="mdi mdi-account-circle-outline"></i>
                 <i class="mdi mdi-cog-outline"></i>
                 <span> Settings </span>
                 <span class="menu-arrow"></span>
@@ -509,9 +446,9 @@
                     <li>
                         <a href="{{ url('forgot-transaction-pin') }}">Forgot Transaction PIN</a>
                     </li>
-                    {{-- <li>
-                                <a href="{{ url('biometric-setup') }}">Biometric Setup</a>
-</li> --}}
+                    <li>
+                        <a href="{{ url('biometric-setup') }}">Biometric Setup</a>
+                    </li>
                     <li>
                         <a href="{{ url('change-pin') }}">Pin Setup</a>
                     </li>
@@ -519,26 +456,26 @@
 
                 </ul>
             </div>
-        </li>
+        </li> --}}
 
-        <li>
+                {{-- <li>
             <a href="{{ url('branch-locator') }}">
-                {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
+                <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i>
                 <i class="mdi mdi-map-marker-outline"></i>
                 <span> Branch Locator </span>
             </a>
-        </li>
+        </li> --}}
 
-        <li>
-            <a href="{{ url('logout') }}">
-                <i data-feather="power" class="icon-dual-activity"></i>
-                <span> Logout </span>
-            </a>
-        </li>
+                <li>
+                    <a href="{{ url('logout') }}">
+                        <i data-feather="power" class="icon-dual-activity"></i>
+                        <span> Logout </span>
+                    </a>
+                </li>
 
-        {{-- Start Comment --}}
+                {{-- Start Comment --}}
 
-        {{-- <li>
+                {{-- <li>
                     <a href="#sidebarLayouts" data-toggle="collapse">
                         <i class="mdi mdi-cellphone-link"></i>
                         <span class="badge badge-info float-right">New</span>
@@ -907,15 +844,15 @@
                 </li> --}}
 
 
-        </ul>
+            </ul>
+
+        </div>
+        <!-- End Sidebar -->
+
+        <div class="clearfix"></div>
 
     </div>
-    <!-- End Sidebar -->
-
-    <div class="clearfix"></div>
-
-</div>
-<!-- Sidebar -left -->
+    <!-- Sidebar -left -->
 
 </div>
 <!-- Left Sidebar End -->

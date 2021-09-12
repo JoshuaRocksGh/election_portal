@@ -21,7 +21,7 @@ $(document).ready(function () {
     $("#create_admin").click(function (e) {
         e.preventDefault();
         // alert("Admin create");
-        $("#log_in_text").hide();
+        $(".log_in_text").hide();
         $(".spinner-text").show();
         $("#create_admin").attr("disabled", true);
 
@@ -48,6 +48,9 @@ $(document).ready(function () {
                     if (response.status == "ok") {
                         Swal.fire(response.message, "", "success");
                         window.location = "home";
+                        $("#log_in_text").show();
+                        $(".spinner-text").hide();
+                        $("#create_admin").attr("disabled", false);
                     } else {
                         toaster(response.message, "error", 5000);
                         $("#log_in_text").show();

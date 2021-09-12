@@ -64,7 +64,7 @@
                             </div>
                             <div class="col-md-6" style="zoom:0.5;">
                                 <div class="h-100"
-                                    style="background-image: url({{ asset('assets/images/black_star_square.jpg') }});background-repeat: no-repeat;background-size: cover;zoom:0.5;">
+                                    style="background-image: url({{ asset('assets/images/gye_nyame.jpg') }});background-repeat: no-repeat;background-size: cover;zoom:0.5;">
 
                                 </div>
                             </div>

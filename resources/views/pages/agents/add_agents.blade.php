@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <br>
+    {{-- <br> --}}
     {{-- style="background-color: rgba(245, 245, 245, 0.9);" --}}
 
 
@@ -38,7 +38,7 @@
                                     <div class="col-md-4" style="">
 
                                         <div class="form-group text-center">
-                                            <img src="{{ url('assets/images/users/user.png') }}" alt="image"
+                                            <img src="{{ url('assets/images/users/new-u.png') }}" alt="image"
                                                 id="display_selected_id_image"
                                                 class="img-fluid rounded-circle display_selected_id_image" width="200"
                                                 style="border: groove" />
