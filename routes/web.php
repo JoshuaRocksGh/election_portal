@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //LOGIN ROUTE
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('login-api', [LoginController::class, 'login'])->name('login-api');
 
 
