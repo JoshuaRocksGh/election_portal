@@ -306,6 +306,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
+                                    <p>Image size should not be more than 2mb</p>
                                     <img src="{{ url('assets/images/users/new-u.png') }}" alt="image"
                                         id="display_selected_id_image"
                                         class="img-fluid rounded-circle display_selected_id_image" width="200"

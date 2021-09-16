@@ -1,3 +1,28 @@
+function get_regions() {
+    // alert("called");
+    // return false;
+    $.ajax({
+        type: "GET",
+        url: "get-regions-api",
+        datatype: "application/json",
+        success: function (response) {
+            console.log(response);
+
+            let data = response.data;
+            // console.log("===");
+            // console.log(data);
+
+            $.each(data, function (index) {
+                // console.log(data[index]);
+                $("#agent_region").append(
+                    $("<option>", {
+                        value: data[index],
+                    }).text(data[index])
+                );
+            });
+        },
+    });
+}
 function toaster(message, icon, timer) {
     const Toast = Swal.mixin({
         toast: true,
@@ -18,6 +43,12 @@ function toaster(message, icon, timer) {
 }
 
 $(document).ready(function () {
+    //call functions
+    setTimeout(function () {
+        // alert("Winner");
+        get_regions();
+    }, 200);
+
     $("#create_admin").click(function (e) {
         e.preventDefault();
         // alert("Admin create");
@@ -47,10 +78,11 @@ $(document).ready(function () {
                     console.log(response);
                     if (response.status == "ok") {
                         Swal.fire(response.message, "", "success");
-                        window.location = "home";
+                        location.reload();
+                        // window.location = "home";
                         $("#log_in_text").show();
                         $(".spinner-text").hide();
-                        $("#create_admin").attr("disabled", false);
+                        $("#create_admin").attr("disabled", true);
                     } else {
                         toaster(response.message, "error", 5000);
                         $("#log_in_text").show();

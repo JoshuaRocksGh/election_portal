@@ -44,7 +44,7 @@
                                 <label for="simpleinput" class="col-md-12 h5">Region</label>
                                 {{-- <input type="text" id="agent_region" class="form-control col-md-8"
                                                 placeholder="Enter Agent Region"> --}}
-                                <select class="form-control col-md-12" id="agent_region" multiple>
+                                <select class="form-control col-md-12" id="agent_region">
                                     <option value="">-- Select Region --</option>
                                 </select>
                             </div>

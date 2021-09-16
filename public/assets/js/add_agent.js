@@ -185,6 +185,43 @@ $(document).ready(function () {
         get_polling_station(constituency);
     });
 
+    function dobValidate(birth) {
+        var today = new Date();
+        var nowyear = today.getFullYear();
+        var nowmonth = today.getMonth();
+        var nowday = today.getDate();
+        var b = $("#agent_dob").val();
+
+        var birth = new Date(b);
+
+        var birthyear = birth.getFullYear();
+        // console.log(birthyear);
+        var birthmonth = birth.getMonth();
+        // console.log(birthmonth);
+
+        var birthday = birth.getDate();
+        // console.log(birthday);
+
+        var age = nowyear - birthyear;
+        // console.log("age =>" + age);
+        var age_month = nowmonth - birthmonth;
+        // console.log("age_month =>" + age_month);
+
+        var age_day = nowday - birthday;
+        // console.log("age_day =>" + age_day);
+
+        if (age < 18) {
+            Swal.fire(
+                "",
+                "Agent should be more than 18 years.Please enter a valid Date of Birth",
+                "warning"
+            );
+            $("#agent_submit_form").removeAttr("data-target");
+            // return false;
+        } else {
+        }
+    }
+
     //Confirm Before Postin to api
 
     $("#agent_submit_form").click(function (e) {
@@ -201,6 +238,7 @@ $(document).ready(function () {
         var national_id = $("#id_number").val();
         var telephone_1 = $("#telephone_number_1").val();
         var telephone_2 = $("#telephone_number_2").val();
+        var telephone_3 = $("#telephone_number_3").val();
         var insititution_name = $("#institution_name").val();
         var education_level = $("#educational_level").val();
         var year_completion = $("#completion_year").val();
@@ -209,12 +247,41 @@ $(document).ready(function () {
         var agent_electoral_area = agent_elec_area[0];
         var agent_cons = $("#agent_constituency").val().split("~");
         var agent_constituency = agent_cons[1];
+        var birth = $("#agent_dob").val();
+
+        // dobValidate(birth);
+
+        var today = new Date();
+        var nowyear = today.getFullYear();
+        var nowmonth = today.getMonth();
+        var nowday = today.getDate();
+        var b = $("#agent_dob").val();
+
+        var birth = new Date(b);
+
+        var birthyear = birth.getFullYear();
+        var birthmonth = birth.getMonth();
+        var birthday = birth.getDate();
+
+        var age = nowyear - birthyear;
+        var age_month = nowmonth - birthmonth;
+        var age_day = nowday - birthday;
+
+        if (age < 18) {
+            // $("#agent_submit_form").removeAttr("data-target");
+            Swal.fire(
+                "",
+                "Agent should be more than 18 years.Please enter a valid Date of Birth",
+                "warning"
+            );
+
+            return false;
+        }
 
         if (
             (image =
                 "" ||
                 fname == "" ||
-                middile_name == "" ||
                 surname == "" ||
                 gender == "" ||
                 dob == "" ||
@@ -228,7 +295,7 @@ $(document).ready(function () {
                 insititution_name == "")
         ) {
             // alert("Please fill all required fields");
-            $("#agent_submit_form").removeAttr("data-target");
+            // $("#agent_submit_form").removeAttr("data-target");
             toaster("Please fill all required fields", "error", 10000);
         } else {
             $("#display_first_name").text(fname);
@@ -239,19 +306,25 @@ $(document).ready(function () {
             $("#display_dob").text(dob);
             $("#display_phone_number_1").text(telephone_1);
             $("#display_phone_number_2").text(telephone_2);
+            $("#display_phone_number_3").text(telephone_3);
             $("#display_institution_name").text(insititution_name);
             $("#display_educational_level").text(education_level);
             $("#display_completion_year").text(year_completion);
             $("#display_agent_region").text(agent_region);
             $("#display_agent_constituency").text(agent_constituency);
             $("#display_agent_electoral_area").text(agent_electoral_area);
+            $("#agent_submit_form").attr({
+                "data-target": "#bs-example-modal-lg",
+                "data-toggle": "modal",
+            });
         }
     });
+
     //POST TO API
     $("#confirm_agent").click(function (e) {
         e.preventDefault();
         // alert("clicked");
-
+        // return false;
         var id_image = $("#image_upload_").val();
 
         var first_name = $("#first_name").val();
@@ -270,6 +343,8 @@ $(document).ready(function () {
         var telephone_1 = $("#telephone_number_1").val();
 
         var telephone_2 = $("#telephone_number_2").val();
+
+        var telephone_3 = $("#telephone_number_3").val();
 
         var insititution_name = $("#institution_name").val();
 
@@ -297,7 +372,7 @@ $(document).ready(function () {
                 Id: national_id,
                 PhoneNumber1: telephone_1,
                 PhoneNumber2: telephone_2,
-                PhoneNumber3: null,
+                PhoneNumber3: telephone_3,
                 Fname: first_name,
                 MiddleName: middile_name,
                 SurName: surname,
@@ -319,7 +394,8 @@ $(document).ready(function () {
 
                 if (response.status == "ok") {
                     Swal.fire(response.message, "", "success");
-                    redirect_page();
+                    // redirect_page();
+                    location.reload();
                 } else {
                     toaster(response.message, "error", 10000);
                 }

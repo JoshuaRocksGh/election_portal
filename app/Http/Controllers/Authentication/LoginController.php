@@ -28,6 +28,7 @@ class LoginController extends Controller
 
         // return $request;
         // VALIDATION
+
         if ($validator->fails()) {
 
             return $base_response->api_response('500', $validator->errors(), NULL);

@@ -49,13 +49,15 @@ class AddAgentsController extends Controller
     public function create_agent(Request $request)
     {
 
+        return $request;
+
         $validator = Validator::make($request->all(), [
             'Id' => 'required',
             'PhoneNumber1' => 'required',
-            'PhoneNumber2' => 'required',
+            // 'PhoneNumber2' => 'required',
             'Gender' => 'required',
             'Fname' => 'required',
-            'MiddleName' => 'required',
+            // 'MiddleName' => 'required',
             'SurName' => 'required',
             'DOB' =>  'required',
             'Picture' => 'required',
@@ -75,13 +77,13 @@ class AddAgentsController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
-        // return $request;
+
 
         $data = [
             "Id" => $request->Id,
             "PhoneNumber1" => $request->PhoneNumber1,
             "PhoneNumber2" => $request->PhoneNumber2,
-            "PhoneNumber3" => "",
+            "PhoneNumber3" => $request->PhoneNumber3,
             "Fname" => $request->Fname,
             "MiddleName" => $request->MiddleName,
             "SurName" => $request->SurName,
@@ -156,7 +158,7 @@ class AddAgentsController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
-        // return $request;
+        return $request;
 
 
         $data = [
@@ -180,7 +182,7 @@ class AddAgentsController extends Controller
 
         ];
 
-        // return $data ;
+        // return $data;
 
         try {
 

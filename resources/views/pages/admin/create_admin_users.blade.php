@@ -35,15 +35,34 @@
                                                         placeholder="Enter Admin User Id">
                                                 </div>
                                                 <div class="form-group mb-3">
+                                                    <label for="user_name" class="h4">User Mandate</label>
+                                                    <select class="form-control" name="" id="user_mandate">
+                                                        <option value="SuperUser">Super User</option>
+                                                        <option value="SimpleUser">Simple User</option>
+                                                    </select>
+                                                    {{-- <input class="form-control" type="text" id="admin_user_id" required=""
+                                                        placeholder="Enter Admin User Id"> --}}
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="simpleinput" class="h4">User Region:<span
+                                                            class="text-danger">*</span></label>
+                                                    {{-- <input type="text" id="agent_region" class="form-control col-md-8"
+                                                        placeholder="Enter Agent Region"> --}}
+                                                    <select class="form-control" id="agent_region">
+                                                        <option value="">-- Select Region --</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group mb-3">
                                                     <label for="user_name" class="h4">Admin Password</label>
                                                     <input class="form-control" type="password" id="admin_password"
-                                                        required="" placeholder="Enter Admin Password">
+                                                        autocomplete="on" reqiured placeholder="Enter Admin Password">
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="user_name" class="h4">Confirm Admin
                                                         Password</label>
                                                     <input class="form-control" type="password"
-                                                        id="confirm_admin_password" required=""
+                                                        id="confirm_admin_password" required autocomplete="on"
                                                         placeholder="Confirm Admin Password">
                                                 </div>
 

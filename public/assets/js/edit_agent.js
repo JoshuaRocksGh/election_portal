@@ -424,6 +424,16 @@ $(document).ready(function () {
                     toaster(response.message, "error", 10000);
                 }
             },
+            error: function (xhr) {
+                // $("#validation-errors").html("");
+                $.each(xhr.responseJSON.errors, function (key, value) {
+                    // $("#validation-errors").append(
+                    //     '<div class="alert alert-danger">' + value + "</div"
+                    // );
+
+                    toaster(value, "error", 10000);
+                });
+            },
         });
     });
 });

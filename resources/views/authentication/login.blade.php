@@ -111,7 +111,8 @@
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-10 text-center">
                                                         <br><br><br><br>
-                                                        <img src="{{ asset('assets/images/Coat.png') }}" alt="">
+                                                        <img src="{{ asset('assets/images/Coat.png') }}"
+                                                            class="img-fluid" alt="">
                                                     </div>
                                                     <div class="col-md-1"></div>
                                                 </div>

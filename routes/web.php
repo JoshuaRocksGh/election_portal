@@ -48,7 +48,7 @@ Route::group(['middleware' => ['userAuth']], function () {
 
 
     //ADMINiSTRATION
-    Route::get('/create-admin', [AdministrationController::class, 'create_admin'])->name('create-admin');
+    Route::get('/create-user', [AdministrationController::class, 'create_admin'])->name('create-user');
     Route::post('/create-admin-user-api', [AdministrationController::class, 'create_admin_user'])->name('create-admin-user-api');
 
 
