@@ -49,7 +49,7 @@ class AddAgentsController extends Controller
     public function create_agent(Request $request)
     {
 
-        return $request;
+        // return $request;
 
         $validator = Validator::make($request->all(), [
             'Id' => 'required',
@@ -80,22 +80,21 @@ class AddAgentsController extends Controller
 
 
         $data = [
-            "Id" => $request->Id,
-            "PhoneNumber1" => $request->PhoneNumber1,
-            "PhoneNumber2" => $request->PhoneNumber2,
-            "PhoneNumber3" => $request->PhoneNumber3,
-            "Fname" => $request->Fname,
-            "MiddleName" => $request->MiddleName,
-            "SurName" => $request->SurName,
-            "Gender" => $request->Gender,
-            "DOB" => $request->DOB,
-            "Picture" => $request->Picture,
-            "Region" => $request->Region,
-            "Constituency" => $request->Constituency,
-            "ElectoralArea" => $request->ElectoralArea,
-            "EducationalLevel" => $request->EducationalLevel,
-            "Institution" => $request->Institution,
-            "YearOfCompletion" => $request->YearOfCompletion,
+            "Id" => $request->Id??"",
+            "PhoneNumber1" => $request->PhoneNumber1??"",
+            "PhoneNumber2" => $request->PhoneNumber2??"",
+            "PhoneNumber3" => $request->PhoneNumber3??"",
+            "Fname" => $request->Fname??"",
+            "MiddleName" => $request->MiddleName??"",
+            "SurName" => $request->SurName??"",
+            "DOB" => $request->DOB??"",
+            "Picture" => $request->Picture??"",
+            "Region" => $request->Region??"",
+            "Constituency" => $request->Constituency??"",
+            "ElectoralArea" => $request->ElectoralArea??"",
+            "EducationalLevel" => $request->EducationalLevel??"",
+            "Institution" => $request->Institution??"",
+            "YearOfCompletion" => $request->YearOfCompletion??"",
 
         ];
 
