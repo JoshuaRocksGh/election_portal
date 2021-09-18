@@ -10,84 +10,143 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <br><br><br><br>
+                <br><br>
 
                 <div class="container">
                     <div class="card"
                         style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <br><br>
-                                            <div class="text-center">
-                                                <p class=" mb-4 mt-1 h3">Enter Admin Details</p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <br>
+                                    <div class="text-center">
+                                        <p class=" mb-2 mt-1 h3">Enter User Details</p>
+                                    </div>
+                                    <hr class="mt-0">
+                                    <form action="#">
+                                        <div class="row mt-0">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-1">
+                                                    <label class="h4">First Name<span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="user_first_name" required
+                                                        placeholder="Enter User First Name" autocomplete="off">
+                                                </div>
+                                                <div class="form-group mb-1">
+                                                    <label for="user_name" class="h4">Telephone Number<span
+                                                            class="text-danger">*</span></label>
+                                                    <input class="form-control" type="text" id="user_telephone_number"
+                                                        placeholder="Enter User Telephone  Number" autocomplete="off">
+                                                </div>
 
+                                                <div class="form-group mb-1">
+                                                    <label for="user_name" class="h4">User Mandate Type<span
+                                                            class="text-danger">*</span></label>
+                                                    <select class="form-control" name="" id="user_mandate">
+                                                        <option value="">-- Select User Mandate Level -- </option>
+                                                        <option value="NationalLevel">National Level</option>
+                                                        <option value="RegionalLevel">Regional Level</option>
+                                                        <option value="ConstituencyLevel">Constituency Level</option>
+                                                    </select>
+                                                    {{-- <span class="text-danger" id="regional_user"
+                                                        style="display: none">Please Select
+                                                        Region</span> --}}
+                                                </div>
 
+                                                <div class="form-group mb-1 row">
+                                                    <label for="simpleinput" class="h4 col-md-12">User
+                                                        Constituency</label>
+
+                                                    <select class="form-control col-md-10 ml-2" id="agent_constituency">
+                                                        <option value="">-- Select Constituency--</option>
+                                                    </select>
+                                                    <div class="d-flex align-items-center ml-2">
+                                                        <br>
+                                                        <span class="spinner-border spinner-border-sm mr-1"
+                                                            id="constituency_spinner" role="status" aria-hidden="true"
+                                                            style="display:none"></span>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group mb-1">
+                                                    <label for="user_name" class="h4 text-blue">Admin Password<span
+                                                            class="text-danger">*</span></label>
+                                                    <input class="form-control" type="password" id="admin_password"
+                                                        autocomplete="on" reqiured placeholder="Enter Admin Password"
+                                                        autocomplete="off">
+
+                                                </div>
                                             </div>
 
-                                            <form action="#">
-                                                <div class="form-group mb-3">
-                                                    <label for="user_name" class="h4">Admin User ID</label>
-                                                    <input class="form-control" type="text" id="admin_user_id" required=""
-                                                        placeholder="Enter Admin User Id">
-                                                </div>
-                                                <div class="form-group mb-3">
-                                                    <label for="user_name" class="h4">User Mandate</label>
-                                                    <select class="form-control" name="" id="user_mandate">
-                                                        <option value="SuperUser">Super User</option>
-                                                        <option value="SimpleUser">Simple User</option>
-                                                    </select>
-                                                    {{-- <input class="form-control" type="text" id="admin_user_id" required=""
-                                                        placeholder="Enter Admin User Id"> --}}
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-1">
+                                                    <label class="h4">Last Name<span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="user_last_name" required
+                                                        placeholder="Enter User Last Name" autocomplete="off">
                                                 </div>
 
-                                                <div class="form-group mb-3">
-                                                    <label for="simpleinput" class="h4">User Region:<span
+                                                <div class="form-group mb-1">
+                                                    <label for="user_name" class="h4">Voters ID<span
                                                             class="text-danger">*</span></label>
-                                                    {{-- <input type="text" id="agent_region" class="form-control col-md-8"
-                                                        placeholder="Enter Agent Region"> --}}
+                                                    <input class="form-control" type="text" id="user_voters_id"
+                                                        placeholder="Enter User Voter Id Number" autocomplete="off">
+                                                </div>
+
+                                                <div class="form-group mb-1">
+                                                    <label for="simpleinput" class="h4">User Region</label>
+
                                                     <select class="form-control" id="agent_region">
                                                         <option value="">-- Select Region --</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group mb-3">
-                                                    <label for="user_name" class="h4">Admin Password</label>
-                                                    <input class="form-control" type="password" id="admin_password"
-                                                        autocomplete="on" reqiured placeholder="Enter Admin Password">
-                                                </div>
-                                                <div class="form-group mb-3">
-                                                    <label for="user_name" class="h4">Confirm Admin
-                                                        Password</label>
-                                                    <input class="form-control" type="password"
-                                                        id="confirm_admin_password" required autocomplete="on"
-                                                        placeholder="Confirm Admin Password">
+
+                                                <div class="form-group mb-1">
+                                                    <label for="user_name" class="h4 text-blue">User ID<span
+                                                            class="text-danger">*</span></label>
+                                                    <input class="form-control" type="text" id="admin_user_id"
+                                                        placeholder="Enter User ID (eg. KAppiah)" autocomplete="off">
                                                 </div>
 
-                                                <div class="form-group mb-0 text-center">
+                                                <div class="form-group mb-1">
+                                                    <label for="user_name" class="h4 text-blue">Confirm Admin
+                                                        Password<span class="text-danger">*</span></label>
+                                                    <input class="form-control" type="password"
+                                                        id="confirm_admin_password" required autocomplete="on"
+                                                        placeholder="Confirm Admin Password" autocomplete="off">
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        <div class="form-group mb-0 text-center">
+                                            <div class="row">
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4">
                                                     <button class="btn btn-blue btn-block " type="submit" id="create_admin">
-                                                        <span class="log_in_text"><b>Create Admin </b></span>
+                                                        <span class="log_in_text"><b>Create User</b></span>
                                                         <span class="spinner-border spinner-border-sm mr-1 spinner-text"
                                                             role="status" aria-hidden="true" style="display: none"></span>
                                                     </button>
                                                 </div>
-                                                <br><br>
-                                            </form>
+                                                <div class="col-md-4"></div>
+                                            </div>
 
                                         </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6" style="zoom:0.5;">
-                                <div class="h-100"
-                                    style="background-image: url({{ asset('assets/images/gye_nyame.jpg') }});background-repeat: no-repeat;background-size: cover;zoom:0.5;">
+                                        <br><br>
+                                    </form>
 
                                 </div>
                             </div>
                         </div>
+
+
+
+
                     </div>
                 </div>
             </div>

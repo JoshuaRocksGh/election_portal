@@ -70,4 +70,21 @@ class GetAllRequestConttroller extends Controller
 
         // return $result->api_response($return->status, $return->message, $return->data);
     }
+
+    public function get_all_users()
+    {
+
+        $base_response = new BaseResponse();
+
+        $response = Http::post(env('API_BASE_URL') . "getAllagent");
+
+        // dd($response);
+        return json_decode($response->body());
+
+
+        $result = new ApiBaseResponse();
+        $return = json_decode($response->body());
+
+        // return $result->api_response($return->status, $return->message, $return->data);
+    }
 }

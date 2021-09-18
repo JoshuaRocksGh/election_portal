@@ -19,8 +19,16 @@ class AdministrationController extends Controller
 
     public function create_admin_user(Request $request)
     {
+        // return $request;
 
         $validator = Validator::make($request->all(), [
+            "first_name" => "required",
+            "last_name" => "required",
+            "phone_number" => "required",
+            "voters_id" => "required",
+            "user_mandate" => "required",
+            // "user_region" => "required",
+            // "user_constituency" =>  "required",
             'admin_id' => 'required',
             'admin_password' => 'required'
         ]);
@@ -34,13 +42,52 @@ class AdministrationController extends Controller
 
         $user_id = strtoupper($request->admin_id);
         $password = $request->admin_password;
+        $mandate = $request->user_mandate;
 
-        $data  = [
+        if ($mandate == "NationalLevel") {
+            $data = [
+                "Fname" => $request->first_name,
+                "SurName" => $request->last_name,
+                "PhoneNumber" => $request->phone_number,
+                "Id" => $request->voters_id,
+                "UserMandate" => $request->user_mandate,
+                "Region" => "ALL",
+                "Constituency" =>  "ALL",
+                "Username" => $user_id,
+                "Password" => $password
+            ];
+        } elseif ($mandate == "RegionalLevel") {
+            $data = [
+                "Fname" => $request->first_name,
+                "SurName" => $request->last_name,
+                "PhoneNumber" => $request->phone_number,
+                "Id" => $request->voters_id,
+                "UserMandate" => $request->user_mandate,
+                "Region" => $request->user_region,
+                "Constituency" =>  "ALL",
+                "Username" => $user_id,
+                "Password" => $password
+            ];
+        } elseif ($mandate == "RegionalLevel") {
+            $data = [
+                "Fname" => $request->first_name,
+                "SurName" => $request->last_name,
+                "PhoneNumber" => $request->phone_number,
+                "Id" => $request->voters_id,
+                "UserMandate" => $request->user_mandate,
+                "Region" => $request->user_region,
+                "Constituency" =>  $request->user_constituency,
+                "Username" => $user_id,
+                "Password" => $password
+            ];
+        }
 
-            "username" => $user_id,
-            "password" => $password
+        // $data  = [
 
-        ];
+        //     "username" => $user_id,
+        //     "password" => $password
+
+        // ];
 
         // return $data;
 
