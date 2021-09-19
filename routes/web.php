@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //LOGIN ROUTE
-Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('login-api', [LoginController::class, 'login'])->name('login-api');
 
 
@@ -60,4 +60,5 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/get-regions-api', [GetAllRequestConttroller::class, 'get_regions'])->name('get-regions-api');
     Route::get('/get-constituency-api', [GetAllRequestConttroller::class, 'get_constituency'])->name('get-constituency-api');
     Route::get('/get-polling-station-api', [GetAllRequestConttroller::class, 'get_polling_station'])->name('get-polling-station-api');
+    Route::get('/get-all-users-api', [GetAllRequestConttroller::class, 'get_all_users'])->name('get-all-users-api');
 });

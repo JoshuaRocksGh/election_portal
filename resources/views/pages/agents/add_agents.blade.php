@@ -204,13 +204,7 @@
                                         </div>
 
                                         <div class="form-group mb-1 row">
-                                            <label for="simpleinput" class="col-md-4 h4">Agent Constituency:<span
-                                                    class="text-danger">*</span></label>
-                                            {{-- <input type="text" id="agent_constituency" class="form-control col-md-8"
-                                                placeholder="Enter Agent Constituency"> --}}
-                                            <select class="form-control col-md-8" id="agent_constituency">
-                                                <option value="">-- Select Constituency--</option>
-                                            </select>
+                                            
                                         </div>
 
                                         <div class="form-group mb-1 row">
