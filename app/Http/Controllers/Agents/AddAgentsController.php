@@ -89,6 +89,7 @@ class AddAgentsController extends Controller
             "SurName" => $request->SurName??"",
             "DOB" => $request->DOB??"",
             "Picture" => $request->Picture??"",
+            "Gender" => $request->Gender??"",
             "Region" => $request->Region??"",
             "Constituency" => $request->Constituency??"",
             "ElectoralArea" => $request->ElectoralArea??"",
