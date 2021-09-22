@@ -208,9 +208,9 @@ $(document).ready(function () {
         ) {
             toaster("Invalid Voter ID Number", "error", 5000);
             return false;
-        } else if (user_mandate === "RegionalLevel") {
-            toaster("Region of User Required", "error", 5000);
-            return false;
+            // } else if (user_mandate === "RegionalLevel") {
+            //     toaster("Region of User Required", "error", 5000);
+            //     return false;
         } else if (
             user_mandate === "ConstituencyLevel" &&
             user_region == "" &&

@@ -50,7 +50,8 @@
                         <h4 class="header-title mb-3">ALL REGIONS</h4>
 
                         <div class="table-responsive">
-                            <table class="table table-borderless table-hover table-nowrap table-centered m-0 all_agent_list">
+                            <table
+                                class="table table-borderless table-hover table-nowrap table-centered m-0 all_agent_list">
 
                                 <thead
                                     style="background-color: rgba(32, 185, 252, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
@@ -569,4 +570,7 @@
 
 
     <script src="{{ asset('assets/js/home.js') }}"></script>
+    {{--  <script>
+        var UserMandate = @json(session()->get('UserMandate'));
+    </script>  --}}
 @endsection

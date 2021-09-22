@@ -150,5 +150,7 @@
 
 
     <script src="{{ asset('assets/js/login.js') }}"></script>
-
+    {{-- <script>
+        var UserMandate = @json(session()->get('UserMandate'));
+    </script> --}}
 @endsection

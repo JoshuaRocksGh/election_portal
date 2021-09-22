@@ -103,9 +103,9 @@
                             <li>
                                 <a href="{{ url('edit-agent') }}">Edit Agent Details</a>
                             </li>
-                            {{-- <li>
+                            <li>
                                 <a href="{{ url('agent-list') }}">List Of Agents</a>
-                            </li> --}}
+                            </li>
                             <li>
                                 <a href="{{ url('send-agent-message') }}">Send Message</a>
                             </li>
@@ -130,45 +130,45 @@
                 </li>
 
 
-                {{-- <li>
+                <li>
                     <a href="#sidebarTransfer" data-toggle="collapse">
-                        <i class="mdi mdi-rotate-3d-variant"></i>
-                        <span> Transfer </span>
+                        <i class="mdi mdi-checkbox-multiple-marked-outline"></i>
+                        <span> Approvals </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarTransfer">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ url('own-account') }}">Own Account</a>
+                                <a href="{{ url('own-account') }}">Pending</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('same-bank') }}">Same Bank</a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="{{ url('bulk-transfer') }}">Bulk Transfer </a>
-                            </li>
+                            </li> --}}
 
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('local-bank') }}">Local Bank</a>
-                            </li>
+                            </li> --}}
 
 
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('international-bank') }}">International Bank</a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="{{ url('standing-order') }}">Standing Order</a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="{{ url('add-beneficiary') }}">Add Beneficiary</a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="{{ url('beneficiary-list') }}">Beneficiary List</a>
-                            </li>
+                            </li> --}}
 
                         </ul>
                     </div>
-                </li> --}}
+                </li>
 
                 {{-- <li>
                     <a href="#sidebarBeneficiary" data-toggle="collapse">

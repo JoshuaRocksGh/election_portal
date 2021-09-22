@@ -44,7 +44,7 @@ class LoginController extends Controller
 
         ];
 
-        // return $data ;
+        // return $data;
 
         // dd(env('API_BASE_URL') . "userLogin");
         try {
@@ -65,8 +65,14 @@ class LoginController extends Controller
                     // return $userDetail;
 
                     session([
-                        "userName" => $userDetail->username
+                        "UserMandate" => $userDetail->UserMandate,
+                        "Region" => $userDetail->Region,
+                        "Constituency" => $userDetail->Constituency,
+                        "FirstName" => $userDetail->Fname,
+                        "Surname" => $userDetail->SurName,
                     ]);
+
+                    // return $session ;
 
                     return  $base_response->api_response($result->status, $result->message,  $result->data); // return API BASERESPONSE
                 } else {
