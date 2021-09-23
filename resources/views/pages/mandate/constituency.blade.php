@@ -349,5 +349,7 @@
         var UserRegion = '{{ session()->get('Region') }}';
 
         var constituency = '{{ $constituency }}';
+
+        var UserConstituency = '{{ session()->get('Constituency') }}'
     </script>
 @endsection

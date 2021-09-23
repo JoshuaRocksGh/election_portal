@@ -32,7 +32,7 @@ function polling_station_assignment(constituency) {
             if (response.status === "ok") {
                 console.log(response.data);
                 console.log("=======");
-                console.log(response.data.totalAssigned);
+                console.log(response.data.unAssigned);
                 let assigned_polling_station = response.data.totalAssigned;
                 let unassigned_polling_station = response.data.totalUnAssigned;
 
@@ -59,7 +59,7 @@ function agent_assignments(constituency) {
 
             let data = response.data.assigned;
             // let data_ = response.data.totalUnAssigned;
-            console.log(data);
+            // console.log(data);
 
             if (response.status === "ok") {
                 var count = 1;
@@ -113,11 +113,11 @@ function agent_unassigned(constituency) {
         url: "../get-agents-assignments-api?constituency=" + constituency,
         datatype: "application/json",
         success: function (response) {
-            console.log(response);
+            // console.log(response);
 
             let data = response.data.totalUnAssigned;
             // let data_ = response.data.totalUnAssigned;
-            // console.log(data_);
+            // console.log(data);
 
             if (response.status === "ok") {
                 var count = 1;
@@ -167,7 +167,7 @@ $(document).ready(function () {
                 userID: userID,
             },
             success: function (response) {
-                console.log(response);
+                // console.log(response);
             },
         });
     });

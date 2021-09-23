@@ -106,21 +106,9 @@
                                                 <div class="form-group mb-1">
                                                     <label for="simpleinput" class="h4">User Region</label>
 
-                                                    <select class=" selectpicker" data-live-search="true"
-                                                        id="agent_region">
-                                                        {{-- <option value="">-- Select Region --</option> --}}
-                                                        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda
-                                                        </option>
-                                                        <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                                                        <option data-tokens="frosting">Sugar, Spice and all things nice
-                                                        </option>
+                                                    <select class="form-control" id="agent_region">
+                                                        <option value="">-- Select Region --</option>
                                                     </select>
-                                                    {{-- <select class="selectpicker">
-                                                        <option>Mustard</option>
-                                                        <option>Ketchup</option>
-                                                        <option>Barbecue</option>
-                                                    </select> --}}
-
                                                 </div>
 
                                                 <div class="form-group mb-1">

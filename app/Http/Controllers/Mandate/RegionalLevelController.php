@@ -16,9 +16,17 @@ class RegionalLevelController extends Controller
         return view('pages.mandate.regions');
     }
 
-    public function constituency()
+    public function constituency($UserConstituency)
     {
-        return back();
+        // return $UserConstituency;
+        $constituency = $UserConstituency;
+        $res = str_replace(array(
+            '\'', '"',
+            ',', ';', '<', '>', "'", ')', '}'
+        ), ' ', $constituency);
+        // return preg_replace('/[^A-Za-z0-9\-]/', '', $constituency);
+        // echo ($res);
+        return view('pages.mandate.constituency', ['constituency' => $res]);
     }
 
     public function regional_constituency($UserRegion)

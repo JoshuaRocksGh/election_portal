@@ -40,6 +40,10 @@ class AdministrationController extends Controller
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
+        $user_constituency_ = $request->user_constituency;
+        $constituency_split = (explode("~", $user_constituency_));
+
+        $user_constituency = $constituency_split[0];
         $user_id = strtoupper($request->admin_id);
         $password = $request->admin_password;
         $mandate = $request->user_mandate;
@@ -68,7 +72,7 @@ class AdministrationController extends Controller
                 "Username" => $user_id,
                 "Password" => $password
             ];
-        } elseif ($mandate == "RegionalLevel") {
+        } elseif ($mandate == "ConstituencyLevel") {
             $data = [
                 "Fname" => $request->first_name,
                 "SurName" => $request->last_name,
@@ -76,10 +80,12 @@ class AdministrationController extends Controller
                 "Id" => $request->voters_id,
                 "UserMandate" => $request->user_mandate,
                 "Region" => $request->user_region,
-                "Constituency" =>  $request->user_constituency,
+                "Constituency" =>  $user_constituency,
                 "Username" => $user_id,
                 "Password" => $password
             ];
+
+            // return $data;
         }
 
         // $data  = [
@@ -89,7 +95,7 @@ class AdministrationController extends Controller
 
         // ];
 
-        // return $data;
+
 
         try {
 
