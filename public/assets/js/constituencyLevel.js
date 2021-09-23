@@ -10,11 +10,9 @@ function get_all_polling_stations(constituency) {
 
             if (response.status === "ok") {
                 // console.log(response.data);
-
-                let total_polling_stations = response.data.length;
-                console.log(total_polling_stations);
-
-                $(".total_polling_stations").text(total_polling_stations);
+                // let total_polling_stations = response.data.length;
+                // console.log(total_polling_stations);
+                // $(".total_polling_stations").text(total_polling_stations);
             }
         },
     });
@@ -35,8 +33,10 @@ function polling_station_assignment(constituency) {
                 console.log(response.data.unAssigned);
                 let assigned_polling_station = response.data.totalAssigned;
                 let unassigned_polling_station = response.data.totalUnAssigned;
+                let total_polling_stations = response.data.total;
 
                 $(".assigned_polling_stations").text(assigned_polling_station);
+                $(".total_polling_stations").text(total_polling_stations);
 
                 $(".unassigned_polling_stations").text(
                     unassigned_polling_station

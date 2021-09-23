@@ -94,7 +94,7 @@ class GetAllRequestConttroller extends Controller
         $constituency = $request->constituency;
         $base_response = new BaseResponse();
 
-        $response = Http::post(env('API_BASE_URL') . "agentsAssignments?constituency=ABLEKUMA WEST");
+        $response = Http::post(env('API_BASE_URL') . "agentsAssignments?constituency=$constituency");
 
 
         // dd($response);
