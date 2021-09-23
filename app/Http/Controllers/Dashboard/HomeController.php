@@ -9,9 +9,19 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     //
+    public function welcome()
+    {
+        return view('pages.dashboard.welcome');
+    }
+
     public function home()
     {
         return view('pages.dashboard.home');
+    }
+
+    public function region()
+    {
+        return view('pages.mandate.regions');
     }
 
     public function logout()

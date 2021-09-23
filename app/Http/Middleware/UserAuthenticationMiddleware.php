@@ -16,7 +16,7 @@ class UserAuthenticationMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!$request->session()->get('userName')) {
+        if (!$request->session()->get('UserMandate')) {
             session()->flush();
             return redirect()->route('login');
         }

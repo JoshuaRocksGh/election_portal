@@ -71,6 +71,42 @@ class GetAllRequestConttroller extends Controller
         // return $result->api_response($return->status, $return->message, $return->data);
     }
 
+    public function get_assigned_polling_stations(Request $request)
+    {
+        $constituency = $request->constituency;
+        $base_response = new BaseResponse();
+
+        $response = Http::post(env('API_BASE_URL') . "checkPollingAssignment?constituency=$constituency");
+
+
+        // dd($response);
+        return json_decode($response->body());
+
+
+        $result = new ApiBaseResponse();
+        $return = json_decode($response->body());
+
+        // return $result->api_response($return->status, $return->message, $return->data);
+    }
+
+    public function agents_assignments(Request $request)
+    {
+        $constituency = $request->constituency;
+        $base_response = new BaseResponse();
+
+        $response = Http::post(env('API_BASE_URL') . "agentsAssignments?constituency=ABLEKUMA WEST");
+
+
+        // dd($response);
+        return json_decode($response->body());
+
+
+        $result = new ApiBaseResponse();
+        $return = json_decode($response->body());
+
+        // return $result->api_response($return->status, $return->message, $return->data);
+    }
+
     public function get_all_users()
     {
 

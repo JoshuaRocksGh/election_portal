@@ -280,7 +280,8 @@
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{ url('assets/images/user.png') }}" alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ml-1 text-black-50">
-                        <b>{{ session()->get('userName') }}</b> <i class="mdi mdi-chevron-down"></i>
+                        <b>{{ session()->get('FirstName') }}&nbsp;{{ session()->get('Surname') }} </b> <i
+                            class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -355,7 +356,18 @@
                     <i class="fe-menu text-dark"></i>
                 </button>
             </li>
-
+            <li class="navbar-toggle nav-link">
+                <span class="font-20" style="color:black">
+                    {{-- {{ session()->get('Region') }} --}}
+                    @if (session()->get('UserMandate') == 'NationalLevel')
+                        National Portal
+                    @elseif(session()->get('UserMandate') == 'RegionalLevel')
+                        Regional Portal > {{ session()->get('Region') }}
+                    @elseif(session()->get('UserMandate') == 'ConstituencylLevel')
+                        Constituency Portal > {{ session()->get('Constituency') }}
+                    @endif
+                </span>
+            </li>
             <li>
                 <!-- Mobile menu toggle (Horizontal Layout)-->
                 <a class="navbar-toggle nav-link" data-toggle="collapse" data-target="#topnav-menu-content">
@@ -366,7 +378,10 @@
                     </div>
                 </a>
                 <!-- End mobile menu toggle-->
+
             </li>
+
+
 
             {{-- <li class="dropdown d-none d-xl-block">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"

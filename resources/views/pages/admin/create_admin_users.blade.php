@@ -1,6 +1,14 @@
 @extends("layouts.master")
 
 
+@section('styles')
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+
+
+
 @section('content')
     <br>
 
@@ -98,9 +106,21 @@
                                                 <div class="form-group mb-1">
                                                     <label for="simpleinput" class="h4">User Region</label>
 
-                                                    <select class="form-control" id="agent_region">
-                                                        <option value="">-- Select Region --</option>
+                                                    <select class=" selectpicker" data-live-search="true"
+                                                        id="agent_region">
+                                                        {{-- <option value="">-- Select Region --</option> --}}
+                                                        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda
+                                                        </option>
+                                                        <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                                                        <option data-tokens="frosting">Sugar, Spice and all things nice
+                                                        </option>
                                                     </select>
+                                                    {{-- <select class="selectpicker">
+                                                        <option>Mustard</option>
+                                                        <option>Ketchup</option>
+                                                        <option>Barbecue</option>
+                                                    </select> --}}
+
                                                 </div>
 
                                                 <div class="form-group mb-1">
@@ -164,6 +184,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
 
     <script src="{{ asset('assets/js/create_admin.js') }}"></script>

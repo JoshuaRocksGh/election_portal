@@ -29,17 +29,24 @@ function login(email, password) {
         },
         success: function (response) {
             console.log(response.responseCode);
+            // return false;
             // $("#success_alert").append();
-
+            // return false;
             // $("#error_alert").append();
             // $("#success_alert").hide();
             // $("#error_alert").hide();
             if (response.responseCode == "ok") {
+                // alert(UserMandate);
+                // if (UserMandate === "RegionalLevel") {
+
+                // }
                 // alert("success");
+                // return false;
+
                 // $("#success_alert").show();
                 // $("#success_alert").html(response.message);
 
-                window.location = "home";
+                window.location = "welcome";
                 $("#login_form_button").attr("disabled", true);
             } else {
                 $(".spinner-text").hide();
@@ -73,7 +80,3 @@ $("#login_form_button").click(function (e) {
         login(email, password);
     }
 });
-
-
-
-
