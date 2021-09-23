@@ -52,15 +52,32 @@
             <ul id=" side-menu">
 
                 {{-- <li class="menu-title">Navigation</li> --}}
+                @if (session()->get('UserMandate') == 'NationalLevel')
+                    <li>
+                        <a href="{{ route('home') }}">
+                            {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
+                            <i class="mdi mdi-home-outline"></i>
+                            <span> Home</span>
+                        </a>
+                    </li>
+                @elseif(session()->get('UserMandate') == 'RegionalLevel')
 
-                <li>
-                    <a href="{{ route('home') }}">
-                        {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
-                        <i class="mdi mdi-home-outline"></i>
-                        <span> Home</span>
-                    </a>
-                </li>
-
+                    <li>
+                        <a href="{{ url('region/${UserRegion}') }}">
+                            {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
+                            <i class="mdi mdi-home-outline"></i>
+                            <span> Home</span>
+                        </a>
+                    </li>
+                @elseif(session()->get('UserMandate') == 'ConstituencylLevel')
+                    <li>
+                        <a href="{{ route('constituency') }}">
+                            {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
+                            <i class="mdi mdi-home-outline"></i>
+                            <span> Home</span>
+                        </a>
+                    </li>
+                @endif
                 <li>
                     <a href="#sidebarLoans" data-toggle="collapse">
                         <i class="mdi mdi-briefcase-check-outline"></i>
@@ -856,3 +873,14 @@
 
 </div>
 <!-- Left Sidebar End -->
+
+@section('scripts')
+
+    <script>
+        var UserMandate = @json(session()->get('UserMandate'));
+        var UserRegion = @json(session()->get('Region'));
+    </script>
+
+
+
+@endsection

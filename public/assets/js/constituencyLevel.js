@@ -59,7 +59,7 @@ function agent_assignments(constituency) {
 
             let data = response.data.assigned;
             // let data_ = response.data.totalUnAssigned;
-            // console.log(data_);
+            console.log(data);
 
             if (response.status === "ok") {
                 var count = 1;
@@ -77,10 +77,27 @@ function agent_assignments(constituency) {
                             data[index].ElectoralArea,
                             data[index].UserId,
                             `
-                            <a class="btn btn-info" href=""><span class="text-white">UnAssign</span></a>
+                            <button class="btn btn-info"  data-toggle="modal" data-target="#standard-modal"><span class="text-white">UnAssign</span></button>
                             `,
                         ])
                         .draw(false);
+
+                    $(".agent_id").val(data[index].UserId);
+                    $(".agent_id").text(data[index].UserId);
+                    $(".agent_name").val(
+                        data[index].Fname + " " + data[index].SurName
+                    );
+                    $(".agent_name").text(
+                        data[index].Fname + " " + data[index].SurName
+                    );
+                    $(".agent_gender").val(data[index].Gender);
+                    $(".agent_gender").text(data[index].Gender);
+                    $(".agent_region").val(data[index].Region);
+                    $(".agent_region").text(data[index].Region);
+                    $(".agent_constituency").val(data[index].Constituency);
+                    $(".agent_constituency").text(data[index].Constituency);
+                    $(".agent_electoral_area").val(data[index].ElectoralArea);
+                    $(".agent_electoral_area").text(data[index].ElectoralArea);
                 });
             }
         },
@@ -134,4 +151,24 @@ $(document).ready(function () {
     }, 1000);
 
     $(".assigned_agent_list").DataTable();
+
+    $("#unassign_modal_button").click(function (e) {
+        e.preventDefault();
+        var polling_station = $(".agent_electoral_area").val();
+        var userID = $(".agent_id").val();
+
+        // alert(polling_station);
+        $.ajax({
+            type: "Post",
+            url: "../unassign-agent-api",
+            datatype: "application/json",
+            data: {
+                pollingID: polling_station,
+                userID: userID,
+            },
+            success: function (response) {
+                console.log(response);
+            },
+        });
+    });
 });

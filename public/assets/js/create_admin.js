@@ -75,8 +75,8 @@ function toaster(message, icon, timer) {
     });
 }
 
-$("#agent_region").prop("disabled", true);
-$("#agent_region").css("background", "#DCDCDC");
+// $("#agent_region").prop("disabled", true);
+// $("#agent_region").css("background", "#DCDCDC");
 $("#agent_constituency").prop("disabled", true);
 $("#agent_constituency").css("background", "#DCDCDC");
 
@@ -104,6 +104,8 @@ $("#user_mandate").change(function () {
         return;
     } else if (user_mandate === "RegionalLevel") {
         console.log("mandate is =>" + user_mandate);
+        $("#agent_region").selectpicker().prop("disabled", false);
+
         $("#agent_region").prop("disabled", false);
         $("#agent_region").css("background", "#FFFFFF");
         $("#constituency_spinner").hide();
@@ -181,6 +183,8 @@ $(document).ready(function () {
         // alert("Winner");
         get_regions();
     }, 200);
+
+    $("#agent_region").selectpicker();
 
     $("#create_admin").click(function (e) {
         e.preventDefault();

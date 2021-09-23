@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdministrationController;
 use App\Http\Controllers\Agents\AddAgentsController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Mandate\ConstituencyLevelController;
 use App\Http\Controllers\Mandate\RegionalLevelController;
 use App\Http\Controllers\Requests\GetAllRequestConttroller;
 use Illuminate\Support\Facades\Route;
@@ -50,12 +51,15 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/send-agent-message', [AddAgentsController::class, 'send_message'])->name('send-agent-message');
     Route::post('/send-agent-message-api', [AddAgentsController::class, 'message_details'])->name('send-agent-message-api');
 
+
+    Route::post('/unassign-agent-api', [ConstituencyLevelController::class, 'unassign'])->name('unassign-agent-api');
+
     //Mandate Route
     Route::get('/region/{UserRegion}', [RegionalLevelController::class, 'region'])->name('region');
     Route::get('/regional-constituency/{UserRegion}', [RegionalLevelController::class, 'regional_constituency'])->name('regional-constituency/{UserRegion}');
 
     //
-    Route::get('/constituency}', [RegionalLevelController::class, 'constituency'])->name('constituency');
+    Route::get('/constituency', [RegionalLevelController::class, 'constituency'])->name('constituency');
     Route::get('/constituency-polling-station/{constituency_name}', [RegionalLevelController::class, 'constituency_polling_station'])->name('/constituency-polling-station/{constituency_name}');
 
 

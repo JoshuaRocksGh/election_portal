@@ -363,7 +363,7 @@
                         National Portal
                     @elseif(session()->get('UserMandate') == 'RegionalLevel')
                         Regional Portal > {{ session()->get('Region') }}
-                    @elseif(session()->get('UserMandate') == 'RegionalLevel')
+                    @elseif(session()->get('UserMandate') == 'ConstituencylLevel')
                         Constituency Portal > {{ session()->get('Constituency') }}
                     @endif
                 </span>

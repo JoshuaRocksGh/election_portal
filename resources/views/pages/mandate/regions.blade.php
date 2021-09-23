@@ -43,6 +43,23 @@
                 </div>
             </div>
         </div>
+        {{-- <div class="card"
+            style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <div class="card-body">
+                <div class="container">
+                    <div class="row" id="edit_spinner">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 text-center">
+
+                            <div class="spinner-border avatar-lg text-blue m-2" role="status"></div>
+
+
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
         <div class="row list_of_constituency">
 
         </div>

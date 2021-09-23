@@ -79,7 +79,7 @@
 
     <div class="row">
 
-        <div class="col-xl-6">
+        <div class="col-md-12">
             <div class="card-box"
                 style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                 <h4 class="header-title mb-4">Default Tabs</h4>
@@ -180,6 +180,55 @@
             </div>
         </div> <!-- end card-box-->
     </div> <!-- end col -->
+
+    <!-- Standard modal content -->
+    <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center text-danger" id="standard-modalLabel">UnAssign Agent</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    {{-- <hr style="mt-0"> --}}
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="" class="col-md-4 h4">Agent ID:</label>
+                        <h4 class="col-md-8 agent_id text-blue"></h4>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-md-4 h4">Agent Name:</label>
+                        <h4 class="col-md-8 agent_name text-blue"></h4>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-md-4 h4">Gender:</label>
+                        <h4 class="col-md-8 agent_gender text-blue"></h4>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-md-4 h4">Agent Region:</label>
+                        <h4 class="col-md-8 agent_region text-blue"></h4>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-md-4 h4">Agent Constituency:</label>
+                        <h4 class="col-md-8 agent_constituency text-blue"></h4>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-md-4 h4">Agent Polling Station:</label>
+                        <h4 class="col-md-8 agent_electoral_area text-blue"></h4>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    {{-- <button type="button" class="btn btn-light" data-dismiss="modal">Close</button> --}}
+                    <button type="button" class="btn btn-info" id="unassign_modal_button">Confirm</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Standard  modal -->
+    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#standard-modal">Standard Modal</button> --}}
 
 
     {{-- <div class="col-xl-6">

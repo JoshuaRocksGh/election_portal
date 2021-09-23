@@ -1,3 +1,5 @@
+// $("#edit_spinner").hide();
+
 function regional_constituencies() {
     // alert(UserRegion);
     // return false;
@@ -12,6 +14,9 @@ function regional_constituencies() {
             console.log(data);
 
             if (data.length > 0) {
+                // $(".card").hide();
+                // $(".card").attr("style", "display:none");
+
                 $.each(data, function (index) {
                     let constituency_name = data[index].code;
 
