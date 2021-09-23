@@ -59,7 +59,7 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/regional-constituency/{UserRegion}', [RegionalLevelController::class, 'regional_constituency'])->name('regional-constituency/{UserRegion}');
 
     //
-    Route::get('/constituency', [RegionalLevelController::class, 'constituency'])->name('constituency');
+    Route::get('/constituency/{UserConstituency}', [RegionalLevelController::class, 'constituency'])->name('constituency/{UserConstituency}');
     Route::get('/constituency-polling-station/{constituency_name}', [RegionalLevelController::class, 'constituency_polling_station'])->name('/constituency-polling-station/{constituency_name}');
 
 

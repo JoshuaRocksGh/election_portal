@@ -22,7 +22,8 @@
         $(document).ready(function() {
             var UserMandate = @json(session()->get('UserMandate'));
             var UserRegion = @json(session()->get('Region'));
-            setTimeout(() => {
+            var UserConstituency = @json(session()->get('Constituency'));
+            setTimeout(function() {
                 {{-- alert(UserMandate) --}}
 
                 if (UserMandate === "NationalLevel") {
@@ -30,7 +31,7 @@
                 } else if (UserMandate === 'RegionalLevel') {
                     window.location.href = `{{ url('region/${UserRegion}') }}`
                 } else if (UserMandate === 'ConstituencyLevel') {
-                    window.location = 'constituency'
+                    window.location.href = `{{ url('constituency/${UserConstituency}') }}`
                 } else {
                     return back();
                 }
