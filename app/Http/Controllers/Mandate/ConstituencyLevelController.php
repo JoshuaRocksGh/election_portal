@@ -14,7 +14,7 @@ class ConstituencyLevelController extends Controller
     //
     public function unassign_(Request $request)
     {
-        // return $request;
+        return $request;
         $validator = Validator::make($request->all(), [
             "pollingID" => "required",
             "userID" => "required",

@@ -100,40 +100,55 @@ function agent_assignments(constituency) {
                     $(".agent_electoral_area").text(data[index].ElectoralArea);
                 });
 
-                $unassigned.each(agent_unassigned, function (index) {
-                    console.log(data[index]);
-                    var polling_station_name = data[index].ElectoralArea;
+                $.each(agent_unassigned, function (index) {
+                    console.log(agent_unassigned[index]);
+                    var polling_station_name =
+                        agent_unassigned[index].ElectoralArea;
                     // count++;
                     unassigned.row
                         .add([
                             count++,
-                            data[index].Fname + " " + data[index].SurName,
-                            data[index].Region,
-                            data[index].Constituency,
-                            data[index].ElectoralArea,
-                            data[index].UserId,
+                            agent_unassigned[index].Fname +
+                                " " +
+                                agent_unassigned[index].SurName,
+                            agent_unassigned[index].Region,
+                            agent_unassigned[index].Constituency,
+                            agent_unassigned[index].ElectoralArea,
+                            agent_unassigned[index].UserId,
                             `
-                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&user_id=${data[index].UserId}&assign=true' data-value=${data[index].ElectoralArea}>Assign</a>
+                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${agent_unassigned[index].ElectoralArea}&user_id=${agent_unassigned[index].UserId}&assign=true' data-value=${agent_unassigned[index].ElectoralArea}>Assign</a>
                             `,
                         ])
                         .draw(false);
 
-                    $(".agent_id").val(data[index].UserId);
-                    $(".agent_id").text(data[index].UserId);
+                    $(".agent_id").val(agent_unassigned[index].UserId);
+                    $(".agent_id").text(agent_unassigned[index].UserId);
                     $(".agent_name").val(
-                        data[index].Fname + " " + data[index].SurName
+                        agent_unassigned[index].Fname +
+                            " " +
+                            agent_unassigned[index].SurName
                     );
                     $(".agent_name").text(
-                        data[index].Fname + " " + data[index].SurName
+                        agent_unassigned[index].Fname +
+                            " " +
+                            agent_unassigned[index].SurName
                     );
-                    $(".agent_gender").val(data[index].Gender);
-                    $(".agent_gender").text(data[index].Gender);
-                    $(".agent_region").val(data[index].Region);
-                    $(".agent_region").text(data[index].Region);
-                    $(".agent_constituency").val(data[index].Constituency);
-                    $(".agent_constituency").text(data[index].Constituency);
-                    $(".agent_electoral_area").val(data[index].ElectoralArea);
-                    $(".agent_electoral_area").text(data[index].ElectoralArea);
+                    $(".agent_gender").val(agent_unassigned[index].Gender);
+                    $(".agent_gender").text(agent_unassigned[index].Gender);
+                    $(".agent_region").val(agent_unassigned[index].Region);
+                    $(".agent_region").text(agent_unassigned[index].Region);
+                    $(".agent_constituency").val(
+                        agent_unassigned[index].Constituency
+                    );
+                    $(".agent_constituency").text(
+                        agent_unassigned[index].Constituency
+                    );
+                    $(".agent_electoral_area").val(
+                        agent_unassigned[index].ElectoralArea
+                    );
+                    $(".agent_electoral_area").text(
+                        agent_unassigned[index].ElectoralArea
+                    );
                 });
             }
         },

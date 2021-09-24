@@ -101,10 +101,22 @@
                                             <label for="" class="col-md-6 h4 ">Agent Constituency:</label>
                                             <h4 class="col-md-6 agent_constituency text-blue text-center"></h4>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="" class="col-md-6 h4">Agent Polling Station:</label>
-                                            <h4 class="col-md-6 agent_electoral_area text-blue text-center"></h4>
-                                        </div>
+                                        @if( $assign != 'true')
+                                            <div class="form-group row">
+                                                <label for="" class="col-md-6 h4">Agent Polling Station:</label>
+
+                                                <h4 class="col-md-6 agent_electoral_area text-blue text-center"></h4>
+                                            </div>
+                                        @elseif( $assign == 'true')
+                                            <div class="form-group row">
+                                                <label for="" class="col-md-6 h4">Agent Polling Station:</label>
+
+                                                {{--  <h4 class="col-md-6 agent_electoral_area text-blue text-center"></h4>  --}}
+                                                <select class="form-control col-md-6" id="agent_electoral_area">
+                                                    <option value="">-- Select Electoral Area--</option>
+                                                </select>
+                                            </div>
+                                        @endif
 
                                     </div>
                                     <div class="row">
@@ -151,6 +163,7 @@
         var constituency = '{{ $constituency }}';
 
         var user_id = '{{ $user_id }}'
+        
 
         var UserConstituency = '{{ session()->get('Constituency') }}'
     </script>
