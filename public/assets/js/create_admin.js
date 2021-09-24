@@ -116,7 +116,7 @@ $("#user_mandate").change(function () {
         return;
     } else if (user_mandate === "ConstituencyLevel") {
         $("#agent_region").prop("disabled", false);
-        $("#agent_region").css("background", "#FFFFFF");
+        // $("#agent_region").css("background", "#FFFFFF");
 
         $("#agent_region").change(function () {
             var region = $(this).val();
@@ -185,6 +185,15 @@ $(document).ready(function () {
     }, 200);
 
     // $("#agent_region").selectpicker();
+
+    // $("#agent_region").select2({
+    //     placeholder: "Select Country",
+    //     allowClear: true,
+    // });
+
+    //  $("#agent_region").chosen();
+
+    // $(".agent_select select").selectpicker();
 
     $("#create_admin").click(function (e) {
         e.preventDefault();

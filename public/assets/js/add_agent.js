@@ -279,20 +279,18 @@ $(document).ready(function () {
         }
 
         if (
-            (image =
-                "" ||
-                fname == "" ||
-                surname == "" ||
-                gender == "" ||
-                dob == "" ||
-                national_id == "" ||
-                telephone_1 == "" ||
-                education_level == "" ||
-                year_completion == "" ||
-                agent_region == "" ||
-                agent_electoral_area == "" ||
-                agent_constituency == "" ||
-                insititution_name == "")
+            fname == "" ||
+            surname == "" ||
+            gender == "" ||
+            dob == "" ||
+            national_id == "" ||
+            telephone_1 == "" ||
+            education_level == "" ||
+            year_completion == "" ||
+            agent_region == "" ||
+            agent_electoral_area == "" ||
+            agent_constituency == "" ||
+            insititution_name == ""
         ) {
             // alert("Please fill all required fields");
             // $("#agent_submit_form").removeAttr("data-target");

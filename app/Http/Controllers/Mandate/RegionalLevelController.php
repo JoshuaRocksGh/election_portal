@@ -47,6 +47,16 @@ class RegionalLevelController extends Controller
         $return = json_decode($response->body());
     }
 
+    public function regional(Request $request)
+    {
+
+        $region = $request->query('Region');
+        // return $region;
+        // $bene_id = $request->query('bene_id');
+
+        return view('pages.mandate.regions', ['region' => $region]);
+    }
+
     public function constituency_polling_station($constituency_name)
     {
         $constituency = $constituency_name;

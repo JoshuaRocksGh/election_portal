@@ -3,9 +3,18 @@
 function regional_constituencies() {
     // alert(UserRegion);
     // return false;
+    if (Mandate == "NationalLevel") {
+        // alert("Right");
+        var url = "regional-constituency/" + UserRegion;
+    } else if (Mandate != "NationalLevel") {
+        var url = "../regional-constituency/" + UserRegion;
+    } else {
+        return;
+    }
+
     $.ajax({
         type: "GET",
-        url: "../regional-constituency/" + UserRegion,
+        url: url,
         datatype: "application/json",
         success: function (response) {
             // console.log(response);

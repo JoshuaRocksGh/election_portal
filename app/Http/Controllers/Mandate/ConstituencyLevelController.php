@@ -12,12 +12,14 @@ use Illuminate\Support\Facades\Validator;
 class ConstituencyLevelController extends Controller
 {
     //
-    public function unassign(Request $request)
+    public function unassign_(Request $request)
     {
         $validator = Validator::make($request->all(), [
             "pollingID" => "required",
             "userID" => "required"
         ]);
+
+        // return $request;
 
         $base_response = new BaseResponse();
 
@@ -27,13 +29,15 @@ class ConstituencyLevelController extends Controller
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
+        // $polling_station = $request->pollingID;
+
         $data = [
             "pollingID" => $request->pollingID,
             "userID" => $request->userID
         ];
 
         try {
-            // $response = Http::post(env('API_BASE_URL') . "sendNotification", $data);
+            $response = Http::post(env('API_BASE_URL') . "unAssignPollingAgent", $data);
             return json_decode($response);
 
             $result = new ApiBaseResponse();
@@ -50,5 +54,15 @@ class ConstituencyLevelController extends Controller
 
 
         }
+    }
+
+    public function unassign(Request $request)
+    {
+        $electoral_area = $request->query('electoral_area');
+        $user_id = $request->query('user_id');
+        $constituency = session()->get('Constituency');
+        // return $electoral_area;
+
+        return view('pages.agents.unassign_agent', ['electoral_area' => $electoral_area, 'user_id' => $user_id, 'constituency' => $constituency]);
     }
 }

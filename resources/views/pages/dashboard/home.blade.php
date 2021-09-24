@@ -76,20 +76,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=AHAFO' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -107,20 +107,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=ASHANTI' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -137,20 +137,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=BONO EAST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -167,20 +167,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=BONO' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -198,20 +198,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=CENTRAL' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -228,20 +228,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=EASTERN' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -258,20 +258,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="greater_accra_agents h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=GREATER ACCRA' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -288,20 +288,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=NORTHERN' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -318,20 +318,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=NORTH EAST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -348,20 +348,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=OTI' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -378,20 +378,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=SAVANNAH' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -408,20 +408,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=UPPER EAST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -438,20 +438,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=UPPER WEST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -468,20 +468,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=VOLTA' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -498,20 +498,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=WESTERN NORTH' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -528,20 +528,20 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td>
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
+                                            0
+                                        </td>
+
+                                        <td class="h1">
                                             0
                                         </td>
 
                                         <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            0
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-sm btn-blue">VIEW</a>
+                                            `<a href='regional?Region=WESTERN' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -570,7 +570,8 @@
 
 
     <script src="{{ asset('assets/js/home.js') }}"></script>
-    {{--  <script>
+    <script>
         var UserMandate = @json(session()->get('UserMandate'));
-    </script>  --}}
+        {{-- var UserRegion = @json(session()->get('Region')); --}}
+    </script>
 @endsection

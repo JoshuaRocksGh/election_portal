@@ -69,10 +69,12 @@
                             <span> Home</span>
                         </a>
                     </li>
-                @elseif(session()->get('UserMandate') == 'ConstituencylLevel')
+                @elseif(session()->get('UserMandate') == 'ConstituencyLevel')
+                    {{-- $UserConstituency --}}
+                    {{-- {{ session()->get('Constituency') }} --}}
+
                     <li>
-                        <a href="{{ route('constituency') }}">
-                            {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
+                        <a href="{{ url('constituency/${UserConstituency}') }}">
                             <i class="mdi mdi-home-outline"></i>
                             <span> Home</span>
                         </a>
@@ -879,6 +881,8 @@
     <script>
         var UserMandate = @json(session()->get('UserMandate'));
         var UserRegion = @json(session()->get('Region'));
+        var UserConstituency = @json(session()->get('Constituency'))
+        {{-- console.log(UserConstituency); --}}
     </script>
 
 

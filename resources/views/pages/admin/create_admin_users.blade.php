@@ -6,6 +6,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
+    <link href="src/selectstyle.css" rel="stylesheet">
 
 
 
@@ -103,11 +104,14 @@
                                                         placeholder="Enter User Voter Id Number" autocomplete="off">
                                                 </div>
 
-                                                <div class="form-group mb-1">
+                                                <div class="form-group mb-1 agent_select">
                                                     <label for="simpleinput" class="h4">User Region</label>
 
                                                     <select class="form-control" id="agent_region">
                                                         <option value="">-- Select Region --</option>
+
+                                                        {{-- <option value="Male" data-tokens="ketchup mustard">Male</option>
+                                                        <option value="Female">Female</option> --}}
                                                     </select>
                                                 </div>
 
@@ -167,13 +171,18 @@
 
 @section('scripts')
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> --}}
+    {{-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> --}}
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+
+    {{-- <script src="//code.jquery.com/jquery.min.js"></script> --}}
+
+    {{-- <script src="src/selectstyle.js"></script> --}}
+
 
 
     <script src="{{ asset('assets/js/create_admin.js') }}"></script>

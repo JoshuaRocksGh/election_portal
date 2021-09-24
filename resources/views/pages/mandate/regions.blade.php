@@ -4,7 +4,11 @@
 @section('content')
 
     <div class="container-fluid">
-        <h3 class=""><span class=" text-danger">{{ session()->get('Region') }}</span> </h3>
+        @if (session()->get('UserMandate') == 'NationalLevel')
+            <h3 class=""><span class=" text-danger">{{ $region }}</span> </h3>
+        @elseif(session()->get('UserMandate') !== 'NationalLevel')
+            <h3 class=""><span class=" text-danger">{{ session()->get('Region') }}</span> </h3>
+        @endif
         <div class="row">
             <div class="col-md-6">
                 <div class="card"
@@ -78,6 +82,14 @@
 
     <script src="{{ asset('assets/js/regionalLevel.js') }}"></script>
     <script>
-        var UserRegion = @json(session()->get('Region'));
+        var Mandate = @json(session()->get('UserMandate'));
+        var region = '{{ $region }}'
+        if (Mandate == "NationalLevel") {
+            var UserRegion = region;
+
+        } else if (Mandate != "NationalLevel") {
+            var UserRegion = @json(session()->get('Region'));
+
+        }
     </script>
 @endsection

@@ -52,15 +52,18 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::post('/send-agent-message-api', [AddAgentsController::class, 'message_details'])->name('send-agent-message-api');
 
 
-    Route::post('/unassign-agent-api', [ConstituencyLevelController::class, 'unassign'])->name('unassign-agent-api');
+    Route::post('/unassign-agent-api', [ConstituencyLevelController::class, 'unassign_'])->name('unassign-agent-api');
 
     //Mandate Route
     Route::get('/region/{UserRegion}', [RegionalLevelController::class, 'region'])->name('region');
+    Route::get('/regional', [RegionalLevelController::class, 'regional'])->name('regional/{UserRegion}');
     Route::get('/regional-constituency/{UserRegion}', [RegionalLevelController::class, 'regional_constituency'])->name('regional-constituency/{UserRegion}');
 
     //
     Route::get('/constituency/{UserConstituency}', [RegionalLevelController::class, 'constituency'])->name('constituency/{UserConstituency}');
     Route::get('/constituency-polling-station/{constituency_name}', [RegionalLevelController::class, 'constituency_polling_station'])->name('/constituency-polling-station/{constituency_name}');
+
+    Route::get('/unassign-agent', [ConstituencyLevelController::class, 'unassign'])->name('unassign-agent');
 
 
     //ADMINiSTRATION

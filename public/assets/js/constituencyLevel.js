@@ -77,7 +77,7 @@ function agent_assignments(constituency) {
                             data[index].ElectoralArea,
                             data[index].UserId,
                             `
-                            <button class="btn btn-info"  data-toggle="modal" data-target="#standard-modal"><span class="text-white">UnAssign</span></button>
+                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&user_id=${data[index].UserId}' data-value=${data[index].ElectoralArea}>UnAssign</a>
                             `,
                         ])
                         .draw(false);
@@ -140,6 +140,33 @@ function agent_unassigned(constituency) {
         },
     });
 }
+function confirm_unassignment() {
+    // alert("delete function called");
+    Swal.fire({
+        title: "Do you want to Unassign Agent?",
+        showDenyButton: false,
+        showCancelButton: true,
+        confirmButtonText: `Proceed`,
+        confirmButtonColor: "#18c40d",
+        cancelButtonColor: "#df1919",
+        //  denyButtonText: `Don't save`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            var electoral_id = $(".unassign_btn").attr("data-value");
+            alert(electoral_id);
+            // confirm_deletion();
+        } else if (result.isDenied) {
+            Swal.fire("Failed to UnAssign Agent", "", "info");
+        }
+    });
+}
+
+function doSomething() {
+    // alert("Click event is triggered on the link.");
+    // var bene_ID = $(".delete_beneficiary_data").attr("data-value")
+    confirm_unassignment();
+}
 
 $(document).ready(function () {
     setTimeout(function () {
@@ -152,7 +179,15 @@ $(document).ready(function () {
 
     $(".assigned_agent_list").DataTable();
 
-    $("#unassign_modal_button").click(function (e) {
+    $(".unassign_btn").click(function () {
+        // e.preventDefault();
+        alert("clicked");
+        return false;
+        var id = $(this).attr("data-value");
+        console.log(id);
+    });
+
+    $("#unassign_agent_button").click(function (e) {
         e.preventDefault();
         var polling_station = $(".agent_electoral_area").val();
         var userID = $(".agent_id").val();
@@ -170,5 +205,9 @@ $(document).ready(function () {
                 // console.log(response);
             },
         });
+    });
+
+    $("button").click(function () {
+        $("a")[0].click();
     });
 });

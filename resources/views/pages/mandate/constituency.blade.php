@@ -25,8 +25,12 @@
 @section('content')
 
     <div class="container-fluid">
-        <h3 class="">{{ session()->get('Region') }} &nbsp; > &nbsp;<span class=" text-danger">
-            {{ $constituency }}</span> </h3>
+        <h3 class="">{{ session()->get('Region') }} &nbsp; > &nbsp;<span class=" text-danger"> {{ $constituency }}</span>
+            @if (session()->get('Region') == 'ConstituencyLevel')
+                echo (session()->get('Region'))
+            @endif
+
+        </h3>
 
         <div class="row">
             <div class="col-md-4">
