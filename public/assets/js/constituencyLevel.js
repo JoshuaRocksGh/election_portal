@@ -100,7 +100,7 @@ function agent_assignments(constituency) {
                     $(".agent_electoral_area").text(data[index].ElectoralArea);
                 });
 
-                $.each(agent_unassigned, function (index) {
+                $unassigned.each(agent_unassigned, function (index) {
                     console.log(data[index]);
                     var polling_station_name = data[index].ElectoralArea;
                     // count++;

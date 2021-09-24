@@ -66,7 +66,7 @@
                         <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <h3 for="" class=" text-center">UnAssign Agent</h3>
+                                <h3 for="" class=" text-center"> Agent Details</h3>
                                 <hr class="mt-0">
                             </div>
                             <div class="col-md-4"></div>
@@ -77,6 +77,10 @@
                                 <form action="#">
 
                                     <div class="agent_details">
+                                        <div class="form-group row">
+                                            <label hidden="true" for="" class="col-md-6 h4 ">Assign:</label>
+                                            <h4   hidden="true" class="col-md-6 assign text-blue text-center" value="{{ $assign }}">{{ $assign }}</h4>
+                                        </div>
                                         <div class="form-group row">
                                             <label for="" class="col-md-6 h4 ">Agent ID:</label>
                                             <h4 class="col-md-6 agent_id text-blue text-center"></h4>

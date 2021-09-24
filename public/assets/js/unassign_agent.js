@@ -94,8 +94,8 @@ $(document).ready(function () {
         e.preventDefault();
         var polling_station = $(".agent_electoral_area").val();
         var userID = $(".agent_id").val();
-        var userID = $(".agent_id").val();
-
+        var assign = $(".assign").text();
+        console.log(assign);
         // alert(polling_station);
         // return false;
 
@@ -109,6 +109,7 @@ $(document).ready(function () {
             data: {
                 pollingID: polling_station,
                 userID: userID,
+                assign: assign,
             },
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -118,13 +119,14 @@ $(document).ready(function () {
                 if (response.status === "ok") {
                     Swal.fire(response.message, "", "success");
                     setTimeout(() => {
-                        // redirect_page();
-                        return back();
+                        redirect_page();
+                        // return back();
                     }, 2000);
                 } else {
                     toaster(response.message, "error", 10000);
                     setTimeout(() => {
-                        return back();
+                        redirect_page();
+                        // return back();
                     }, 2000);
                 }
             },
