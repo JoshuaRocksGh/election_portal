@@ -48,7 +48,7 @@ function polling_station_assignment(constituency) {
 
 function agent_assignments(constituency) {
     var table = $(".assigned_agent_list").DataTable();
-    // var table = $(".unassigned_agent_list").DataTable();
+    var unassigned = $(".unassigned_agent_list").DataTable();
     var nodes = table.rows().nodes();
     $.ajax({
         type: "GET",
@@ -58,7 +58,7 @@ function agent_assignments(constituency) {
             console.log(response);
 
             let data = response.data.assigned;
-            // let data_ = response.data.totalUnAssigned;
+            let agent_unassigned = response.data.unAssigned;
             // console.log(data);
 
             if (response.status === "ok") {
@@ -77,7 +77,43 @@ function agent_assignments(constituency) {
                             data[index].ElectoralArea,
                             data[index].UserId,
                             `
-                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&user_id=${data[index].UserId}' data-value=${data[index].ElectoralArea}>UnAssign</a>
+                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&user_id=${data[index].UserId}&assign=false' data-value=${data[index].ElectoralArea}>UnAssign</a>
+                            `,
+                        ])
+                        .draw(false);
+
+                    $(".agent_id").val(data[index].UserId);
+                    $(".agent_id").text(data[index].UserId);
+                    $(".agent_name").val(
+                        data[index].Fname + " " + data[index].SurName
+                    );
+                    $(".agent_name").text(
+                        data[index].Fname + " " + data[index].SurName
+                    );
+                    $(".agent_gender").val(data[index].Gender);
+                    $(".agent_gender").text(data[index].Gender);
+                    $(".agent_region").val(data[index].Region);
+                    $(".agent_region").text(data[index].Region);
+                    $(".agent_constituency").val(data[index].Constituency);
+                    $(".agent_constituency").text(data[index].Constituency);
+                    $(".agent_electoral_area").val(data[index].ElectoralArea);
+                    $(".agent_electoral_area").text(data[index].ElectoralArea);
+                });
+
+                $.each(agent_unassigned, function (index) {
+                    console.log(data[index]);
+                    var polling_station_name = data[index].ElectoralArea;
+                    // count++;
+                    unassigned.row
+                        .add([
+                            count++,
+                            data[index].Fname + " " + data[index].SurName,
+                            data[index].Region,
+                            data[index].Constituency,
+                            data[index].ElectoralArea,
+                            data[index].UserId,
+                            `
+                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&user_id=${data[index].UserId}&assign=true' data-value=${data[index].ElectoralArea}>Assign</a>
                             `,
                         ])
                         .draw(false);

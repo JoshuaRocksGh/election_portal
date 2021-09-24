@@ -94,6 +94,7 @@ $(document).ready(function () {
         e.preventDefault();
         var polling_station = $(".agent_electoral_area").val();
         var userID = $(".agent_id").val();
+        var userID = $(".agent_id").val();
 
         // alert(polling_station);
         // return false;
