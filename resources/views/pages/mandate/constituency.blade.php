@@ -148,7 +148,7 @@
                             <div class="" >
                                     <div class=" card-body">
 
-                                <h4 class="header-title">Assigned Agents</h4>
+                                <h4 class="header-title"> UnAssigned Agents</h4>
 
 
                                 <table id="datatable-buttons"
@@ -161,6 +161,7 @@
                                             <th>Constituency</th>
                                             <th>Electoral Area</th>
                                             <th>User Id</th>
+                                            <th>Action</th>
 
                                         </tr>
                                     </thead>

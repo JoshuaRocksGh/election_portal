@@ -64,6 +64,7 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/constituency-polling-station/{constituency_name}', [RegionalLevelController::class, 'constituency_polling_station'])->name('/constituency-polling-station/{constituency_name}');
 
     Route::get('/unassign-agent', [ConstituencyLevelController::class, 'unassign'])->name('unassign-agent');
+    // Route::get('/assign-agent', [ConstituencyLevelController::class, 'assign'])->name('assign-agent');
 
 
     //ADMINiSTRATION
