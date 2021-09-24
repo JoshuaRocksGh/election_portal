@@ -83,10 +83,10 @@
     <script src="{{ asset('assets/js/regionalLevel.js') }}"></script>
     <script>
         var Mandate = @json(session()->get('UserMandate'));
-        var region = '{{ $region }}'
+        
         if (Mandate == "NationalLevel") {
             var UserRegion = region;
-
+            {{--  var region = '{{ $region }}'  --}}
         } else if (Mandate != "NationalLevel") {
             var UserRegion = @json(session()->get('Region'));
 
