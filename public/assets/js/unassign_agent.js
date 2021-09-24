@@ -1,3 +1,32 @@
+function get_polling_station(constituency) {
+    $.ajax({
+        type: "GET",
+        url: "get-polling-station-api?constituency=" + constituency,
+        datatype: "application/json",
+        success: function (response) {
+            console.log(response);
+            let data = response.data;
+            // console.log(data);
+
+            // $("#agent_electoral_area option").remove();
+
+            if (response.status == "ok") {
+                // $("#agent_electoral_area").prop("disabled", false);
+                // $("#agent_electoral_area").css("background", "#fefefe");
+
+                $.each(data, function (index) {
+                    console.log(data[index]);
+                    $("#agent_electoral_area").append(
+                        $("<option>", {
+                            value: data[index].name + "~" + data[index].code,
+                        }).text(data[index].name)
+                    );
+                });
+            }
+        },
+    });
+}
+
 function polling_station_assignment(constituency) {
     $.ajax({
         type: "GET",
@@ -67,6 +96,7 @@ $(document).ready(function () {
         // get_all_polling_stations(constituency);
         get_agent_details(user_id);
         polling_station_assignment(constituency);
+        get_polling_station(constituency);
         // agent_assignments(constituency);
         // agent_unassigned(constituency);
     }, 1000);
@@ -94,8 +124,8 @@ $(document).ready(function () {
         e.preventDefault();
         var polling_station = $(".agent_electoral_area").val();
         var userID = $(".agent_id").val();
-        var userID = $(".agent_id").val();
-
+        var assign = $(".assign").text();
+        console.log(assign);
         // alert(polling_station);
         // return false;
 
@@ -109,6 +139,7 @@ $(document).ready(function () {
             data: {
                 pollingID: polling_station,
                 userID: userID,
+                assign: assign,
             },
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -118,13 +149,14 @@ $(document).ready(function () {
                 if (response.status === "ok") {
                     Swal.fire(response.message, "", "success");
                     setTimeout(() => {
-                        // redirect_page();
-                        return back();
+                        redirect_page();
+                        // return back();
                     }, 2000);
                 } else {
                     toaster(response.message, "error", 10000);
                     setTimeout(() => {
-                        return back();
+                        // redirect_page();
+                        // return back();
                     }, 2000);
                 }
             },

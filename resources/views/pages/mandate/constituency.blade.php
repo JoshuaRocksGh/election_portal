@@ -192,7 +192,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title text-center text-danger" id="standard-modalLabel">UnAssign Agent</h3>
+                    <h3 class="modal-title text-center text-danger" id="standard-modalLabel">Agent Details</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     {{-- <hr style="mt-0"> --}}
                 </div>

@@ -14,9 +14,11 @@ class ConstituencyLevelController extends Controller
     //
     public function unassign_(Request $request)
     {
+        return $request;
         $validator = Validator::make($request->all(), [
             "pollingID" => "required",
-            "userID" => "required"
+            "userID" => "required",
+            // "assign" => "required",
         ]);
 
         // return $request;
@@ -32,12 +34,14 @@ class ConstituencyLevelController extends Controller
         // $polling_station = $request->pollingID;
 
         $data = [
-            "pollingID" => $request->pollingID,
-            "userID" => $request->userID
+            "pollingId" => $request->pollingID,
+            "userId" => $request->userID
         ];
-
+        $assign =$request->assign;
         try {
-            $response = Http::post(env('API_BASE_URL') . "unAssignPollingAgent", $data);
+            $url =  $assign=='true'?"assignPollingAgent":"unAssignPollingAgent";
+            $response =  Http::post(env('API_BASE_URL') .$url, $data);
+           
             return json_decode($response);
 
             $result = new ApiBaseResponse();
