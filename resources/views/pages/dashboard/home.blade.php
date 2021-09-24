@@ -76,7 +76,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 ahafo_agents">
                                             0
                                         </td>
 
@@ -107,7 +107,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 ashanti_agents">
                                             0
                                         </td>
 
@@ -137,7 +137,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 bono_east_agents">
                                             0
                                         </td>
 
@@ -167,7 +167,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 bono_agents">
                                             0
                                         </td>
 
@@ -198,7 +198,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 central_agents">
                                             0
                                         </td>
 
@@ -228,7 +228,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 eastern_agents">
                                             0
                                         </td>
 
@@ -288,7 +288,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 northern_agents">
                                             0
                                         </td>
 
@@ -318,7 +318,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 north_east_agents">
                                             0
                                         </td>
 
@@ -348,7 +348,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 oti_agents">
                                             0
                                         </td>
 
@@ -378,7 +378,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 savannah_agents">
                                             0
                                         </td>
 
@@ -408,7 +408,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 upper_east_agents">
                                             0
                                         </td>
 
@@ -438,7 +438,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 upper_west_agents">
                                             0
                                         </td>
 
@@ -468,7 +468,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 volta_agents">
                                             0
                                         </td>
 
@@ -498,7 +498,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 western_north_agents">
                                             0
                                         </td>
 
@@ -528,7 +528,7 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1">
+                                        <td class="h1 western_agents">
                                             0
                                         </td>
 
