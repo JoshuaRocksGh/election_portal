@@ -13,6 +13,7 @@
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="selectize.css" /> --}}
 
     @include('snippets.style')
 

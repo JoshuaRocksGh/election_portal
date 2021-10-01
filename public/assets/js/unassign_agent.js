@@ -1,28 +1,30 @@
 function get_polling_station(constituency) {
     $.ajax({
         type: "GET",
-        url: "get-polling-station-api?constituency=" + constituency,
+        url: "get-unassigned-polling-station-api?constituency=" + constituency,
         datatype: "application/json",
         success: function (response) {
-            console.log(response);
-            let data = response.data;
-            // console.log(data);
+            // console.log("=========");
+            // console.log(response);
+            // console.log("=========");
 
-            // $("#agent_electoral_area option").remove();
+            let data = response.data.unAssigned;
+            let selectize = $("#agent_electoral_area").selectize()[0].selectize;
+            // selectize.clearOption();
 
-            if (response.status == "ok") {
-                // $("#agent_electoral_area").prop("disabled", false);
-                // $("#agent_electoral_area").css("background", "#fefefe");
+            $.each(data, function (index) {
+                // console.log("Here!!!!!!!!!!!!");
+                console.log(data[index]);
+                $("#agent_electoral_area").append(
+                    selectize.addOption({
+                        value: data[index].code + "~" + data[index].code,
+                        text: data[index].name,
+                    })
+                    // $("<option>", {
 
-                $.each(data, function (index) {
-                    console.log(data[index]);
-                    $("#agent_electoral_area").append(
-                        $("<option>", {
-                            value: data[index].name + "~" + data[index].code,
-                        }).text(data[index].name)
-                    );
-                });
-            }
+                    // }).text()
+                );
+            });
         },
     });
 }
@@ -36,9 +38,9 @@ function polling_station_assignment(constituency) {
             // console.log(response);
 
             if (response.status === "ok") {
-                console.log(response.data);
-                console.log("=======");
-                console.log(response.data.unAssigned);
+                // console.log(response.data);
+                // console.log("=======");
+                // console.log(response.data.unAssigned);
                 let assigned_polling_station = response.data.totalAssigned;
                 let unassigned_polling_station = response.data.totalUnAssigned;
                 let total_polling_stations = response.data.total;
@@ -90,6 +92,9 @@ function get_agent_details(user_id) {
 }
 
 $(document).ready(function () {
+    // $("#agent_electoral_area").selectize({
+    //     sortField: "text",
+    // });
     setTimeout(function () {
         // alert(constituency);
         // alert(user_id);

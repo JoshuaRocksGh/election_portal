@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\Http;
 class RegionalLevelController extends Controller
 {
     //
-    public function region()
+    public function region($UserRegion)
     {
-        return view('pages.mandate.regions');
+        // return $UserRegion;
+        return view('pages.mandate.regions', ['UserRegion' => $UserRegion]);
     }
 
     public function constituency($UserConstituency)

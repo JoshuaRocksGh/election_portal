@@ -1,5 +1,15 @@
 @extends('layouts.master')
 
+@section('style')
+
+    {{-- <link rel="stylesheet" type="text/css" href="selectize.css" /> --}}
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.bootstrap4.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.bootstrap3.css" />
+
+@endsection
+
 
 @section('content')
 
@@ -79,7 +89,8 @@
                                     <div class="agent_details">
                                         <div class="form-group row">
                                             <label hidden="true" for="" class="col-md-6 h4 ">Assign:</label>
-                                            <h4   hidden="true" class="col-md-6 assign text-blue text-center" value="{{ $assign }}">{{ $assign }}</h4>
+                                            <h4 hidden="true" class="col-md-6 assign text-blue text-center"
+                                                value="{{ $assign }}">{{ $assign }}</h4>
                                         </div>
                                         <div class="form-group row">
                                             <label for="" class="col-md-6 h4 ">Agent ID:</label>
@@ -101,7 +112,7 @@
                                             <label for="" class="col-md-6 h4 ">Agent Constituency:</label>
                                             <h4 class="col-md-6 agent_constituency text-blue text-center"></h4>
                                         </div>
-                                        @if( $assign != 'true')
+                                        @if ($assign != 'true')
                                             <div class="form-group row">
                                                 <label for="" class="col-md-6 h4">Agent Polling Station:</label>
 
@@ -111,9 +122,10 @@
                                             <div class="form-group row">
                                                 <label for="" class="col-md-6 h4">Agent Polling Station:</label>
 
-                                                {{--  <h4 class="col-md-6 agent_electoral_area text-blue text-center"></h4>  --}}
-                                                <select class="form-control col-md-6" id="agent_electoral_area">
-                                                    <option value="">-- Select Electoral Area--</option>
+                                                {{-- <h4 class="col-md-6 agent_electoral_area text-blue text-center"></h4> --}}
+                                                <select class=" col-md-6 agent_electoral_area" id="agent_electoral_area"
+                                                    placeholder="-- Select Electoral Area--">
+                                                    {{-- <option value="">-- Select Electoral Area--</option> --}}
                                                 </select>
                                             </div>
                                         @endif
@@ -149,12 +161,17 @@
     <!-- Datatables init -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js">
+    </script>
 
     <script src="{{ asset('assets/js/unassign_agent.js') }}"></script>
     <script>
@@ -163,7 +180,7 @@
         var constituency = '{{ $constituency }}';
 
         var user_id = '{{ $user_id }}'
-        
+
 
         var UserConstituency = '{{ session()->get('Constituency') }}'
     </script>

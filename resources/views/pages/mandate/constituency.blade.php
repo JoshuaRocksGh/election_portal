@@ -41,7 +41,9 @@
                         <div class="row">
 
                             <div class="col-md-12 text-center">
-                                <b style="font-size: 48px" class="total_polling_stations">0</b>
+                                <b style="font-size: 48px ; display: none"
+                                    class="total_polling_stations constituency_assigment">0</b>
+                                <span class="spinner-border avatar-sm text-dark m-2" role="status"></span>
                             </div>
                         </div>
                     </div>
@@ -55,7 +57,9 @@
                         <div class="row">
 
                             <div class="col-md-12 text-center">
-                                <b style="font-size: 48px" class="assigned_polling_stations">0</b>
+                                <b style="font-size: 48px; display: none "
+                                    class="assigned_polling_stations constituency_assigment">0</b>
+                                <span class="spinner-border avatar-sm text-dark m-2" role="status"></span>
                             </div>
                         </div>
                     </div>
@@ -70,7 +74,9 @@
                         <div class="row">
 
                             <div class="col-md-12 text-center">
-                                <b style="font-size: 48px" class="unassigned_polling_stations">0</b>
+                                <b style="font-size: 48px;display: none"
+                                    class="unassigned_polling_stations constituency_assigment">0</b>
+                                <span class="spinner-border avatar-sm text-dark m-2" role="status"></span>
                             </div>
                         </div>
                     </div>
@@ -86,7 +92,7 @@
         <div class="col-md-12">
             <div class="card-box"
                 style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                <h4 class="header-title mb-4">Default Tabs</h4>
+                <h4 class="header-title mb-4">Polling Station Information</h4>
 
                 <ul class="nav nav-tabs">
                     <li class="nav-item">

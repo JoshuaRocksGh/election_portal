@@ -14,7 +14,7 @@ class ConstituencyLevelController extends Controller
     //
     public function unassign_(Request $request)
     {
-        return $request;
+        // return $request;
         $validator = Validator::make($request->all(), [
             "pollingID" => "required",
             "userID" => "required",
@@ -32,16 +32,26 @@ class ConstituencyLevelController extends Controller
         };
 
         // $polling_station = $request->pollingID;
+        $assign = $request->assign;
+        if ($assign == 'true') {
+            $polling = $request->pollingID;
+            $pollingId_ = explode('~', $polling);
+            $pollingId = $pollingId_[0];
+        } else {
+            $pollingId = $request->pollingID;
+        }
 
         $data = [
-            "pollingId" => $request->pollingID,
+            "pollingId" => $pollingId,
             "userId" => $request->userID
         ];
-        $assign =$request->assign;
+
+        // return $data;
+
         try {
-            $url =  $assign=='true'?"assignPollingAgent":"unAssignPollingAgent";
-            $response =  Http::post(env('API_BASE_URL') .$url, $data);
-           
+            $url =  $assign == 'true' ? "assignPollingAgent" : "unAssignPollingAgent";
+            $response =  Http::post(env('API_BASE_URL') . $url, $data);
+
             return json_decode($response);
 
             $result = new ApiBaseResponse();
@@ -62,13 +72,13 @@ class ConstituencyLevelController extends Controller
 
     public function unassign(Request $request)
     {
+        // return $request;
         $electoral_area = $request->query('electoral_area');
         $user_id = $request->query('user_id');
         $constituency = session()->get('Constituency');
         $assign = $request->query('assign');
         // return $electoral_area;
 
-        return view('pages.agents.unassign_agent', ['electoral_area' => $electoral_area, 'assign'=>$assign, 'user_id' => $user_id, 'constituency' => $constituency]);
+        return view('pages.agents.unassign_agent', ['electoral_area' => $electoral_area, 'assign' => $assign, 'user_id' => $user_id, 'constituency' => $constituency]);
     }
-
 }

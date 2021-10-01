@@ -1,3 +1,5 @@
+$(".spinner-border").show;
+
 function get_all_polling_stations(constituency) {
     // alert(constituency);
     // return false;
@@ -28,9 +30,15 @@ function polling_station_assignment(constituency) {
             // console.log(response);
 
             if (response.status === "ok") {
+                $(".spinner-border").hide();
+                $(".constituency_assigment").show();
+
                 console.log(response.data);
                 console.log("=======");
                 console.log(response.data.unAssigned);
+                console.log("=======");
+                console.log(response.data.assigned);
+                console.log("yyyyyyy");
                 let assigned_polling_station = response.data.totalAssigned;
                 let unassigned_polling_station = response.data.totalUnAssigned;
                 let total_polling_stations = response.data.total;
@@ -41,6 +49,8 @@ function polling_station_assignment(constituency) {
                 $(".unassigned_polling_stations").text(
                     unassigned_polling_station
                 );
+            } else {
+                $(".spinner-border").show();
             }
         },
     });
@@ -77,7 +87,7 @@ function agent_assignments(constituency) {
                             data[index].ElectoralArea,
                             data[index].UserId,
                             `
-                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&user_id=${data[index].UserId}&assign=false' data-value=${data[index].ElectoralArea}>UnAssign</a>
+                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&user_id=${data[index].UserId}&assign='false' data-value=${data[index].ElectoralArea}>UnAssign</a>
                             `,
                         ])
                         .draw(false);

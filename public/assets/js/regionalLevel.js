@@ -1,20 +1,20 @@
 // $("#edit_spinner").hide();
 
-function regional_constituencies() {
+function regional_constituencies(UserRegion) {
     // alert(UserRegion);
     // return false;
-    if (Mandate == "NationalLevel") {
-        // alert("Right");
-        var url = "regional-constituency/" + UserRegion;
-    } else if (Mandate != "NationalLevel") {
-        var url = "../regional-constituency/" + UserRegion;
-    } else {
-        return;
-    }
+    // if (Mandate == "NationalLevel") {
+    //     alert("Right");
+    //     var url = "../regional-constituency/" + UserRegion;
+    // } else if (Mandate != "NationalLevel") {
+    //     var url = "../regional-constituency/" + UserRegion;
+    // } else {
+    //     return;
+    // }
 
     $.ajax({
         type: "GET",
-        url: url,
+        url: "../regional-constituency/" + UserRegion,
         datatype: "application/json",
         success: function (response) {
             // console.log(response);
@@ -29,20 +29,7 @@ function regional_constituencies() {
                 $.each(data, function (index) {
                     let constituency_name = data[index].code;
 
-                    $(".list_of_constituency").append(
-                        `<div class="col-md-3 p-1">
-                            <a href="{{ url('../../../constituency-polling-station/${constituency_name}') }}">
-                                <div class="card text-xs-center"
-                                    style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                                    <div class="card-body">
-                                        <blockquote class="card-bodyquote">
-                                            <h3 class="text-black text-center">${constituency_name}</h3>
-                                        </blockquote>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>`
-                    );
+                    
                 });
             }
         },
@@ -51,6 +38,6 @@ function regional_constituencies() {
 
 $(document).ready(function () {
     setTimeout(function () {
-        regional_constituencies();
+        regional_constituencies(UserRegion);
     }, 1000);
 });

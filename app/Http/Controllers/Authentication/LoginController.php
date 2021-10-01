@@ -72,6 +72,61 @@ class LoginController extends Controller
                         "Surname" => $userDetail->SurName,
                     ]);
 
+                    $get_agent = Http::post(env('API_BASE_URL') . "getAllagent");
+
+                    $agent = json_decode($get_agent->body());
+
+                    $agentDetails = $agent->data;
+
+                    // return $agentDetails;
+
+                    foreach ($agentDetails as $agentDetail) {
+                        $request->session()->push('AgentDetail', [
+                            'Constituency' => $agentDetail->Constituency,
+                            'DOB' => $agentDetail->DOB,
+                            'EducationalLevel' => $agentDetail->EducationalLevel,
+                            'ElectoralArea' => $agentDetail->ElectoralArea,
+                            'Fname' => $agentDetail->Fname,
+                            'Gender' => $agentDetail->Gender,
+                            'Id' => $agentDetail->Id,
+                            'Institution' => $agentDetail->Institution,
+                            // 'Location' => $agentDetail->Location,
+                            'MiddleName' => $agentDetail->MiddleName,
+                            'Picture' => $agentDetail->Picture,
+                            'Region' => $agentDetail->Region,
+                            'SurName' => $agentDetail->SurName,
+                            'phoneNumber1' => $agentDetail->phoneNumber[0],
+                            'phoneNumber2' => $agentDetail->phoneNumber[1],
+                            'phoneNumber3' => $agentDetail->phoneNumber[2]
+                        ]);
+                        // session(['AgentDetail' => [
+                        //     'Constituency' => $agentDetail->Constituency,
+                        //     'DOB' => $agentDetail->DOB,
+                        //     'EducationalLevel' => $agentDetail->EducationalLevel,
+                        //     'ElectoralArea' => $agentDetail->ElectoralArea,
+                        //     'Fname' => $agentDetail->Fname,
+                        //     'Gender' => $agentDetail->Gender,
+                        //     'Id' => $agentDetail->Id,
+                        //     'Institution' => $agentDetail->Institution,
+                        //     // 'Location' => $agentDetail->Location,
+                        //     'MiddleName' => $agentDetail->MiddleName,
+                        //     'Picture' => $agentDetail->Picture,
+                        //     'Region' => $agentDetail->Region,
+                        //     'SurName' => $agentDetail->SurName,
+                        //     'phoneNumber1' => $agentDetail->phoneNumber[0],
+                        //     'phoneNumber2' => $agentDetail->phoneNumber[1],
+                        //     'phoneNumber3' => $agentDetail->phoneNumber[2]
+
+                        // ]]);
+                    }
+
+
+
+
+
+
+
+
                     // return $session ;
 
                     return  $base_response->api_response($result->status, $result->message,  $result->data); // return API BASERESPONSE

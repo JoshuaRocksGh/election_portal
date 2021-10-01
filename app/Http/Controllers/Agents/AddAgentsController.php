@@ -25,13 +25,23 @@ class AddAgentsController extends Controller
 
     public function agent_list()
     {
-        return view('pages.agents.agent_list');
+        $AgentDetails = session()->get('AgentDetail');
+        return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails]);
     }
 
     public function all_agent_list()
     {
 
-        // return $region;
+
+        $AgentDetails = session()->get('AgentDetail');
+        // return json_encode($AgentDetails);
+        // $response = $AgentDetails;
+        // return json_encode($response);
+
+
+
+
+
 
         $base_response = new BaseResponse();
 
@@ -39,7 +49,8 @@ class AddAgentsController extends Controller
 
 
         // dd($response);
-        return json_decode($response->body());
+        // return json_decode($response->body());
+
 
 
         $result = new ApiBaseResponse();
@@ -80,22 +91,22 @@ class AddAgentsController extends Controller
 
 
         $data = [
-            "Id" => $request->Id??"",
-            "PhoneNumber1" => $request->PhoneNumber1??"",
-            "PhoneNumber2" => $request->PhoneNumber2??"",
-            "PhoneNumber3" => $request->PhoneNumber3??"",
-            "Fname" => $request->Fname??"",
-            "MiddleName" => $request->MiddleName??"",
-            "SurName" => $request->SurName??"",
-            "DOB" => $request->DOB??"",
-            "Picture" => $request->Picture??"",
-            "Gender" => $request->Gender??"",
-            "Region" => $request->Region??"",
-            "Constituency" => $request->Constituency??"",
-            "ElectoralArea" => $request->ElectoralArea??"",
-            "EducationalLevel" => $request->EducationalLevel??"",
-            "Institution" => $request->Institution??"",
-            "YearOfCompletion" => $request->YearOfCompletion??"",
+            "Id" => $request->Id ?? "",
+            "PhoneNumber1" => $request->PhoneNumber1 ?? "",
+            "PhoneNumber2" => $request->PhoneNumber2 ?? "",
+            "PhoneNumber3" => $request->PhoneNumber3 ?? "",
+            "Fname" => $request->Fname ?? "",
+            "MiddleName" => $request->MiddleName ?? "",
+            "SurName" => $request->SurName ?? "",
+            "DOB" => $request->DOB ?? "",
+            "Picture" => $request->Picture ?? "",
+            "Gender" => $request->Gender ?? "",
+            "Region" => $request->Region ?? "",
+            "Constituency" => $request->Constituency ?? "",
+            "ElectoralArea" => $request->ElectoralArea ?? "",
+            "EducationalLevel" => $request->EducationalLevel ?? "",
+            "Institution" => $request->Institution ?? "",
+            "YearOfCompletion" => $request->YearOfCompletion ?? "",
 
         ];
 

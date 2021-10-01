@@ -76,8 +76,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 ahafo_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data ahafo_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -89,7 +91,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=AHAFO' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/AHAFO' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -107,8 +109,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 ashanti_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data ashanti_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -120,7 +124,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=ASHANTI' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/ASHANTI' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -137,8 +141,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 bono_east_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data bono_east_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -150,7 +156,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=BONO EAST' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/BONO EAST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -167,8 +173,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 bono_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data bono_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -180,7 +188,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=BONO' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/BONO' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -198,8 +206,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 central_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data central_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -211,7 +221,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=CENTRAL' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/CENTRAL' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -228,8 +238,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 eastern_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data eastern_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -241,7 +253,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=EASTERN' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/EASTERN' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -258,8 +270,11 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="greater_accra_agents h1">
-                                            0
+                                        <td>
+                                            <span class=" region_data greater_accra_agents h1"
+                                                style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -271,7 +286,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=GREATER ACCRA' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/GREATER ACCRA' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -288,8 +303,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 northern_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data northern_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -301,7 +318,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=NORTHERN' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/NORTHERN' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -318,8 +335,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 north_east_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data north_east_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -331,7 +350,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=NORTH EAST' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/NORTH EAST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -348,8 +367,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 oti_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data oti_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -361,7 +382,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=OTI' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/OTI' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -378,8 +399,11 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 savannah_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data savannah_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
+
                                         </td>
 
                                         <td class="h1">
@@ -391,7 +415,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=SAVANNAH' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/SAVANNAH' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -408,8 +432,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 upper_east_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data upper_east_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -421,7 +447,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=UPPER EAST' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/UPPER EAST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -438,8 +464,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 upper_west_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data upper_west_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -451,7 +479,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=UPPER WEST' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/UPPER WEST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -468,8 +496,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 volta_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data volta_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -481,7 +511,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=VOLTA' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/VOLTA' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -494,12 +524,16 @@
                                         </td>
 
                                         <td>
-                                            <h5 class="m-0 font-weight-normal font-18">WESTERN NORTH</h5>
+                                            <h5 class="m-0 font-weight-normal font-18">WESTERN NORTH
+                                            </h5>
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 western_north_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data western_north_agents"
+                                                style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -511,7 +545,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=WESTERN NORTH' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/WESTERN NORTH' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -528,8 +562,10 @@
                                             {{-- <p class="mb-0 text-muted"><small>Member Since 2017</small></p> --}}
                                         </td>
 
-                                        <td class="h1 western_agents">
-                                            0
+                                        <td>
+                                            <span class="h1 region_data western_agents" style="display: none">0</span>
+                                            <span class="spinner-border spinner-border-sm m-2 bg-black"
+                                                role="status"></span>
                                         </td>
 
                                         <td class="h1">
@@ -541,7 +577,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='regional?Region=WESTERN' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/WESTERN' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>

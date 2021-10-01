@@ -67,7 +67,7 @@
                         <div class="col-md-4"></div>
                         <div class="col-md-4 text-center">
 
-                            <div class="spinner-border avatar-lg text-blue m-2" role="status"></div>
+                            <div class="spinner-border avatar-lg text-dark m-2" role="status"></div>
                             {{-- <div class="spinner-grow avatar-lg text-secondary m-2" role="status"></div> --}}
 
                         </div>
