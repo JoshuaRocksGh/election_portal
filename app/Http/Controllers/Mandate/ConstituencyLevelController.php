@@ -77,8 +77,10 @@ class ConstituencyLevelController extends Controller
         $user_id = $request->query('user_id');
         $constituency = session()->get('Constituency');
         $assign = $request->query('assign');
-        // return $electoral_area;
+        $UserConstituency = $request->query('UserConstituency');
+        // return $UserConstituency;
+        // view('snippets.side-bar', ['UserConstituency' => $UserConstituency]);
 
-        return view('pages.agents.unassign_agent', ['electoral_area' => $electoral_area, 'assign' => $assign, 'user_id' => $user_id, 'constituency' => $constituency]);
+        return view('pages.agents.unassign_agent', ['electoral_area' => $electoral_area, 'assign' => $assign, 'user_id' => $user_id, 'constituency' => $constituency, 'UserConstituency' => $UserConstituency]);
     }
 }

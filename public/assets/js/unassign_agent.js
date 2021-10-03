@@ -1,28 +1,32 @@
+//
+
 function get_polling_station(constituency) {
+    // alert(constituency);+
+    // return false;
     $.ajax({
         type: "GET",
         url: "get-unassigned-polling-station-api?constituency=" + constituency,
         datatype: "application/json",
         success: function (response) {
+            $(".agent_details").toggle("500");
+            $(".assign_spinner").hide();
+
             // console.log("=========");
             // console.log(response);
             // console.log("=========");
 
             let data = response.data.unAssigned;
             let selectize = $("#agent_electoral_area").selectize()[0].selectize;
-            // selectize.clearOption();
+            // selectize.onDropdownOpen();
 
             $.each(data, function (index) {
                 // console.log("Here!!!!!!!!!!!!");
-                console.log(data[index]);
+                // console.log(data[index]);
                 $("#agent_electoral_area").append(
                     selectize.addOption({
                         value: data[index].code + "~" + data[index].code,
                         text: data[index].name,
                     })
-                    // $("<option>", {
-
-                    // }).text()
                 );
             });
         },
@@ -92,9 +96,29 @@ function get_agent_details(user_id) {
 }
 
 $(document).ready(function () {
-    // $("#agent_electoral_area").selectize({
-    //     sortField: "text",
+    // $(function () {
+    //     var $select = $("#agent_electoral_area").selectize({
+    //         valueField: "Id",
+    //         labelField: "Name",
+    //         searchField: "Name",
+
+    //         load: function (constituency, callback) {
+    //             $.ajax({
+    //                 url:
+    //                     "get-unassigned-polling-station-api?constituency=" +
+    //                     encodeURIComponent(constituency),
+    //                 success: function (response) {
+    //                     console.log(response);
+    //                     $select.options = response;
+    //                     callback(response);
+    //                 },
+    //             });
+    //         },
+    //     });
+
+    //     var selectize = $select[0].selectize;
     // });
+
     setTimeout(function () {
         // alert(constituency);
         // alert(user_id);
@@ -127,15 +151,18 @@ $(document).ready(function () {
 
     $("#unassign_agent_button").click(function (e) {
         e.preventDefault();
+        $(".confirm_text").hide();
+        $(".spinner-text").show();
         var polling_station = $(".agent_electoral_area").val();
         var userID = $(".agent_id").val();
         var assign = $(".assign").text();
-        console.log(assign);
+        var user_constituency = $("#user_constituency").val();
+        // console.log(user_constituency);
         // alert(polling_station);
         // return false;
 
         function redirect_page() {
-            window.location.href = `{{ url('/constituency/${constituency}') }}`;
+            window.location.href = "../constituency/" + user_constituency;
         }
         $.ajax({
             type: "POST",
@@ -151,6 +178,8 @@ $(document).ready(function () {
             },
             success: function (response) {
                 // console.log(response);
+                $(".confirm_text").show();
+                $(".spinner-text").hide();
                 if (response.status === "ok") {
                     Swal.fire(response.message, "", "success");
                     setTimeout(() => {
@@ -158,6 +187,8 @@ $(document).ready(function () {
                         // return back();
                     }, 2000);
                 } else {
+                    $(".confirm_text").show();
+                    $(".spinner-text").hide();
                     toaster(response.message, "error", 10000);
                     setTimeout(() => {
                         // redirect_page();

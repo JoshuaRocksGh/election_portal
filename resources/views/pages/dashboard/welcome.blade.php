@@ -21,21 +21,40 @@
     <script>
         $(document).ready(function() {
             var UserMandate = @json(session()->get('UserMandate'));
-            var UserRegion = @json(session()->get('Region'));
-            var UserConstituency = @json(session()->get('Constituency'));
+            var UserRegion_ = @json(session()->get('Region'));
+            var UserConstituency_ = @json(session()->get('Constituency'));
+
             setTimeout(function() {
-                {{-- alert(UserMandate) --}}
 
                 if (UserMandate === "NationalLevel") {
                     window.location = 'home'
                 } else if (UserMandate === 'RegionalLevel') {
-                    window.location.href = `{{ url('region/${UserRegion}') }}`
+                    if (UserRegion_.indexOf(' ') >= 0) {
+                        {{-- alert("contains spaces"); --}}
+                        var request = UserRegion_
+                        UserRegion = request.replace(/ /g, "_");
+                        window.location.href = `{{ url('region/${UserRegion}') }}`
+                    } else {
+                        window.location.href = `{{ url('region/${UserRegion_}') }}`
+                    }
+
                 } else if (UserMandate === 'ConstituencyLevel') {
-                    window.location.href = `{{ url('constituency/${UserConstituency}') }}`
+                    if (UserConstituency_.indexOf(' ') >= 0) {
+                        {{-- alert("contains spaces"); --}}
+                        var request = UserConstituency_
+                        UserConstituency = request.replace(/ /g, "_");
+                        window.location.href = `{{ url('constituency/${UserConstituency}') }}`
+                    } else {
+                        window.location.href = `{{ url('constituency/${UserConstituency_}') }}`
+                    }
+
                 } else {
                     return back();
                 }
             }, 1000)
+
+
+
 
 
         })

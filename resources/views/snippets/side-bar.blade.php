@@ -62,19 +62,19 @@
                     </li>
                 @elseif(session()->get('UserMandate') == 'RegionalLevel')
 
+
+                    {{-- <p>{{ $UserRegion }}</p> --}}
                     <li>
-                        <a href="{{ url('region/${UserRegion}') }}">
+                        <a href={{ url('region/' . $UserRegion) }}>
                             {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
                             <i class="mdi mdi-home-outline"></i>
                             <span> Home</span>
                         </a>
                     </li>
                 @elseif(session()->get('UserMandate') == 'ConstituencyLevel')
-                    {{-- $UserConstituency --}}
-                    {{-- {{ session()->get('Constituency') }} --}}
 
                     <li>
-                        <a href="{{ url('constituency/${UserConstituency}') }}">
+                        <a href={{ url('constituency/' . $UserConstituency) }}>
                             <i class="mdi mdi-home-outline"></i>
                             <span> Home</span>
                         </a>
@@ -882,12 +882,38 @@
 
 @section('scripts')
 
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js">
+    </script>
+
     <script>
+        $(".region_url").click() {
+            alert('clicked')
+        }
+    </script>
+
+    {{-- <script>
         var UserMandate = @json(session()->get('UserMandate'));
         var UserRegion = @json(session()->get('Region'));
-        var UserConstituency = @json(session()->get('Constituency'))
-        {{-- console.log(UserConstituency); --}}
-    </script>
+        var UserConstituency_ = @json(session()->get('Constituency'))
+
+        if (UserConstituency_.indexOf(' ') >= 0) {
+            alert("contains spaces");
+            var request = UserConstituency_
+            UserConstituency = request.replace(/ /g, "_");
+
+        }
+        console.log(UserConstituency);
+    </script> --}}
 
 
 

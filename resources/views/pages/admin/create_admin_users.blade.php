@@ -14,7 +14,7 @@
     <br>
 
     <div class="container-fluid">
-        <h3 class="">Administration &nbsp; > &nbsp; <span class=" text-danger">Create Admin</span> </h3>
+        <h3 class="">User &nbsp; > &nbsp; <span class=" text-danger">Create User</span> </h3>
 
         <div class="row">
             <div class="col-md-2"></div>

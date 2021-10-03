@@ -61,14 +61,14 @@
                                 {{-- {{ $AgentDetail['Constituency'] }} --}}
                                 <tbody>
 
-                                    <tr>
+                                    {{-- <tr>
                                         <td>Tiger Nixon</td>
                                         <td>System Architect</td>
                                         <td>Edinburgh</td>
                                         <td>61</td>
                                         <td>2011/04/25</td>
                                         <td>$320,800</td>
-                                    </tr>
+                                    </tr> --}}
 
 
 
@@ -112,9 +112,7 @@
     <script src="{{ asset('assets/js/all_agent_all.js') }}"></script>
 
     <script>
-        var AgentDetails = '{{ session()->get('AgentDetails') }}';
-
-        {{-- console.log(AllAgent) --}}
+        var AgentDetail = @json($AgentDetails);
     </script>
 
 

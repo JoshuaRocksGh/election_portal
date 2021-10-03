@@ -8,6 +8,14 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.bootstrap3.css" />
 
+    <style>
+        select-dropdown {
+            width: 600px !important;
+        }
+
+    </style>
+
+
 @endsection
 
 
@@ -85,60 +93,75 @@
                             <div class="col-md-1"></div>
                             <div class="col-md-10">
                                 <form action="#">
+                                    <div class="row">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="spinner-border avatar-md text-dark m-2 assign_spinner"
+                                                role="status"></div>
+                                        </div>
+                                        <div class="col-md-4"></div>
+                                    </div>
 
-                                    <div class="agent_details">
+                                    <div class="agent_details" style="display: none">
                                         <div class="form-group row">
                                             <label hidden="true" for="" class="col-md-6 h4 ">Assign:</label>
                                             <h4 hidden="true" class="col-md-6 assign text-blue text-center"
                                                 value="{{ $assign }}">{{ $assign }}</h4>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="" class="col-md-6 h4 ">Agent ID:</label>
-                                            <h4 class="col-md-6 agent_id text-blue text-center"></h4>
+                                            <label for="" class="col-md-4 h4 ">Agent ID:</label>
+                                            <h4 class="col-md-8 agent_id text-blue text-center"></h4>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="" class="col-md-6 h4 ">Agent Name:</label>
-                                            <h4 class="col-md-6 agent_name text-blue text-center"></h4>
+                                            <label for="" class="col-md-4 h4 ">Agent Name:</label>
+                                            <h4 class="col-md-8 agent_name text-blue text-center"></h4>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="" class="col-md-6 h4 ">Gender:</label>
-                                            <h4 class="col-md-6 agent_gender text-blue text-center"></h4>
+                                            <label for="" class="col-md-4 h4 ">Gender:</label>
+                                            <h4 class="col-md-8 agent_gender text-blue text-center"></h4>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="" class="col-md-6 h4 ">Agent Region:</label>
-                                            <h4 class="col-md-6 agent_region text-blue text-center"></h4>
+                                            <label for="" class="col-md-4 h4 ">Agent Region:</label>
+                                            <h4 class="col-md-8 agent_region text-blue text-center"></h4>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="" class="col-md-6 h4 ">Agent Constituency:</label>
-                                            <h4 class="col-md-6 agent_constituency text-blue text-center"></h4>
+                                            <label for="" class="col-md-4 h4 ">Agent Constituency:</label>
+                                            <h4 class="col-md-8 agent_constituency text-blue text-center"></h4>
                                         </div>
                                         @if ($assign != 'true')
                                             <div class="form-group row">
-                                                <label for="" class="col-md-6 h4">Agent Polling Station:</label>
+                                                <label for="" class="col-md-4 h4">Agent Polling Station:</label>
 
-                                                <h4 class="col-md-6 agent_electoral_area text-blue text-center"></h4>
+                                                <h4 class="col-md-8 agent_electoral_area text-blue text-center"></h4>
                                             </div>
                                         @elseif( $assign == 'true')
                                             <div class="form-group row">
-                                                <label for="" class="col-md-6 h4">Agent Polling Station:</label>
+                                                <label for="" class="col-md-4 h4">Agent Polling Station:</label>
 
                                                 {{-- <h4 class="col-md-6 agent_electoral_area text-blue text-center"></h4> --}}
-                                                <select class=" col-md-6 agent_electoral_area" id="agent_electoral_area"
+
+                                                <select class=" col-md-8 agent_electoral_area" id="agent_electoral_area"
                                                     placeholder="-- Select Electoral Area--">
                                                     {{-- <option value="">-- Select Electoral Area--</option> --}}
                                                 </select>
                                             </div>
                                         @endif
+                                        {{--  <input type="hidden" value={{ $UserConstituency }} id="user_constituency">  --}}
+
+                                        <div class="row">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4">
+                                                <button type="button" class="btn btn-info" id="unassign_agent_button">
+                                                    <span class="confirm_text">Confirm</span>
+                                                    <span class="spinner-border spinner-border-sm mr-1 spinner-text"
+                                                        role="status" aria-hidden="true" style="display: none"></span>
+                                                </button>
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4">
-                                            <button type="button" class="btn btn-info"
-                                                id="unassign_agent_button">Confirm</button>
-                                        </div>
-                                        <div class="col-md-4"></div>
-                                    </div>
+
                                 </form>
 
                             </div>

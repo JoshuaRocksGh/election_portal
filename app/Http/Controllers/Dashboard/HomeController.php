@@ -11,12 +11,14 @@ class HomeController extends Controller
     //
     public function welcome()
     {
+
         return view('pages.dashboard.welcome');
     }
 
     public function home()
     {
-        return view('pages.dashboard.home');
+        $AgentDetails = session()->get('AgentDetail');
+        return view('pages.dashboard.home', ['AgentDetails' => $AgentDetails]);
     }
 
     public function region()

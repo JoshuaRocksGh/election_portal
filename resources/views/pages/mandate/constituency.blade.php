@@ -25,7 +25,8 @@
 @section('content')
 
     <div class="container-fluid">
-        <h3 class="">{{ session()->get('Region') }} &nbsp; > &nbsp;<span class=" text-danger"> {{ $constituency }}</span>
+        <h3 class="">{{ session()->get('Region') }} &nbsp; > &nbsp;<span class=" text-danger">
+            {{ $UserConstituency }}</span>
             @if (session()->get('Region') == 'ConstituencyLevel')
                 echo (session()->get('Region'))
             @endif
@@ -359,8 +360,8 @@
     <script>
         var UserRegion = '{{ session()->get('Region') }}';
 
-        var constituency = '{{ $constituency }}';
+        var constituency = '{{ $UserConstituency }}';
 
-        var UserConstituency = '{{ session()->get('Constituency') }}'
+        var UserConstituency = '{{ $UserConstituency }}'
     </script>
 @endsection

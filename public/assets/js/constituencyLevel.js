@@ -21,10 +21,21 @@ function get_all_polling_stations(constituency) {
 }
 
 function polling_station_assignment(constituency) {
+    if (constituency.indexOf("_") >= 0) {
+        // alert("contains underscore");
+        var request = constituency;
+        Constituency_ = request.replace("_", " ");
+        // Constituency_ = request.replace(/ /g, " ");
+        // alert(Constituency_);
+    } else {
+        Constituency_ = constituency;
+    }
+    // return false;
     $.ajax({
         type: "GET",
         url:
-            "../get-assigned-polling-stations-api?constituency=" + constituency,
+            "../get-assigned-polling-stations-api?constituency=" +
+            Constituency_,
         datatype: "application/json",
         success: function (response) {
             // console.log(response);
@@ -57,15 +68,28 @@ function polling_station_assignment(constituency) {
 }
 
 function agent_assignments(constituency) {
+    // alert(constituency);
+
+    if (constituency.indexOf("_") >= 0) {
+        // alert("contains underscore");
+        var request = constituency;
+        Constituency_ = request.replace("_", " ");
+        // Constituency_ = request.replace(/ /g, " ");
+        // alert(Constituency_);
+    } else {
+        Constituency_ = constituency;
+    }
     var table = $(".assigned_agent_list").DataTable();
     var unassigned = $(".unassigned_agent_list").DataTable();
     var nodes = table.rows().nodes();
     $.ajax({
         type: "GET",
-        url: "../get-agents-assignments-api?constituency=" + constituency,
+        url: "../get-agents-assignments-api?constituency=" + Constituency_,
         datatype: "application/json",
         success: function (response) {
             console.log(response);
+            // console.log(constituency);
+            // return false;
 
             let data = response.data.assigned;
             let agent_unassigned = response.data.unAssigned;
@@ -87,7 +111,7 @@ function agent_assignments(constituency) {
                             data[index].ElectoralArea,
                             data[index].UserId,
                             `
-                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&user_id=${data[index].UserId}&assign='false' data-value=${data[index].ElectoralArea}>UnAssign</a>
+                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&UserConstituency=${UserConstituency}&user_id=${data[index].UserId}&assign='false' data-value=${data[index].ElectoralArea}>UnAssign</a>
                             `,
                         ])
                         .draw(false);
@@ -112,6 +136,8 @@ function agent_assignments(constituency) {
 
                 $.each(agent_unassigned, function (index) {
                     console.log(agent_unassigned[index]);
+                    console.log(constituency);
+                    var UserConstituency = constituency;
                     var polling_station_name =
                         agent_unassigned[index].ElectoralArea;
                     // count++;
@@ -126,7 +152,7 @@ function agent_assignments(constituency) {
                             agent_unassigned[index].ElectoralArea,
                             agent_unassigned[index].UserId,
                             `
-                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${agent_unassigned[index].ElectoralArea}&user_id=${agent_unassigned[index].UserId}&assign=true' data-value=${agent_unassigned[index].ElectoralArea}>Assign</a>
+                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${agent_unassigned[index].ElectoralArea}&user_id=${agent_unassigned[index].UserId}&assign=true&UserConstituency=${UserConstituency}' data-value=${agent_unassigned[index].ElectoralArea}>Assign</a>
                             `,
                         ])
                         .draw(false);

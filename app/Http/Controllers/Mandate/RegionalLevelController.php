@@ -14,20 +14,27 @@ class RegionalLevelController extends Controller
     public function region($UserRegion)
     {
         // return $UserRegion;
+        view('snippets.side-bar', ['UserRegion' => $UserRegion]);
         return view('pages.mandate.regions', ['UserRegion' => $UserRegion]);
     }
 
     public function constituency($UserConstituency)
     {
         // return $UserConstituency;
-        $constituency = $UserConstituency;
-        $res = str_replace(array(
-            '\'', '"',
-            ',', ';', '<', '>', "'", ')', '}'
-        ), ' ', $constituency);
+
+        // if ($constituency == trim($constituency) && strpos($constituency, ' ') !== false) {
+        //     echo 'has spaces, but not at beginning or end';
+        // }
+        // $res = str_replace(array(
+        //     '\'', '"',
+        //     ',', ';', '<', '>', "'", ')', '}'
+        // ), ' ', $constituency);
         // return preg_replace('/[^A-Za-z0-9\-]/', '', $constituency);
         // echo ($res);
-        return view('pages.mandate.constituency', ['constituency' => $res]);
+        // return false;
+        view('pages.agents.unassign_agent', ['UserRegion' => $UserConstituency]);
+        view('snippets.side-bar', ['UserRegion' => $UserConstituency]);
+        return view('pages.mandate.constituency', ['UserConstituency' => $UserConstituency]);
     }
 
     public function regional_constituency($UserRegion)
