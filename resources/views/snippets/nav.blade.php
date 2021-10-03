@@ -360,11 +360,11 @@
                 <span class="font-20" style="color:black">
                     {{-- {{ session()->get('Region') }} --}}
                     @if (session()->get('UserMandate') == 'NationalLevel')
-                        National Portal
+                        NATIONAL PORTAL
                     @elseif(session()->get('UserMandate') == 'RegionalLevel')
-                        Regional Portal > {{ session()->get('Region') }}
+                        REGIONAL PORTAL > {{ session()->get('Region') }}
                     @elseif(session()->get('UserMandate') == 'ConstituencyLevel')
-                        Constituency Portal > {{ session()->get('Constituency') }}
+                        CONSTITUENCY PORTAL > {{ session()->get('Constituency') }}
                     @endif
                 </span>
             </li>

@@ -15,18 +15,100 @@ class AddAgentsController extends Controller
 
     public function add_agent()
     {
-        return view('pages.agents.add_agents');
+        $UserMandate = session()->get('UserMandate');
+        if ($UserMandate == "ConstituencyLevel") {
+            $UserConstituency_ = session()->get('Constituency');
+            if ($UserConstituency_ == trim($UserConstituency_) && strpos($UserConstituency_, ' ') !== false) {
+                $UserConstituency = str_replace(' ', '_', $UserConstituency_);
+                // echo 'has spaces, but not at beginning or end';
+                // echo $UserConstituency;
+                return view('pages.agents.add_agents', ['UserConstituency' => $UserConstituency]);
+            } else {
+                return view('pages.agents.add_agents', ['UserConstituency' => $UserConstituency_]);
+            }
+        } elseif ($UserMandate == "RegionalLevel") {
+            $UserRegion_ = session()->get('Region');
+            if ($UserRegion_ == trim($UserRegion_) && strpos($UserRegion_, ' ') !== false) {
+                $UserRegion = str_replace(' ', '_', $UserRegion_);
+                // echo 'has spaces, but not at beginning or end';
+                // echo $UserConstituency;
+                return view('pages.agents.add_agents', ['UserRegion' => $UserRegion]);
+            } else {
+                return view('pages.agents.add_agents', ['UserRegion' => $UserRegion_]);
+            }
+        } else {
+            return view('pages.agents.add_agents');
+        }
+        // return view('pages.agents.add_agents', ['UserConstituency' => $UserConstituency]);
+
+        // return $UserConstituency;
+
     }
 
     public function edit_agent()
     {
-        return view('pages.agents.edit_agent');
+        $UserMandate = session()->get('UserMandate');
+        if ($UserMandate == "ConstituencyLevel") {
+            $UserConstituency_ = session()->get('Constituency');
+            if ($UserConstituency_ == trim($UserConstituency_) && strpos($UserConstituency_, ' ') !== false) {
+                $UserConstituency = str_replace(' ', '_', $UserConstituency_);
+                // echo 'has spaces, but not at beginning or end';
+                // echo $UserConstituency;
+                return view('pages.agents.edit_agent', ['UserConstituency' => $UserConstituency]);
+            } else {
+                return view('pages.agents.edit_agent', ['UserConstituency' => $UserConstituency_]);
+            }
+        } elseif ($UserMandate == "RegionalLevel") {
+            $UserRegion_ = session()->get('Region');
+            if ($UserRegion_ == trim($UserRegion_) && strpos($UserRegion_, ' ') !== false) {
+                $UserRegion = str_replace(' ', '_', $UserRegion_);
+                // echo 'has spaces, but not at beginning or end';
+                // echo $UserConstituency;
+                return view('pages.agents.edit_agent', ['UserRegion' => $UserRegion]);
+            } else {
+                return view('pages.agents.edit_agent', ['UserRegion' => $UserRegion_]);
+            }
+        } else {
+            return view('pages.agents.edit_agent');
+        }
     }
 
     public function agent_list()
     {
-        $AgentDetails = session()->get('AgentDetail');
-        return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails]);
+        $UserMandate = session()->get('UserMandate');
+        if ($UserMandate == "ConstituencyLevel") {
+            $UserConstituency_ = session()->get('Constituency');
+            if ($UserConstituency_ == trim($UserConstituency_) && strpos($UserConstituency_, ' ') !== false) {
+                $UserConstituency = str_replace(' ', '_', $UserConstituency_);
+                // echo 'has spaces, but not at beginning or end';
+                // echo $UserConstituency;
+                $AgentDetails = session()->get('AgentDetail');
+                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, 'UserConstituency' => $UserConstituency]);
+                // return view('pages.agents.add_agents', ['UserConstituency' => $UserConstituency]);
+            } else {
+                $AgentDetails = session()->get('AgentDetail');
+                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, 'UserConstituency' => $UserConstituency_]);
+                // return view('pages.agents.add_agents', ['UserConstituency' => $UserConstituency_]);
+            }
+        } elseif ($UserMandate == "RegionalLevel") {
+            $UserRegion_ = session()->get('Region');
+            if ($UserRegion_ == trim($UserRegion_) && strpos($UserRegion_, ' ') !== false) {
+                $UserRegion = str_replace(' ', '_', $UserRegion_);
+                // echo 'has spaces, but not at beginning or end';
+                // echo $UserConstituency;
+                $AgentDetails = session()->get('AgentDetail');
+                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails]);
+                // return view('pages.agents.add_agents', ['UserRegion' => $UserRegion]);
+
+            } else {
+                $AgentDetails = session()->get('AgentDetail');
+                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails]);
+                // return view('pages.agents.add_agents', ['UserRegion' => $UserRegion_]);
+            }
+        } else {
+            $AgentDetails = session()->get('AgentDetail');
+            return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails]);
+        }
     }
 
     public function all_agent_list()
@@ -269,7 +351,34 @@ class AddAgentsController extends Controller
 
     public function send_message()
     {
-        return view('pages.agents.send_message');
+        $UserMandate = session()->get('UserMandate');
+        if ($UserMandate == "ConstituencyLevel") {
+            $UserConstituency_ = session()->get('Constituency');
+            if ($UserConstituency_ == trim($UserConstituency_) && strpos($UserConstituency_, ' ') !== false) {
+                $UserConstituency = str_replace(' ', '_', $UserConstituency_);
+                // echo 'has spaces, but not at beginning or end';
+                // echo $UserConstituency;
+                // return view('pages.agents.add_agents',);
+                return view('pages.agents.send_message', ['UserConstituency' => $UserConstituency]);
+            } else {
+                // return view('pages.agents.add_agents', );
+                return view('pages.agents.send_message', ['UserConstituency' => $UserConstituency_]);
+            }
+        } elseif ($UserMandate == "RegionalLevel") {
+            $UserRegion_ = session()->get('Region');
+            if ($UserRegion_ == trim($UserRegion_) && strpos($UserRegion_, ' ') !== false) {
+                $UserRegion = str_replace(' ', '_', $UserRegion_);
+                // echo 'has spaces, but not at beginning or end';
+                // echo $UserConstituency;
+                // return view('pages.agents.add_agents');
+                return view('pages.agents.send_message', ['UserRegion' => $UserRegion]);
+            } else {
+                // return view('pages.agents.add_agents');
+                return view('pages.agents.send_message', ['UserRegion' => $UserRegion_]);
+            }
+        } else {
+            return view('pages.agents.send_message');
+        }
     }
 
     public function message_details(Request $request)
