@@ -14,7 +14,37 @@ class AdministrationController extends Controller
     //
     public function create_admin()
     {
-        return view('pages.admin.create_admin_users');
+        $UserMandate = session()->get('UserMandate');
+        // return $UserMandate;
+        if ($UserMandate == "ConstituencyLevel") {
+            $UserConstituency_ = session()->get('Constituency');
+            if ($UserConstituency_ == trim($UserConstituency_) && strpos($UserConstituency_, ' ') !== false) {
+                $UserConstituency = str_replace(' ', '_', $UserConstituency_);
+                // echo 'has spaces, but not at beginning or end';
+                // echo $UserConstituency;
+                return view('pages.admin.create_admin_users', ['UserConstituency' => $UserConstituency]);
+                // return view('pages.agents.edit_agent');
+            } else {
+                return view('pages.admin.create_admin_users', ['UserConstituency' => $UserConstituency_]);
+                // return view('pages.agents.edit_agent', ['UserConstituency' => $UserConstituency_]);
+            }
+        } elseif ($UserMandate == "RegionalLevel") {
+            $UserRegion_ = session()->get('Region');
+            // return $UserRegion_;
+            if ($UserRegion_ == trim($UserRegion_) && strpos($UserRegion_, ' ') !== false) {
+                $UserRegion = str_replace(' ', '_', $UserRegion_);
+                // echo 'has spaces, but not at beginning or end';
+                // echo $UserRegion_;
+                // return view('pages.agents.edit_agent', ['UserRegion' => $UserRegion]);
+                return view('pages.admin.create_admin_users', ['UserRegion' => $UserRegion]);
+            } else {
+                return view('pages.admin.create_admin_users', ['UserRegion' => $UserRegion_]);
+                // return view('pages.agents.edit_agent', ['UserRegion' => $UserRegion_]);
+            }
+        } else {
+            return view('pages.admin.create_admin_users');
+        }
+        // return view('pages.admin.create_admin_users');
     }
 
     public function create_admin_user(Request $request)

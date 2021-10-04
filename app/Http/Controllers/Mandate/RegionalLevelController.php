@@ -14,8 +14,16 @@ class RegionalLevelController extends Controller
     public function region($UserRegion)
     {
         // return $UserRegion;
-        view('snippets.side-bar', ['UserRegion' => $UserRegion]);
-        return view('pages.mandate.regions', ['UserRegion' => $UserRegion]);
+        $UserRegion_ = session()->get('Region');
+        if ($UserRegion_ == trim($UserRegion_) && strpos($UserRegion_, ' ') !== false) {
+            $UserRegion = str_replace(' ', '_', $UserRegion_);
+
+            view('snippets.side-bar', ['UserRegion' => $UserRegion]);
+            return view('pages.mandate.regions', ['UserRegion' => $UserRegion]);
+        } else {
+            view('snippets.side-bar', ['UserRegion' => $UserRegion_]);
+            return view('pages.mandate.regions', ['UserRegion' => $UserRegion_]);
+        }
     }
 
     public function constituency($UserConstituency)
@@ -32,7 +40,7 @@ class RegionalLevelController extends Controller
         // return preg_replace('/[^A-Za-z0-9\-]/', '', $constituency);
         // echo ($res);
         // return false;
-        view('pages.agents.unassign_agent', ['UserRegion' => $UserConstituency]);
+        // view('pages.agents.unassign_agent', ['UserRegion' => $UserConstituency]);
         view('snippets.side-bar', ['UserRegion' => $UserConstituency]);
         return view('pages.mandate.constituency', ['UserConstituency' => $UserConstituency]);
     }
@@ -40,11 +48,11 @@ class RegionalLevelController extends Controller
     public function regional_constituency($UserRegion)
     {
         $region = $UserRegion;
-        // echo ($region);
+        // return $region;
 
         $base_response = new BaseResponse();
 
-        $response = Http::post(env('API_BASE_URL') . "getConstituency?region=$region");
+        $response = Http::post(env('API_BASE_URL') . "checkConstituencyAssignment?region=$region");
 
 
         // dd($response);

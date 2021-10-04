@@ -40,7 +40,8 @@
                         <div class="row">
 
                             <div class="col-md-12 text-center">
-                                <b style="font-size: 48px;display: none" class="total_constituencies">0</b>
+                                <b style="font-size: 48px;display: none"
+                                    class="total_constituencies regional_assigment">0</b>
                                 <span class="spinner-border avatar-sm text-dark m-2" role="status"></span>
                             </div>
                         </div>
@@ -55,7 +56,8 @@
                         <div class="row">
 
                             <div class="col-md-12 text-center">
-                                <b style="font-size: 48px; display: none" class="assigned_constituencies">0</b>
+                                <b style="font-size: 48px; display: none"
+                                    class="assigned_constituencies regional_assigment">0</b>
                                 <span class="spinner-border avatar-sm text-dark m-2" role="status"></span>
                             </div>
                         </div>
@@ -70,7 +72,8 @@
                         <div class="row">
 
                             <div class="col-md-12 text-center">
-                                <b style="font-size: 48px ; display: none" class="unassigned_constituencies">0</b>
+                                <b style="font-size: 48px ; display: none"
+                                    class="unassigned_constituencies regional_assigment">0</b>
                                 <span class="spinner-border avatar-sm text-dark m-2" role="status"></span>
                             </div>
                         </div>
@@ -115,15 +118,14 @@
 
 
                                         <table id="datatable-buttons"
-                                            class="table table-striped dt-responsive nowrap w-100 assigned_agent_list">
+                                            class="table table-striped dt-responsive nowrap w-100 assigned_constituency_list">
                                             <thead class="bg-info">
                                                 <tr class="text-white">
                                                     <th>No.</th>
-                                                    <th>Name</th>
-                                                    <th>Region</th>
-                                                    <th>Constituency</th>
-                                                    <th>Electoral Area</th>
-                                                    <th>User Id</th>
+                                                    <th>Constituency Name</th>
+
+                                                    <th>Constituency Info</th>
+
                                                     <th>Action</th>
 
 
@@ -150,15 +152,11 @@
 
 
                                     <table id="datatable-buttons"
-                                        class="table table-striped dt-responsive nowrap w-100 unassigned_agent_list">
+                                        class="table table-striped dt-responsive nowrap w-100 unassigned_constituency_list">
                                         <thead class="bg-info">
                                             <tr class="text-white">
                                                 <th>No.</th>
-                                                <th>Name</th>
-                                                <th>Region</th>
-                                                <th>Constituency</th>
-                                                <th>Electoral Area</th>
-                                                <th>User Id</th>
+                                                <th>Constituency Name</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -197,7 +195,7 @@
     <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
     </script>
-    {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
@@ -205,17 +203,18 @@
     <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
     <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
+    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
     <!-- third party js ends -->
 
     <!-- Datatables init -->
-    {{-- <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
 
 
     <script src="{{ asset('assets/js/regionalLevel.js') }}"></script>
