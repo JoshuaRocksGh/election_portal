@@ -156,7 +156,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='region/BONO EAST' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/BONO_EAST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -286,7 +286,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='region/GREATER ACCRA' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/GREATER_ACCRA' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -350,7 +350,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='region/NORTH EAST' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/NORTH_EAST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -447,7 +447,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='region/UPPER EAST' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/UPPER_EAST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -479,7 +479,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='region/UPPER WEST' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/UPPER_WEST' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -545,7 +545,7 @@
                                         </td>
 
                                         <td>
-                                            `<a href='region/WESTERN NORTH' class="btn btn-sm btn-blue">VIEW</a>`
+                                            `<a href='region/WESTERN_NORTH' class="btn btn-sm btn-blue">VIEW</a>`
                                             {{-- <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i
                                                     class="mdi mdi-minus"></i></a> --}}
                                         </td>
@@ -607,7 +607,8 @@
 
     <script src="{{ asset('assets/js/home.js') }}"></script>
     <script>
-        var AgentDetail = @json($AgentDetails);
+        var AgentDetail = @json(session()->get('AgentDetail'));
+        {{-- var AgentDetail = @json($AgentDetails); --}}
         var UserMandate = @json(session()->get('UserMandate'));
         {{-- var UserRegion = @json(session()->get('Region')); --}}
     </script>

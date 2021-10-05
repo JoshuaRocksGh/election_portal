@@ -1,6 +1,8 @@
 // $("#edit_spinner").hide();
 
 function regional_constituencies_assigmnet(UserRegion) {
+    // alert(UserRegion);
+    // return false;
     if (UserRegion.indexOf("_") >= 0) {
         // alert("contains underscore");
         var request = UserRegion;

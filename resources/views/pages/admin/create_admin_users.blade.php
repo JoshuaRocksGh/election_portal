@@ -22,6 +22,24 @@
                 <br><br>
 
                 <div class="container">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            @if (session()->get('UserMandate') == 'NationalLevel')
+                                <div class="alert alert-warning text-center" role="alert">
+                                    <i class="mdi mdi-alert-outline mr-2"></i> <strong>Create A Regional User</strong>
+
+                                </div>
+                            @elseif(session()->get('UserMandate') == "RegionalLevel")
+                                <div class="alert alert-warning text-center" role="alert">
+                                    <i class="mdi mdi-alert-outline mr-2"></i> <strong>Create A Constituency User</strong>
+
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
                     <div class="card"
                         style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
@@ -54,7 +72,7 @@
                                                             class="text-danger">*</span></label>
                                                     <select class="form-control" name="" id="user_mandate">
                                                         <option value="">-- Select User Mandate Level -- </option>
-                                                        <option value="NationalLevel">National Level</option>
+                                                        {{--  <option value="NationalLevel">National Level</option>  --}}
                                                         <option value="RegionalLevel">Regional Level</option>
                                                         <option value="ConstituencyLevel">Constituency Level</option>
                                                     </select>

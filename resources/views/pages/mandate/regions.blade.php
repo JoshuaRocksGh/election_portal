@@ -224,10 +224,11 @@
         var UserRegion = `{{ $UserRegion }}`;
 
         {{-- if (Mandate == "NationalLevel") {
-            var UserRegion = region;
+            var UserRegion = UserRegion;
+            alert(UserRegion)
             var region = '{{ $region }}'
         } else if (Mandate != "NationalLevel") {
-            var UserRegion = @json(session()->get('Region'));
+            var UserRegion = UserRegion;
 
         } --}}
     </script>

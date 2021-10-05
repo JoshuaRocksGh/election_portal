@@ -13,8 +13,16 @@ class RegionalLevelController extends Controller
     //
     public function region($UserRegion)
     {
-        // return $UserRegion;
-        $UserRegion_ = session()->get('Region');
+        $Mandate = session()->get('UserMandate');
+        if ($Mandate == "NationalLevel") {
+            $UserRegion_ = $UserRegion;
+        } else {
+            $UserRegion_ = session()->get('Region');
+        }
+
+        // return $UserRegion_;
+
+
         if ($UserRegion_ == trim($UserRegion_) && strpos($UserRegion_, ' ') !== false) {
             $UserRegion = str_replace(' ', '_', $UserRegion_);
 
