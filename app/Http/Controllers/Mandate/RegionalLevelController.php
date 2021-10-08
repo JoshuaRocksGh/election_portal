@@ -60,7 +60,7 @@ class RegionalLevelController extends Controller
 
         $base_response = new BaseResponse();
 
-        $response = Http::post(env('API_BASE_URL') . "checkConstituencyAssignment?region=$region");
+        $response = Http::post(env('API_BASE_URL') . "checkConstituencyAssignment2?region=$region");
 
 
         // dd($response);

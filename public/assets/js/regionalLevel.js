@@ -23,17 +23,19 @@ function regional_constituencies_assigmnet(UserRegion) {
         datatype: "application/json",
         success: function (response) {
             // console.log(response);
+            // return false;
 
             if (response.status === "ok") {
                 $(".spinner-border").hide();
                 $(".regional_assigment").show();
 
-                console.log(response.data);
-                console.log("=======");
+                // console.log(response.data);
+                // console.log("=======");
 
-                let total_constituencies = response.data.total;
-                let assigned_constituencies = response.data.totalAssigned;
-                let unassigned_contituencies = response.data.totalUnAssigned;
+                // return false;
+                let total_constituencies = response.total;
+                let assigned_constituencies = response.totalAssigned;
+                let unassigned_contituencies = response.totalUnAssigned;
 
                 $(".total_constituencies").text(total_constituencies);
                 $(".assigned_constituencies").text(assigned_constituencies);
