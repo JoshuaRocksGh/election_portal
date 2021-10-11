@@ -1,5 +1,5 @@
 //
-
+$(".spinner-border").show;
 function get_polling_station(constituency) {
     // alert(constituency);+
     // return false;
@@ -33,7 +33,14 @@ function get_polling_station(constituency) {
     });
 }
 
-function polling_station_assignment(constituency) {
+function polling_station_assignment(UserConstituency) {
+    // alert(UserConstituency);
+    if (UserConstituency.indexOf("_") >= 0) {
+        var request = UserConstituency;
+        constituency = request.replace(/_/g, " ");
+    } else {
+        constituency = constituency;
+    }
     $.ajax({
         type: "GET",
         url: "get-assigned-polling-stations-api?constituency=" + constituency,
@@ -42,7 +49,9 @@ function polling_station_assignment(constituency) {
             // console.log(response);
 
             if (response.status === "ok") {
-                // console.log(response.data);
+                $(".spinner-border").hide();
+                $(".constituency_assigment").show();
+                console.log(response.data);
                 // console.log("=======");
                 // console.log(response.data.unAssigned);
                 let assigned_polling_station = response.data.totalAssigned;
@@ -55,6 +64,8 @@ function polling_station_assignment(constituency) {
                 $(".unassigned_polling_stations").text(
                     unassigned_polling_station
                 );
+            } else {
+                $(".spinner-border").show();
             }
         },
     });
@@ -120,11 +131,11 @@ $(document).ready(function () {
     // });
 
     setTimeout(function () {
-        // alert(constituency);
+        // alert(UserConstituency);
         // alert(user_id);
         // get_all_polling_stations(constituency);
         get_agent_details(user_id);
-        polling_station_assignment(constituency);
+        polling_station_assignment(UserConstituency);
         get_polling_station(constituency);
         // agent_assignments(constituency);
         // agent_unassigned(constituency);

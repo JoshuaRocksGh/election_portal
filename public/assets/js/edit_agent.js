@@ -2,12 +2,14 @@
 
 function get_regions() {
     let region = $("#agent_region_").val();
+    $("#region_spinner").show();
     $.ajax({
         type: "GET",
         url: "get-regions-api",
         datatype: "application/json",
         success: function (response) {
             // console.log(response);
+            $("#region_spinner").hide();
 
             let data = response.data;
             // console.log("===");
@@ -35,23 +37,33 @@ function get_regions() {
 
 function get_constituency(region) {
     let constituency_ = $("#agent_constituency_").val();
+    $("#constituency_spinner").show();
     $.ajax({
         type: "GET",
         url: "get-constituency-api?region=" + region,
         datatype: "application/json",
         success: function (response) {
             // console.log(response);
+            $("#agent_constituency").prop("disabled", false);
+            $("#agent_constituency").css("background", "#fefefe");
             let data = response.data;
+            // let selectize = $("#agent_constituency").selectize()[0].selectize;
+            // console.log(data);
+            // selectize.clearOptions();
             // console.log(data);
             $("#agent_constituency option").remove();
 
             if (response.status == "ok") {
-                $("#agent_constituency").prop("disabled", false);
-                $("#agent_constituency").css("background", "#fefefe");
+                $("#constituency_spinner").hide();
                 $.each(data, function (index) {
                     console.log(data[index]);
                     if (constituency_ == data[index].name) {
                         $("#agent_constituency").append(
+                            // selectize.getOption({
+                            //     value:
+                            //         data[index].name + "~" + data[index].code,
+                            //     text: data[index].name,
+                            // })
                             $("<option selected>", {
                                 value:
                                     data[index].name + "~" + data[index].code,
@@ -73,6 +85,7 @@ function get_constituency(region) {
 
 function get_polling_station(constituency) {
     let polling_station = $("#electoral_area_").val();
+    $("#polling_station_spinner").show();
     $.ajax({
         type: "GET",
         url: "get-polling-station-api?constituency=" + constituency,
@@ -87,7 +100,7 @@ function get_polling_station(constituency) {
             if (response.status == "ok") {
                 $("#agent_electoral_area").prop("disabled", false);
                 $("#agent_electoral_area").css("background", "#fefefe");
-
+                $("#polling_station_spinner").hide();
                 $.each(data, function (index) {
                     console.log(data[index]);
                     if (polling_station == data[index].code) {
@@ -113,99 +126,120 @@ function get_polling_station(constituency) {
 
 $("#search_agent_button").click(function (e) {
     e.preventDefault();
+    $("#search_agent_button").prop("disabled", true);
 
     $("#edit_spinner").toggle("500");
     $("#new_agent_form").hide();
     var phone_number = $("#phone_number").val();
-    // alert("clicked");
-    $.ajax({
-        type: "POST",
-        url: "get-agent-details",
-        datatype: "application/json",
-        data: {
-            phone_number: phone_number,
-        },
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-        },
-        success: function (response) {
-            console.log(response.data);
-            if (response.status == "ok") {
-                $("#new_agent_form").toggle("500");
-                $("#edit_spinner").hide();
+    var isnum1 = /^\d+$/.test(phone_number);
 
-                let data = response.data;
-                $.each(data, function (index) {
-                    // console.log(data[index]);
+    if (phone_number.replace(/ /g, "").length != 10 || isnum1 === false) {
+        Swal.fire("", "Invalid User ID", "warning");
+        $("#edit_spinner").hide();
+        $("#new_agent_form").toggle("500");
+        $("#search_agent_button").prop("disabled", false);
 
-                    $("#first_name").val(data[index].Fname);
-                    $("#middle_name").val(data[index].MiddleName);
-                    $("#surname").val(data[index].SurName);
-                    $("#telephone_number_1").val(data[index].phoneNumber[0]);
-                    $("#telephone_number_2").val(data[index].phoneNumber[1]);
-                    $("#telephone_number_3").val(data[index].phoneNumber[2]);
+        // return false;
+    } else {
+        // alert("clicked");
+        $.ajax({
+            type: "POST",
+            url: "get-agent-details",
+            datatype: "application/json",
+            data: {
+                phone_number: phone_number,
+            },
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                console.log(response.data);
+                if (response.status == "ok") {
+                    $("#new_agent_form").toggle("500");
+                    $("#edit_spinner").hide();
 
-                    $("#id_number").val(data[index].Id);
-                    $("#institution_name").val(data[index].Institution);
-                    $(".display_selected_id_image").attr(
-                        "src",
-                        data[index].Picture
-                    );
-                    $("#image_upload_").val(data[index].Picture);
+                    let data = response.data;
+                    $.each(data, function (index) {
+                        // console.log(data[index]);
 
-                    $("#agent_dob").val(data[index].DOB);
-                    $("#completion_year").val(data[index].YearOfCompletion);
+                        $("#first_name").val(data[index].Fname);
+                        $("#middle_name").val(data[index].MiddleName);
+                        $("#surname").val(data[index].SurName);
+                        $("#telephone_number_1").val(
+                            data[index].phoneNumber[0]
+                        );
+                        $("#telephone_number_2").val(
+                            data[index].phoneNumber[1]
+                        );
+                        $("#telephone_number_3").val(
+                            data[index].phoneNumber[2]
+                        );
 
-                    $("#select_gender").val(data[index].Gender);
+                        $("#id_number").val(data[index].Id);
+                        $("#institution_name").val(data[index].Institution);
+                        $(".display_selected_id_image").attr(
+                            "src",
+                            data[index].Picture
+                        );
+                        $("#image_upload_").val(data[index].Picture);
 
-                    $("#educational_level").val(data[index].EducationalLevel);
+                        $("#agent_dob").val(data[index].DOB);
+                        $("#completion_year").val(data[index].YearOfCompletion);
 
-                    // var GENDER = data[index].Gender;
-                    // if (GENDER == "Male") {
+                        $("#select_gender").val(data[index].Gender);
 
-                    // }
-                    // $("#birth_month")
-                    //     .val(data[index].Gender)
-                    //     .attr("selected", "selected");
+                        $("#educational_level").val(
+                            data[index].EducationalLevel
+                        );
 
-                    var REGION = data[index].Region;
-                    $("#agent_region_").val(REGION);
+                        // var GENDER = data[index].Gender;
+                        // if (GENDER == "Male") {
 
-                    var CONSTITUENCY = data[index].Constituency;
-                    $("#agent_constituency_").val(CONSTITUENCY);
+                        // }
+                        // $("#birth_month")
+                        //     .val(data[index].Gender)
+                        //     .attr("selected", "selected");
 
-                    var POLLING_STATION = data[index].ElectoralArea;
-                    $("#electoral_area_").val(POLLING_STATION);
+                        var REGION = data[index].Region;
+                        $("#agent_region_").val(REGION);
 
-                    var quick_test = $("#agent_region_").val(REGION);
-                    if (quick_test != "" || quick_test != undefined) {
-                        get_regions();
-                        var region = $("#agent_region_").val();
-                        get_constituency(region);
-                        var constituency = $("#agent_constituency_").val();
-                        get_polling_station(constituency);
-                    }
+                        var CONSTITUENCY = data[index].Constituency;
+                        $("#agent_constituency_").val(CONSTITUENCY);
 
-                    var GENDER = data[index].Gender;
-                    $("#gender_").val(GENDER);
-                    let gender = $("#gender_").val();
+                        var POLLING_STATION = data[index].ElectoralArea;
+                        $("#electoral_area_").val(POLLING_STATION);
 
-                    // if (gender == data[index].Gender) {
-                    //     $("#select_gender").append(
-                    //         $("<option selected>", {
-                    //             value:
-                    //                 title_list[index].description +
-                    //                 "~" +
-                    //                 title_list[index].actualCode,
-                    //         }).text(title_list[index].description)
-                    //     );
-                    // }
-                });
-            } else {
-                return false;
-            }
-        },
-    });
+                        var quick_test = $("#agent_region_").val(REGION);
+                        if (quick_test != "" || quick_test != undefined) {
+                            get_regions();
+                            var region = $("#agent_region_").val();
+                            get_constituency(region);
+                            var constituency = $("#agent_constituency_").val();
+                            get_polling_station(constituency);
+                        }
+
+                        var GENDER = data[index].Gender;
+                        $("#gender_").val(GENDER);
+                        let gender = $("#gender_").val();
+
+                        // if (gender == data[index].Gender) {
+                        //     $("#select_gender").append(
+                        //         $("<option selected>", {
+                        //             value:
+                        //                 title_list[index].description +
+                        //                 "~" +
+                        //                 title_list[index].actualCode,
+                        //         }).text(title_list[index].description)
+                        //     );
+                        // }
+                    });
+                } else {
+                    $("#search_agent_button").prop("disabled", false);
+                    return false;
+                }
+            },
+        });
+    }
 });
 
 $("#agent_constituency").prop("disabled", true);
@@ -303,23 +337,25 @@ $(document).ready(function () {
         var agent_electoral_area = agent_elec_area[0];
         var agent_cons = $("#agent_constituency").val().split("~");
         var agent_constituency = agent_cons[1];
+        var birth = $("#agent_dob").val();
+        var isnum1 = /^\d+$/.test(telephone_1);
+        var isnum2 = /^\d+$/.test(telephone_2);
+        var isnum_ = /^\d+$/.test(national_id);
 
         if (
-            (image =
-                "" ||
-                fname == "" ||
-                middile_name == "" ||
-                surname == "" ||
-                gender == "" ||
-                dob == "" ||
-                national_id == "" ||
-                telephone_1 == "" ||
-                education_level == "" ||
-                year_completion == "" ||
-                agent_region == "" ||
-                agent_electoral_area == "" ||
-                agent_constituency == "" ||
-                insititution_name == "")
+            fname == "" ||
+            middile_name == "" ||
+            surname == "" ||
+            gender == "" ||
+            dob == "" ||
+            national_id == "" ||
+            telephone_1 == "" ||
+            education_level == "" ||
+            year_completion == "" ||
+            agent_region == "" ||
+            agent_electoral_area == "" ||
+            agent_constituency == "" ||
+            insititution_name == ""
         ) {
             // alert("Please fill all required fields");
             $("#agent_submit_form").removeAttr("data-target");

@@ -1,5 +1,22 @@
 @extends("layouts.master")
 
+@section('style')
+
+    {{-- <link rel="stylesheet" type="text/css" href="selectize.css" /> --}}
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.bootstrap4.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.bootstrap3.css" />
+
+    <style>
+        select-dropdown {
+            width: 600px !important;
+        }
+
+    </style>
+
+
+@endsection
 
 @section('content')
     {{-- <br> --}}
@@ -35,7 +52,7 @@
                                     <div class="col-md-4">
 
                                     </div>
-                                    <div class="col-md-4" style="">
+                                    {{-- <div class="col-md-4" style="">
 
                                         <div class="form-group text-center">
                                             <img src="{{ url('assets/images/users/new-u.png') }}" alt="image"
@@ -47,7 +64,7 @@
                                             <input type="hidden" id="image_upload_">
 
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-4">
                                         {{-- <b class="float-right"><em>Please fll fields marked with
                                                 &nbsp;</em><span class="text-danger h3">*</span></b> --}}
@@ -198,7 +215,12 @@
                                                     class="text-danger">*</span></label>
                                             {{-- <input type="text" id="agent_region" class="form-control col-md-8"
                                                 placeholder="Enter Agent Region"> --}}
-                                            <select class="form-control col-md-8" id="agent_region">
+                                            <div class="d-flex align-items-center ml-1">
+
+                                                <span class="spinner-border spinner-border-sm mr-1" id="region_spinner"
+                                                    role="status" aria-hidden="true" style="display:none"></span>
+                                            </div>
+                                            <select class="form-control col-md-7 ml-3" id="agent_region">
                                                 <option value="">-- Select Region --</option>
                                             </select>
                                         </div>
@@ -206,10 +228,18 @@
                                         <div class="form-group mb-1 row">
                                             <label for="simpleinput" class="col-md-4 h4">Agent Constituency:<span
                                                     class="text-danger">*</span></label>
+
                                             <input type="hidden" id="agent_constituency_" class="form-control col-md-4">
-                                            <select class="form-control col-md-8" id="agent_constituency">
+                                            <div class="d-flex align-items-center ml-1">
+
+                                                <span class="spinner-border spinner-border-sm mr-1"
+                                                    id="constituency_spinner" role="status" aria-hidden="true"
+                                                    style="display:none"></span>
+                                            </div>
+                                            <select class="form-control col-md-7 ml-3" id="agent_constituency">
                                                 <option value="">-- Select Constituency--</option>
                                             </select>
+
                                         </div>
 
                                         <div class="form-group mb-1 row">
@@ -217,7 +247,13 @@
                                                     class="text-danger">*</span></label>
                                             {{-- <input type="text" id="agent_electoral_area" class="form-control col-md-8"
                                                 placeholder="Enter Agent Polling Station"> --}}
-                                            <select class="form-control col-md-8" id="agent_electoral_area">
+                                            <div class="d-flex align-items-center ml-1">
+
+                                                <span class="spinner-border spinner-border-sm mr-1"
+                                                    id="polling_station_spinner" role="status" aria-hidden="true"
+                                                    style="display:none"></span>
+                                            </div>
+                                            <select class="form-control col-md-7 ml-3" id="agent_electoral_area">
                                                 <option value="">-- Select Electoral Area--</option>
                                             </select>
                                         </div>
@@ -266,7 +302,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <img src="{{ url('assets/images/users/user.png') }}" alt="image"
@@ -274,31 +310,30 @@
                                         class="img-fluid rounded-circle display_selected_id_image" width="200"
                                         style="border: groove" />
                                     <br><br>
-                                    {{-- <input type="file" id="image_upload"
-                                                        class="form-control-file float-right">
-                                                    <input type="hidden" id="image_upload_"> --}}
+
 
                                 </div>
                             </div>
                             <div class="col-md-9">
                                 <div class="row">
-                                    <h4 class=" col-md-4">First Name:&nbsp;</h4><span class="col-md-8 text-blue h4"
-                                        id="display_first_name"></span>
 
-                                    <h4 class=" col-md-4">Middle Name:&nbsp;</h4><span class="col-md-8 text-blue h4"
-                                        id="display_middle_name"></span>
-
-                                    <h4 class=" col-md-4">Surname:&nbsp;</h4><span class="col-md-8 text-blue h4"
-                                        id="display_surname"></span>
-
-                                    <h4 class=" col-md-4">Gender:&nbsp;</h4><span class="col-md-8 text-blue h4"
-                                        id="display_gender"></span>
                                 </div>
 
                             </div>
 
-                        </div>
+                        </div> --}}
                         <div class="row">
+                            <h4 class=" col-md-4">First Name:&nbsp;</h4><span class="col-md-8 text-blue h4"
+                                id="display_first_name"></span>
+
+                            <h4 class=" col-md-4">Middle Name:&nbsp;</h4><span class="col-md-8 text-blue h4"
+                                id="display_middle_name"></span>
+
+                            <h4 class=" col-md-4">Surname:&nbsp;</h4><span class="col-md-8 text-blue h4"
+                                id="display_surname"></span>
+
+                            <h4 class=" col-md-4">Gender:&nbsp;</h4><span class="col-md-8 text-blue h4"
+                                id="display_gender"></span>
                             <h4 class=" col-md-4">DOB:&nbsp;</h4><span class="col-md-8 text-blue h4"
                                 id="display_dob"></span>
 
@@ -346,7 +381,12 @@
                                     <div class="col-md-4">
                                         <button type="button"
                                             class="btn btn-success width-lg waves-effect waves-light float-right"
-                                            id="confirm_agent"><i class="mdi mdi-check-all mr-2"></i>Confirm</button>
+                                            id="confirm_agent">
+                                            <span class="agent_text"><i
+                                                    class="mdi mdi-check-all mr-2"></i>Confirm</span>
+                                            <span class="spinner-border spinner-border-sm mr-1 spinner-text" role="status"
+                                                aria-hidden="true" style="display: none"></span>
+                                        </button>
                                     </div>
                                     <div class="col-md-2"></div>
                                 </div>
@@ -376,6 +416,10 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js">
+    </script>
 
     <script src="sweetalert2.all.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

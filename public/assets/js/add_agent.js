@@ -1,12 +1,14 @@
 // API CALLS
 
 function get_regions() {
+    $("#region_spinner").show();
     $.ajax({
         type: "GET",
         url: "get-regions-api",
         datatype: "application/json",
         success: function (response) {
             // console.log(response);
+            $("#region_spinner").hide();
 
             let data = response.data;
             // console.log("===");
@@ -21,61 +23,91 @@ function get_regions() {
                 );
             });
         },
+        error: function (xhr, status, error) {
+            setTimeout(function () {
+                get_regions();
+            }, $.ajaxSetup().retryAfter);
+        },
     });
 }
 
 function get_constituency(region) {
+    $("#constituency_spinner").show();
     $.ajax({
         type: "GET",
         url: "get-constituency-api?region=" + region,
         datatype: "application/json",
         success: function (response) {
-            console.log(response);
+            // console.log(response);
+            $("#agent_constituency").prop("disabled", false);
+            $("#agent_constituency").css("background", "#fefefe");
             let data = response.data;
+            let selectize = $("#agent_constituency").selectize()[0].selectize;
             // console.log(data);
-            $("#agent_constituency option").remove();
-            if (response.status == "ok") {
-                $("#agent_constituency").prop("disabled", false);
-                $("#agent_constituency").css("background", "#fefefe");
+            selectize.clearOptions();
 
+            if (response.status == "ok") {
+                $("#constituency_spinner").hide();
                 $.each(data, function (index) {
                     // console.log(data[index]);
                     $("#agent_constituency").append(
-                        $("<option>", {
+                        selectize.addOption({
                             value: data[index].name + "~" + data[index].code,
-                        }).text(data[index].name)
+                            text: data[index].name,
+                        })
+                        // $("<option>", {
+                        //     value: data[index].name + "~" + data[index].code,
+                        // }).text(data[index].name)
                     );
                 });
             }
+        },
+        error: function (xhr, status, error) {
+            setTimeout(function () {
+                get_constituency();
+            }, $.ajaxSetup().retryAfter);
         },
     });
 }
 
 function get_polling_station(constituency) {
+    $("#polling_station_spinner").show();
     $.ajax({
         type: "GET",
         url: "get-polling-station-api?constituency=" + constituency,
         datatype: "application/json",
         success: function (response) {
-            console.log(response);
+            // console.log(response);
+            $("#agent_electoral_area").prop("disabled", false);
+            $("#agent_electoral_area").css("background", "#fefefe");
             let data = response.data;
             // console.log(data);
+            let selectize = $("#agent_electoral_area").selectize()[0].selectize;
+            // console.log(data);
+            selectize.clearOptions();
 
             $("#agent_electoral_area option").remove();
 
             if (response.status == "ok") {
-                $("#agent_electoral_area").prop("disabled", false);
-                $("#agent_electoral_area").css("background", "#fefefe");
-
+                $("#polling_station_spinner").hide();
                 $.each(data, function (index) {
-                    console.log(data[index]);
+                    // console.log(data[index]);
                     $("#agent_electoral_area").append(
-                        $("<option>", {
+                        selectize.addOption({
                             value: data[index].name + "~" + data[index].code,
-                        }).text(data[index].name)
+                            text: data[index].name,
+                        })
+                        // $("<option>", {
+                        //     value: data[index].name + "~" + data[index].code,
+                        // }).text(data[index].name)
                     );
                 });
             }
+        },
+        error: function (xhr, status, error) {
+            setTimeout(function () {
+                get_polling_station();
+            }, $.ajaxSetup().retryAfter);
         },
     });
 }
@@ -248,6 +280,9 @@ $(document).ready(function () {
         var agent_cons = $("#agent_constituency").val().split("~");
         var agent_constituency = agent_cons[1];
         var birth = $("#agent_dob").val();
+        var isnum1 = /^\d+$/.test(telephone_1);
+        var isnum2 = /^\d+$/.test(telephone_2);
+        var isnum_ = /^\d+$/.test(national_id);
 
         // dobValidate(birth);
 
@@ -278,6 +313,20 @@ $(document).ready(function () {
             return false;
         }
 
+        if (
+            telephone_1.replace(/ /g, "").length != 10 ||
+            (isnum1 === false && telephone_2.replace(/ /g, "").length != 10) ||
+            isnum2 === false
+        ) {
+            toaster("Invalid Phone Number", "error", 5000);
+            return false;
+        } else if (
+            national_id.replace(/ /g, "").length != 10 ||
+            isnum_ === false
+        ) {
+            toaster("Invalid Voter ID Number", "error", 5000);
+            return false;
+        }
         if (
             fname == "" ||
             surname == "" ||
@@ -358,10 +407,14 @@ $(document).ready(function () {
         var agent_con = $("#agent_constituency").val().split("~");
         var agent_constituency = agent_con[0];
 
-        function redirect_page() {
-            window.location.href = "{{ url('add-agent') }}";
-        }
+        function page_reload() {
+            location.reload();
 
+            // window.location.href = "{{ url('add-agent') }}";
+        }
+        $(".confirm_agent").prop("disabled", true);
+        $(".spinner-text").show();
+        $(".agent_text").hide();
         $.ajax({
             type: "POST",
             url: "create-agent-api",
@@ -392,10 +445,17 @@ $(document).ready(function () {
 
                 if (response.status == "ok") {
                     Swal.fire(response.message, "", "success");
+                    $(".spinner-text").hide();
+                    $(".agent_text").show();
                     // redirect_page();
-                    location.reload();
+                    setTimeout(function () {
+                        page_reload();
+                    }, 3000);
                 } else {
                     toaster(response.message, "error", 10000);
+                    $(".confirm_agent").prop("disabled", false);
+                    $(".spinner-text").hide();
+                    $(".agent_text").show();
                 }
             },
         });

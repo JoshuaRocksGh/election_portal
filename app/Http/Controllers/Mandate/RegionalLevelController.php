@@ -37,10 +37,36 @@ class RegionalLevelController extends Controller
     public function constituency($UserConstituency)
     {
         // return $UserConstituency;
+        $Mandate = session()->get('UserMandate');
+        $UserConstituency_ = $UserConstituency;
+        $UserRegion = session()->get("Region");
 
-        // if ($constituency == trim($constituency) && strpos($constituency, ' ') !== false) {
-        //     echo 'has spaces, but not at beginning or end';
-        // }
+
+        if ($Mandate !== "ConstituencyLevel") {
+            return view('pages.mandate.constituency', ['UserConstituency' => $UserConstituency_, 'UserRegion' => $UserRegion]);
+
+            // if ($UserRegion_ == trim($UserRegion_) && strpos($UserRegion_, ' ') !== false || $UserConstituency_ == trim($UserConstituency_) && strpos($UserConstituency_, ' ') !== false) {
+            //     $UserRegion = str_replace(' ', '_', $UserRegion_);
+            //     $UserConstituency = str_replace(' ', '_', $UserConstituency_);
+
+            //     return view('pages.mandate.constituency', ['UserConstituency' => $UserConstituency, 'UserRegion' => $UserRegion]);
+            // } else {
+            //     return view('pages.mandate.constituency', ['UserConstituency' => $UserConstituency, 'UserRegion' => $UserRegion]);
+            // }
+        } elseif ($Mandate == "ConstituencyLevel") {
+            // echo 'has spaces, but not at beginning or end';
+            // return $UserConstituency;
+            if ($UserConstituency_ == trim($UserConstituency_) && strpos($UserConstituency_, ' ') !== false) {
+                $UserConstituency = str_replace(' ', '_', $UserConstituency_);
+
+                // view('snippets.side-bar', ['UserRegion' => $UserConstituency]);
+                return view('pages.mandate.constituency', ['UserConstituency' => $UserConstituency, 'UserRegion' => $UserRegion]);
+            } else {
+                return view('pages.mandate.constituency', ['UserConstituency' => $UserConstituency_, 'UserRegion' => $UserRegion]);
+            }
+        } else {
+            return false;
+        }
         // $res = str_replace(array(
         //     '\'', '"',
         //     ',', ';', '<', '>', "'", ')', '}'
@@ -49,8 +75,7 @@ class RegionalLevelController extends Controller
         // echo ($res);
         // return false;
         // view('pages.agents.unassign_agent', ['UserRegion' => $UserConstituency]);
-        view('snippets.side-bar', ['UserRegion' => $UserConstituency]);
-        return view('pages.mandate.constituency', ['UserConstituency' => $UserConstituency]);
+
     }
 
     public function regional_constituency($UserRegion)

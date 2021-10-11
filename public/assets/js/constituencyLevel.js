@@ -24,7 +24,7 @@ function polling_station_assignment(constituency) {
     if (constituency.indexOf("_") >= 0) {
         // alert("contains underscore");
         var request = constituency;
-        Constituency_ = request.replace("_", " ");
+        Constituency_ = request.replace(/_/g, " ");
         // Constituency_ = request.replace(/ /g, " ");
         // alert(Constituency_);
     } else {
@@ -69,16 +69,19 @@ function polling_station_assignment(constituency) {
 
 function agent_assignments(constituency) {
     // alert(constituency);
-
+    // var constituencyName = constituency;
     if (constituency.indexOf("_") >= 0) {
         // alert("contains underscore");
         var request = constituency;
-        Constituency_ = request.replace("_", " ");
+        Constituency_ = request.replace(/_/g, " ");
         // Constituency_ = request.replace(/ /g, " ");
         // alert(Constituency_);
     } else {
         Constituency_ = constituency;
     }
+
+    // alert(Constituency_);
+
     var table = $(".assigned_agent_list").DataTable();
     var unassigned = $(".unassigned_agent_list").DataTable();
     var nodes = table.rows().nodes();
@@ -97,6 +100,7 @@ function agent_assignments(constituency) {
 
             if (response.status === "ok") {
                 var count = 1;
+                // alert(constituency);
 
                 $.each(data, function (index) {
                     console.log(data[index]);
@@ -111,7 +115,7 @@ function agent_assignments(constituency) {
                             data[index].ElectoralArea,
                             data[index].UserId,
                             `
-                            <a class="btn btn-info" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&UserConstituency=${UserConstituency}&user_id=${data[index].UserId}&assign='false' data-value=${data[index].ElectoralArea}>UnAssign</a>
+                            <a class="btn btn-danger" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&UserConstituency=${UserConstituency}&user_id=${data[index].UserId}&assign='false' data-value=${data[index].ElectoralArea}>UnAssign</a>
                             `,
                         ])
                         .draw(false);

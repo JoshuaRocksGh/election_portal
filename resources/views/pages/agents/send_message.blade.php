@@ -32,29 +32,52 @@
                         <hr>
                         <div class="message_recipient">
                             <h3>Select Sending Options<span class="text-danger">*</span></h3>
-                            <div class="checkbox checkbox-dark mb-2">
-                                <input id="checkbox6c" type="checkbox">
-                                <label for="checkbox6c" class="h4">
-                                    ALL
-                                </label>
-                            </div>
+                            @if (session()->get('UserMandate') == 'NationalLevel')
+                                <div class="checkbox checkbox-dark mb-2">
+                                    <input id="checkbox6c" type="checkbox">
+                                    <label for="checkbox6c" class="h4">
+                                        ALL
+                                    </label>
+                                </div>
+                            @endif
                             <br>
                             <h3>Sort By:</h3>
                             <div class="form-group mb-1 row">
                                 <label for="simpleinput" class="col-md-12 h5">Region</label>
                                 {{-- <input type="text" id="agent_region" class="form-control col-md-8"
                                                 placeholder="Enter Agent Region"> --}}
-                                <select class="form-control col-md-12" id="agent_region">
-                                    <option value="">-- Select Region --</option>
-                                </select>
+                                @if (session()->get('UserMandate') == 'NationalLevel')
+                                    <select class="form-control col-md-12" id="agent_region">
+                                        <option value="">-- Select Region --</option>
+                                    </select>
+                                @elseif(session()->get("UserMandate") == "RegionalLevel")
+                                    {{-- <input type="text"> --}}
+                                    <select class="form-control col-md-12 readOnly" id="agent_region" disabled>
+                                        <option value={{ session()->get('Region') }}>{{ session()->get('Region') }}
+                                        </option>
+                                    </select>
+                                @elseif(session()->get("UserMandate") == "ConstituencyLevel")
+                                    <select class="form-control col-md-12 readOnly" id="agent_region" disabled>
+                                        <option value={{ session()->get('Region') }}>{{ session()->get('Region') }}
+                                        </option>
+                                    </select>
+                                @endif
                             </div>
                             <div class="form-group mb-1 row">
                                 <label for="simpleinput" class="col-md-12 h5">Constituency</label>
                                 {{-- <input type="text" id="agent_constituency" class="form-control col-md-8"
                                                 placeholder="Enter Agent Constituency"> --}}
-                                <select class="form-control col-md-12" id="agent_constituency" multiple>
-                                    <option value="">-- Select Constituency--</option>
-                                </select>
+                                @if (session()->get('UserMandate') == 'ConstituencyLevel')
+                                    <select class="form-control col-md-12" id="agent_constituency" multiple disabled>
+                                        <option value={{ session()->get('Constituency') }}>
+                                            {{ session()->get('Constituency') }}</option>
+                                    </select>
+
+                                @elseif(session()->get('UserMandate') !== 'ConstituencyLevel')
+                                    <select class="form-control col-md-12" id="agent_constituency" multiple>
+                                        <option value="">-- Select Constituency --</option>
+                                    </select>
+                                @endif
                             </div>
 
                         </div>

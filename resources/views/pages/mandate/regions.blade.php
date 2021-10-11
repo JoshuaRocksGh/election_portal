@@ -36,7 +36,7 @@
                 <div class="card"
                     style="background-color: rgba(136, 198, 197, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                     <div class="card-body">
-                        <h3 class="text-center mt-0">CONSTITUENCIES</h3>
+                        <h3 class="text-center mt-0">TOTAL POLLING STATIONS</h3>
                         <div class="row">
 
                             <div class="col-md-12 text-center">
@@ -52,7 +52,7 @@
                 <div class="card"
                     style="background-color: rgba(32, 185, 252, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                     <div class="card-body">
-                        <h3 class="text-center mt-0">ASSIGNED CONSTITUENCIES</h3>
+                        <h3 class="text-center mt-0">ASSIGNED POLLING STATIONS</h3>
                         <div class="row">
 
                             <div class="col-md-12 text-center">
@@ -68,7 +68,7 @@
                 <div class="card"
                     style="background-color: rgba(252, 205, 201, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                     <div class="card-body">
-                        <h3 class="text-center mt-0">UNASSIGNED CONSTITUENCIES</h3>
+                        <h3 class="text-center mt-0">UNASSIGNED POLLING STATIONS</h3>
                         <div class="row">
 
                             <div class="col-md-12 text-center">
@@ -87,97 +87,35 @@
             <div class="col-md-12">
                 <div class="card-box"
                     style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                    <h4 class="header-title mb-4">Constituency Information</h4>
-
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                <b class="text-success" style="font-size: 16px">Assigned Constituencies</b>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link">
-                                <b class="text-danger" style="font-size: 16px">UnAssigned Constituencies</b>
-                            </a>
-                        </li>
-                        {{-- <li class="nav-item">
-                        <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
-                            Messages
-                        </a>
-                    </li> --}}
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane show active" id="home">
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="" >
+                    <h4 class="header-title mb-4">Constituency Details</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="" >
                                     <div class=" card-body">
+                                <table id="datatable-buttons"
+                                    class="table table-striped dt-responsive nowrap w-100 all_constituency_list">
+                                    <thead class="bg-info">
+                                        <tr class="text-white">
+                                            <th>No.</th>
+                                            <th>Constituency Name</th>
+                                            <th>Total</th>
 
-                                        <h4 class="header-title">Assigned Constituencies</h4>
+                                            <th>Assigned </th>
+                                            <th>UnAssigned </th>
 
-
-                                        <table id="datatable-buttons"
-                                            class="table table-striped dt-responsive nowrap w-100 assigned_constituency_list">
-                                            <thead class="bg-info">
-                                                <tr class="text-white">
-                                                    <th>No.</th>
-                                                    <th>Constituency Name</th>
-
-                                                    <th>Constituency Info</th>
-
-                                                    <th>Action</th>
+                                            <th>Action</th>
 
 
-                                                </tr>
-                                            </thead>
+                                        </tr>
+                                    </thead>
 
-                                        </table>
+                                </table>
 
-                                    </div> <!-- end card body-->
-                                </div> <!-- end card -->
-                            </div><!-- end col-->
-                        </div>
-
+                            </div> <!-- end card body-->
+                        </div> <!-- end card -->
+                    </div><!-- end col-->
 
 
-                    </div>
-                    <div class="tab-pane " id="profile">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="" >
-                                    <div class=" card-body">
-
-                                    <h4 class="header-title"> UnAssigned Constituencies</h4>
-
-
-                                    <table id="datatable-buttons"
-                                        class="table table-striped dt-responsive nowrap w-100 unassigned_constituency_list">
-                                        <thead class="bg-info">
-                                            <tr class="text-white">
-                                                <th>No.</th>
-                                                <th>Constituency Name</th>
-                                                <th>Action</th>
-
-                                            </tr>
-                                        </thead>
-
-                                    </table>
-
-                                </div> <!-- end card body-->
-                            </div> <!-- end card -->
-                        </div><!-- end col-->
-                    </div>
-                    {{-- <div class="tab-pane" id="messages">
-                        <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                            mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-                            quis enim.</p>
-                        <p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-                            enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-                            pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate
-                            eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                    </div> --}}
                 </div>
             </div> <!-- end card-box-->
         </div>

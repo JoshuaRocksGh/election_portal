@@ -1,8 +1,27 @@
 @extends("layouts.master")
 
 
+@section('style')
+
+    {{-- <link rel="stylesheet" type="text/css" href="selectize.css" /> --}}
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.bootstrap4.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.bootstrap3.css" />
+
+    <style>
+        select-dropdown {
+            width: 600px !important;
+        }
+
+    </style>
+
+
+@endsection
+
+
 @section('content')
-    <br>
+    {{-- <br> --}}
 
     <div class="container-fluid">
         <h3>Agent &nbsp; > &nbsp; <span class="text-danger">Edit Agent</span> </h3>
@@ -235,7 +254,12 @@
                                         <label for="simpleinput" class="col-md-4 h4">Agent Region:<span
                                                 class="text-danger">*</span></label>
                                         <input type="hidden" id="agent_region_" class="form-control col-md-4">
-                                        <select class="form-control col-md-8" id="agent_region">
+                                        <div class="d-flex align-items-center ml-1">
+
+                                            <span class="spinner-border spinner-border-sm mr-1" id="region_spinner"
+                                                role="status" aria-hidden="true" style="display:none"></span>
+                                        </div>
+                                        <select class="form-control col-md-7 ml-3" id="agent_region">
                                             <option value="">-- Select Region --</option>
                                         </select>
                                     </div>
@@ -244,7 +268,12 @@
                                         <label for="simpleinput" class="col-md-4 h4">Agent Constituency:<span
                                                 class="text-danger">*</span></label>
                                         <input type="hidden" id="agent_constituency_" class="form-control col-md-4">
-                                        <select class="form-control col-md-8" id="agent_constituency">
+                                        <div class="d-flex align-items-center ml-1">
+
+                                            <span class="spinner-border spinner-border-sm mr-1" id="constituency_spinner"
+                                                role="status" aria-hidden="true" style="display:none"></span>
+                                        </div>
+                                        <select class="form-control col-md-7 ml-3" id="agent_constituency">
                                             <option value="">-- Select Constituency--</option>
                                         </select>
                                     </div>
@@ -253,7 +282,13 @@
                                         <label for="simpleinput" class="col-md-4 h4">Agent Polling Station:<span
                                                 class="text-danger">*</span></label>
                                         <input type="hidden" id="electoral_area_" class="form-control col-md-4">
-                                        <select class="form-control col-md-8" id="agent_electoral_area">
+                                        <div class="d-flex align-items-center ml-1">
+
+                                            <span class="spinner-border spinner-border-sm mr-1"
+                                                id="polling_station_spinner" role="status" aria-hidden="true"
+                                                style="display:none"></span>
+                                        </div>
+                                        <select class="form-control col-md-7 ml-3" id="agent_electoral_area">
                                             <option value="">-- Select Electoral Area--</option>
                                         </select>
                                     </div>
@@ -409,7 +444,10 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+    <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js">
+    </script>
     <script src="sweetalert2.all.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('assets/js/edit_agent.js') }}"></script>

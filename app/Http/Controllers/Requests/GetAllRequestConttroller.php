@@ -91,6 +91,7 @@ class GetAllRequestConttroller extends Controller
 
     public function get_assigned_polling_stations(Request $request)
     {
+        // return $request;
         $constituency = $request->constituency;
         $base_response = new BaseResponse();
 

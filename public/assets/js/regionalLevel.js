@@ -14,7 +14,7 @@ function regional_constituencies_assigmnet(UserRegion) {
     }
     // alert(UserRegion_);
     // return false;
-    var table = $(".assigned_constituency_list").DataTable();
+    var table = $(".all_constituency_list").DataTable();
     var unassigned = $(".unassigned_constituency_list").DataTable();
     var nodes = table.rows().nodes();
     $.ajax({
@@ -43,20 +43,31 @@ function regional_constituencies_assigmnet(UserRegion) {
 
                 //Assigned Constituencies
                 var count = 1;
-                let data = response.data.assigned;
+                let data = response.data;
                 $.each(data, function (index) {
                     // console.log(data[index]);
-
+                    // return false;
+                    var constituencyName_ = data[index].ConstituencyCode;
+                    if (constituencyName_.indexOf(" ") >= 0) {
+                        // alert("contains spaces");
+                        var constituencyName = constituencyName_.replace(
+                            / /g,
+                            "_"
+                        );
+                    } else {
+                        var constituencyName = constituencyName_;
+                    }
+                    // return false;
                     table.row
                         .add([
                             count++,
-                            data[index].name,
+                            data[index].ConstituencyCode,
+                            data[index].total,
+                            data[index].assigned,
+                            data[index].unAssigned,
                             `
-                            <a class="btn btn-success" href="#">Details</a>
+                            <a class="btn btn-success" href="../constituency/${constituencyName}">View Details</a>
                             `,
-                            `
-                        <a class="btn btn-info">UnAssign</a>
-                        `,
                         ])
                         .draw(false);
                 });

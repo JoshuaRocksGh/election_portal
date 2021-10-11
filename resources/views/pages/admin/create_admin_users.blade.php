@@ -70,12 +70,28 @@
                                                 <div class="form-group mb-1">
                                                     <label for="user_name" class="h4">User Mandate Type<span
                                                             class="text-danger">*</span></label>
-                                                    <select class="form-control" name="" id="user_mandate">
-                                                        <option value="">-- Select User Mandate Level -- </option>
-                                                        {{--  <option value="NationalLevel">National Level</option>  --}}
-                                                        <option value="RegionalLevel">Regional Level</option>
-                                                        <option value="ConstituencyLevel">Constituency Level</option>
-                                                    </select>
+                                                    @if (session()->get('UserMandate') == 'NationalLevel')
+                                                        <select class="form-control" name="" id="user_mandate">
+                                                            <option value="">-- Select User Mandate Level -- </option>
+                                                            <option value="NationalLevel">National Level</option>
+                                                            <option value="RegionalLevel">Regional Level</option>
+                                                            <option value="ConstituencyLevel">Constituency Level</option>
+                                                        </select>
+                                                    @elseif(session()->get('UserMandate') == "RegionalLevel")
+                                                        <select class="form-control" name="" id="user_mandate">
+                                                            <option value="">-- Select User Mandate Level -- </option>
+                                                            {{-- <option value="NationalLevel">National Level</option> --}}
+                                                            <option value="RegionalLevel">Regional Level</option>
+                                                            <option value="ConstituencyLevel">Constituency Level</option>
+                                                        </select>
+                                                    @elseif(session()->get('UserMandate') == "ConstituencyLevel")
+                                                        <select class="form-control" name="" id="user_mandate">
+                                                            <option value="">-- Select User Mandate Level -- </option>
+                                                            {{-- <option value="NationalLevel">National Level</option> --}}
+                                                            {{-- <option value="RegionalLevel">Regional Level</option> --}}
+                                                            <option value="ConstituencyLevel">Constituency Level</option>
+                                                        </select>
+                                                    @endif
                                                     {{-- <span class="text-danger" id="regional_user"
                                                         style="display: none">Please Select
                                                         Region</span> --}}

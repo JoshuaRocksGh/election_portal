@@ -73,14 +73,30 @@ class ConstituencyLevelController extends Controller
     public function unassign(Request $request)
     {
         // return $request;
-        $electoral_area = $request->query('electoral_area');
-        $user_id = $request->query('user_id');
-        $constituency = session()->get('Constituency');
-        $assign = $request->query('assign');
-        $UserConstituency = $request->query('UserConstituency');
-        // return $UserConstituency;
-        // view('snippets.side-bar', ['UserConstituency' => $UserConstituency]);
+        $Mandate = session()->get('UserMandate');
 
-        return view('pages.agents.unassign_agent', ['electoral_area' => $electoral_area, 'assign' => $assign, 'user_id' => $user_id, 'constituency' => $constituency, 'UserConstituency' => $UserConstituency]);
+        if ($Mandate !== "ConstituencyLevel") {
+            $UserRegion = session()->get('Region');
+
+            $electoral_area = $request->query('electoral_area');
+            $user_id = $request->query('user_id');
+            $constituency = session()->get('Constituency');
+            $assign = $request->query('assign');
+            $UserConstituency = $request->query('UserConstituency');
+            // return $UserConstituency;
+            // view('snippets.side-bar', ['UserConstituency' => $UserConstituency]);
+
+            return view('pages.agents.unassign_agent', ['electoral_area' => $electoral_area, 'UserRegion' => $UserRegion, 'assign' => $assign, 'user_id' => $user_id, 'constituency' => $constituency, 'UserConstituency' => $UserConstituency]);
+        } else {
+            $electoral_area = $request->query('electoral_area');
+            $user_id = $request->query('user_id');
+            $constituency = session()->get('Constituency');
+            $assign = $request->query('assign');
+            $UserConstituency = $request->query('UserConstituency');
+            // return $UserConstituency;
+            // view('snippets.side-bar', ['UserConstituency' => $UserConstituency]);
+
+            return view('pages.agents.unassign_agent', ['electoral_area' => $electoral_area, 'assign' => $assign, 'user_id' => $user_id, 'constituency' => $constituency, 'UserConstituency' => $UserConstituency]);
+        }
     }
 }

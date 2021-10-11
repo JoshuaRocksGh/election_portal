@@ -76,6 +76,7 @@ class AddAgentsController extends Controller
     public function agent_list()
     {
         $UserMandate = session()->get('UserMandate');
+        // return $UserMandate;
         if ($UserMandate == "ConstituencyLevel") {
             $UserConstituency_ = session()->get('Constituency');
             if ($UserConstituency_ == trim($UserConstituency_) && strpos($UserConstituency_, ' ') !== false) {
@@ -92,17 +93,19 @@ class AddAgentsController extends Controller
             }
         } elseif ($UserMandate == "RegionalLevel") {
             $UserRegion_ = session()->get('Region');
+            // return $UserRegion_;
+
             if ($UserRegion_ == trim($UserRegion_) && strpos($UserRegion_, ' ') !== false) {
                 $UserRegion = str_replace(' ', '_', $UserRegion_);
                 // echo 'has spaces, but not at beginning or end';
-                // echo $UserConstituency;
+                echo $UserRegion;
                 $AgentDetails = session()->get('AgentDetail');
-                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails]);
+                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, "UserRegion" => $UserRegion]);
                 // return view('pages.agents.add_agents', ['UserRegion' => $UserRegion]);
 
             } else {
                 $AgentDetails = session()->get('AgentDetail');
-                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails]);
+                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, "UserRegion" => $UserRegion_]);
                 // return view('pages.agents.add_agents', ['UserRegion' => $UserRegion_]);
             }
         } else {
@@ -153,7 +156,7 @@ class AddAgentsController extends Controller
             // 'MiddleName' => 'required',
             'SurName' => 'required',
             'DOB' =>  'required',
-            'Picture' => 'required',
+            // 'Picture' => 'required',
             'Region' => 'required',
             'Constituency' => 'required',
             'ElectoralArea' => 'required',
@@ -229,13 +232,13 @@ class AddAgentsController extends Controller
         $validator = Validator::make($request->all(), [
             'Id' => 'required',
             'PhoneNumber1' => 'required',
-            'PhoneNumber2' => 'required',
+            // 'PhoneNumber2' => 'required',
             'Gender' => 'required',
             'Fname' => 'required',
-            'MiddleName' => 'required',
+            // 'MiddleName' => 'required',
             'SurName' => 'required',
             'DOB' =>  'required',
-            'Picture' => 'required',
+            // 'Picture' => 'required',
             'Region' => 'required',
             'Constituency' => 'required',
             'ElectoralArea' => 'required',

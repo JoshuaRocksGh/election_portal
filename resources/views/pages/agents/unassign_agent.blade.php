@@ -22,7 +22,8 @@
 @section('content')
 
     <div class="container-fluid">
-        <h3 class="">{{ session()->get('Region') }} &nbsp; > &nbsp;<span class=" text-danger"> {{ $constituency }}</span>
+        <h3 class="">{{ session()->get('Region') }} &nbsp; > &nbsp;<span class=" text-danger">
+            {{ $UserConstituency }}</span>
             @if (session()->get('Region') == 'ConstituencyLevel')
                 echo (session()->get('Region'))
             @endif
@@ -38,7 +39,9 @@
                         <div class="row">
 
                             <div class="col-md-12 text-center">
-                                <b style="font-size: 48px" class="total_polling_stations">0</b>
+                                <b style="font-size: 48px ; display: none"
+                                    class="total_polling_stations constituency_assigment">0</b>
+                                <span class="spinner-border avatar-sm text-dark m-2" role="status"></span>
                             </div>
                         </div>
                     </div>
@@ -52,7 +55,9 @@
                         <div class="row">
 
                             <div class="col-md-12 text-center">
-                                <b style="font-size: 48px" class="assigned_polling_stations">0</b>
+                                <b style="font-size: 48px; display: none"
+                                    class="assigned_polling_stations constituency_assigment">0</b>
+                                <span class="spinner-border avatar-sm text-dark m-2" role="status"></span>
                             </div>
                         </div>
                     </div>
@@ -67,7 +72,9 @@
                         <div class="row">
 
                             <div class="col-md-12 text-center">
-                                <b style="font-size: 48px" class="unassigned_polling_stations">0</b>
+                                <b style="font-size: 48px; display: none"
+                                    class="unassigned_polling_stations constituency_assigment">0</b>
+                                <span class="spinner-border avatar-sm text-dark m-2" role="status"></span>
                             </div>
                         </div>
                     </div>
@@ -146,7 +153,7 @@
                                                 </select>
                                             </div>
                                         @endif
-                                        {{--  <input type="hidden" value={{ $UserConstituency }} id="user_constituency">  --}}
+                                        {{-- <input type="hidden" value={{ $UserConstituency }} id="user_constituency"> --}}
 
                                         <div class="row">
                                             <div class="col-md-4"></div>
@@ -205,7 +212,7 @@
         var user_id = '{{ $user_id }}'
 
 
-        var UserConstituency = '{{ session()->get('Constituency') }}'
+        var UserConstituency = '{{ $UserConstituency }}'
     </script>
 
 @endsection
