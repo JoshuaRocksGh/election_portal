@@ -16,6 +16,20 @@
     <style>
         /* CUSTOME STYLE GOES HERE */
 
+        .welcome_loader {
+            font-size: 150px;
+            color: #e00;
+            animation: beat .80s infinite alternate;
+            transform-origin: center;
+        }
+
+        /* Heart beat animation */
+        @keyframes beat {
+            to {
+                transform: scale(1.4);
+            }
+        }
+
     </style>
 
     @include('../snippets.style')

@@ -62,4 +62,18 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
+    .welcome_loader {
+        font-size: 150px;
+        color: #e00;
+        animation: beat .25s infinite alternate;
+        transform-origin: center;
+    }
+
+    /* Heart beat animation */
+    @keyframes beat {
+        to {
+            transform: scale(1.4);
+        }
+    }
+
 </style>

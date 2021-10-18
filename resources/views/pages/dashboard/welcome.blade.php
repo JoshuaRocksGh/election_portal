@@ -8,7 +8,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-6 text-center">
                 <br><br><br><br><br><br><br><br><br><br>
-                <img src="{{ asset('assets/images/Coat.png') }}" alt="">
+                <img src="{{ asset('assets/images/Coat.png') }}" alt="" class="welcome_loader">
             </div>
             <div class="col-md-3"></div>
         </div>
@@ -51,7 +51,7 @@
                 } else {
                     return back();
                 }
-            }, 1000)
+            }, 2000)
 
 
 
