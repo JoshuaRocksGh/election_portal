@@ -32,7 +32,14 @@
                         <hr>
                         <div class="message_recipient">
                             <h3>Select Sending Options<span class="text-danger">*</span></h3>
-                            @if (session()->get('UserMandate') == 'NationalLevel')
+                            @if (session()->get('UserMandate') != 'NationalLevel')
+                                <div class="checkbox checkbox-dark mb-2">
+                                    <input id="checkbox6c" type="checkbox" disabled>
+                                    <label for="checkbox6c" class="h4">
+                                        ALL
+                                    </label>
+                                </div>
+                            @elseif(session()->get('UserMandate') == 'NationalLevel')
                                 <div class="checkbox checkbox-dark mb-2">
                                     <input id="checkbox6c" type="checkbox">
                                     <label for="checkbox6c" class="h4">
@@ -52,13 +59,17 @@
                                     </select>
                                 @elseif(session()->get("UserMandate") == "RegionalLevel")
                                     {{-- <input type="text"> --}}
-                                    <select class="form-control col-md-12 readOnly" id="agent_region" disabled>
-                                        <option value={{ session()->get('Region') }}>{{ session()->get('Region') }}
+                                    <select class="form-control col-md-12 readOnly" id="agent_region"
+                                        style="background:#DCDCDC" disabled>
+                                        <option value="{{ session()->get('Region') }}" selected>
+                                            {{ session()->get('Region') }}
                                         </option>
                                     </select>
                                 @elseif(session()->get("UserMandate") == "ConstituencyLevel")
-                                    <select class="form-control col-md-12 readOnly" id="agent_region" disabled>
-                                        <option value={{ session()->get('Region') }}>{{ session()->get('Region') }}
+                                    <select class="form-control col-md-12 readOnly" id="agent_region"
+                                        style="background:#DCDCDC" disabled>
+                                        <option value={{ session()->get('Region') }} selected>
+                                            {{ session()->get('Region') }}
                                         </option>
                                     </select>
                                 @endif
@@ -68,14 +79,17 @@
                                 {{-- <input type="text" id="agent_constituency" class="form-control col-md-8"
                                                 placeholder="Enter Agent Constituency"> --}}
                                 @if (session()->get('UserMandate') == 'ConstituencyLevel')
-                                    <select class="form-control col-md-12" id="agent_constituency" multiple disabled>
+                                    <select class="form-control col-md-12" id="agent_constituency"
+                                        style="background:#DCDCDC" multiple disabled>
                                         <option value={{ session()->get('Constituency') }}>
                                             {{ session()->get('Constituency') }}</option>
                                     </select>
 
-                                @elseif(session()->get('UserMandate') !== 'ConstituencyLevel')
+                                @elseif(session()->get('UserMandate') != 'ConstituencyLevel')
+                                    <span class="spinner-border spinner-border-md m-2 bg-black constituency_spinner"
+                                        role="status" style="display: none"></span>
                                     <select class="form-control col-md-12" id="agent_constituency" multiple>
-                                        <option value="">-- Select Constituency --</option>
+                                        <option value=""></option>
                                     </select>
                                 @endif
                             </div>
@@ -97,10 +111,15 @@
 
                                 <label for="simpleinput" class="col-md-12 h4"> Send To<span
                                         class="text-danger">*</span></label>
-                                <textarea class="col-md-12 readOnly" name="send_to" id="send_to" cols="30" rows="10"
-                                    placeholder="Recipient" readonly></textarea>
-                                {{-- <input type="text" id="send_to" class="form-control col-md-12"> --}}
-
+                                @if (session()->get('UserMandate') == 'ConstituencyLevel')
+                                    <textarea class="col-md-12 readOnly" value="{{ session()->get('Constituency') }}"
+                                        name="send_to" id="send_to" style="background:#DCDCDC" cols="30" rows="10"
+                                        readonly>{{ session()->get('Constituency') }}</textarea>
+                                    {{-- <input type="text" id="send_to" class="form-control col-md-12"> --}}
+                                @elseif(session()->get('UserMandate') != "ConstituencyLevel")
+                                    <textarea class="col-md-12 readOnly" name="send_to" id="send_to" cols="30" rows="10"
+                                        placeholder="Recipient" readonly></textarea>
+                                @endif
 
                             </div>
 
@@ -415,6 +434,10 @@
 
     <script src="sweetalert2.all.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        var my_mandate = "{{ session()->get('UserMandate') }}"
+    </script>
 
     <script src="{{ asset('assets/js/send_message.js') }}"></script>
 @endsection

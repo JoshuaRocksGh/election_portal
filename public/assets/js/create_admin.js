@@ -12,13 +12,26 @@ function get_regions() {
             // console.log("===");
             // console.log(data);
 
+            // alert(this_name);
             $.each(data, function (index) {
                 // console.log(data[index]);
-                $("#agent_region").append(
-                    $("<option>", {
-                        value: data[index],
-                    }).text(data[index])
-                );
+                var this_name = $("#my_region_name").val();
+                if (this_name == data[index]) {
+                    // alert(data[index]);
+                    $("#agent_region").prop("disabled", true);
+                    $("#agent_region").css("background", "#fefefe");
+                    $("#agent_region ").append(
+                        $("<option selected>", {
+                            value: data[index],
+                        }).text(data[index])
+                    );
+                } else {
+                    $("#agent_region").append(
+                        $("<option>", {
+                            value: data[index],
+                        }).text(data[index])
+                    );
+                }
             });
         },
         error: function (xhr, status, error) {
@@ -87,100 +100,10 @@ function dont_call_constituency() {
     $("#agent_constituency").css("background", "#DCDCDC");
 }
 
-$("#user_mandate").change(function () {
-    var user_mandate = $(this).val();
-    console.log(user_mandate);
-
-    // $("#agent_region").prop("disabled", true);
-    // $("#agent_region").css("background", "#DCDCDC");
-    // $("#agent_constituency").prop("disabled", true);
-    // $("#agent_constituency").css("background", "#DCDCDC");
-
-    if (user_mandate === "NationalLevel") {
-        $("#agent_region").prop("disabled", true);
-        $("#agent_region").css("background", "#DCDCDC");
-        $("#agent_constituency").prop("disabled", true);
-        $("#agent_constituency").css("background", "#DCDCDC");
-        return;
-    } else if (user_mandate === "RegionalLevel") {
-        console.log("mandate is =>" + user_mandate);
-        // $("#agent_region").selectpicker().prop("disabled", false);
-
-        $("#agent_region").prop("disabled", false);
-        $("#agent_region").css("background", "#FFFFFF");
-        $("#constituency_spinner").hide();
-
-        $("#agent_constituency").prop("disabled", true);
-        $("#agent_constituency").css("background", "#DCDCDC");
-        toaster("Please Select Region of User", "info", 10000);
-        return;
-    } else if (user_mandate === "ConstituencyLevel") {
-        $("#agent_region").prop("disabled", false);
-        // $("#agent_region").css("background", "#FFFFFF");
-
-        $("#agent_region").change(function () {
-            var region = $(this).val();
-            $("#agent_constituency").prop("disabled", true);
-            $("#agent_constituency").css("background", "#DCDCDC");
-
-            console.log(region);
-            get_constituency(region);
-        });
-        toaster("Please Select Region and Constituency of User", "info", 10000);
-        return;
-    } else {
-    }
-
-    // switch (user_mandate) {
-    //     case "NationalLevel":
-    //         $("#agent_region").prop("disabled", true);
-    //         $("#agent_region").css("background", "#DCDCDC");
-    //         $("#agent_constituency").prop("disabled", true);
-    //         $("#agent_constituency").css("background", "#DCDCDC");
-    //         break;
-
-    //     case "RegionalLevel":
-    //         // $("#agent_region").prop("disabled", false);
-    //         // $("#agent_region").css("background", "#FFFFFF");
-    //         $("#agent_region").prop("disabled", false);
-    //         $("#agent_region").css("background", "#DCDCDC");
-    //         $("#constituency_spinner").hide();
-
-    //         $("#agent_constituency").prop("disabled", true);
-    //         $("#agent_constituency").css("background", "#DCDCDC");
-
-    //         toaster("Please Select Region of User", "info", 10000);
-    //         // dont_call_constituency();
-    //         break;
-
-    //     case "ConstituencyLevel":
-    //         $("#agent_region").prop("disabled", false);
-    //         $("#agent_region").css("background", "#FFFFFF");
-
-    //         $("#agent_region").change(function () {
-    //             var region = $(this).val();
-    //             $("#agent_constituency").prop("disabled", true);
-    //             $("#agent_constituency").css("background", "#DCDCDC");
-
-    //             console.log(region);
-    //             get_constituency(region);
-    //         });
-    //         toaster(
-    //             "Please Select Region and Constituency of User",
-    //             "info",
-    //             10000
-    //         );
-
-    //         break;
-
-    //     default:
-    //         break;
-    // }
-});
 $(document).ready(function () {
     //call functions
     setTimeout(function () {
-        // alert("Winner");
+        // alert(my_mandate);
         get_regions();
     }, 200);
 
@@ -194,6 +117,72 @@ $(document).ready(function () {
     //  $("#agent_region").chosen();
 
     // $(".agent_select select").selectpicker();
+
+    $("#user_telephone_number").keyup(function () {
+        $("#admin_user_id").val($(this).val());
+    });
+
+    $("#user_mandate").change(function () {
+        var user_mandate = $(this).val();
+        console.log(user_mandate);
+
+        // $("#agent_region").prop("disabled", true);
+        // $("#agent_region").css("background", "#DCDCDC");
+        // $("#agent_constituency").prop("disabled", true);
+        // $("#agent_constituency").css("background", "#DCDCDC");
+
+        if (my_mandate == "NationalLevel") {
+            if (user_mandate === "NationalLevel") {
+                $("#agent_region").prop("disabled", true);
+                $("#agent_region").css("background", "#DCDCDC");
+                $("#agent_constituency").prop("disabled", true);
+                $("#agent_constituency").css("background", "#DCDCDC");
+                return;
+            } else if (user_mandate === "RegionalLevel") {
+                $("#agent_region").prop("disabled", false);
+                $("#agent_region").css("background", "#FFFFFF");
+                $("#constituency_spinner").hide();
+
+                $("#agent_constituency").prop("disabled", true);
+                $("#agent_constituency").css("background", "#DCDCDC");
+                toaster("Please Select Region of User", "info", 10000);
+                return;
+            } else if (user_mandate === "ConstituencyLevel") {
+                $("#agent_region").prop("disabled", false);
+                // $("#agent_region").css("background", "#FFFFFF");
+
+                $("#agent_region").change(function () {
+                    var region = $(this).val();
+                    $("#agent_constituency").prop("disabled", true);
+                    $("#agent_constituency").css("background", "#DCDCDC");
+
+                    console.log(region);
+                    get_constituency(region);
+                });
+                toaster(
+                    "Please Select Region and Constituency of User",
+                    "info",
+                    10000
+                );
+                return;
+            } else {
+                return;
+            }
+        } else if (my_mandate == "RegionalLevel") {
+            if (user_mandate === "ConstituencyLevel") {
+                $("#agent_constituency").prop("disabled", false);
+                $("#agent_constituency").css("background", "#FFFFFF");
+
+                console.log(my_region);
+                get_constituency(my_region);
+            } else {
+                $("#agent_constituency").prop("disabled", true);
+                $("#agent_constituency").css("background", "#DCDCDC");
+            }
+        } else {
+            return false;
+        }
+    });
 
     $("#create_admin").click(function (e) {
         e.preventDefault();
@@ -275,14 +264,17 @@ $(document).ready(function () {
                     console.log(response);
                     if (response.status == "ok") {
                         Swal.fire(response.message, "", "success");
-                        location.reload();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+
                         // window.location = "home";
-                        $("#log_in_text").show();
+                        $(".log_in_text").show();
                         $(".spinner-text").hide();
                         $("#create_admin").attr("disabled", true);
                     } else {
                         toaster(response.message, "error", 5000);
-                        $("#log_in_text").show();
+                        $(".log_in_text").show();
                         $(".spinner-text").hide();
                         $("#create_admin").attr("disabled", false);
                     }
@@ -290,7 +282,7 @@ $(document).ready(function () {
             });
         } else {
             toaster("Passwords do not match", "error", 5000);
-            $("#log_in_text").show();
+            $(".log_in_text").show();
             $(".spinner-text").hide();
             $("#create_admin").attr("disabled", false);
         }

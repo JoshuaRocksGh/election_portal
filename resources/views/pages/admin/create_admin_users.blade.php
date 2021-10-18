@@ -19,10 +19,35 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <br><br>
+                {{-- <br><br> --}}
+                {{-- <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        @if (session()->get('UserMandate') == 'NationalLevel')
+                            <div class="alert alert-warning text-center" role="alert">
+                                <i class="mdi mdi-alert-outline mr-2"></i> <strong>Create a National, Regional or
+                                    Constituency User</strong>
+
+                            </div>
+                        @elseif(session()->get('UserMandate') == "RegionalLevel")
+                            <div class="alert alert-warning text-center" role="alert">
+                                <i class="mdi mdi-alert-outline mr-2"></i> <strong>Create a Regional or Constituency
+                                    User</strong>
+
+                            </div>
+                        @elseif(session()->get('UserMandate') == "ConstituencyLevel")
+                            <div class="alert alert-warning text-center" role="alert">
+                                <i class="mdi mdi-alert-outline mr-2"></i> <strong>Create a Constituency
+                                    User</strong>
+
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-md-2"></div>
+                </div> --}}
 
                 <div class="container">
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
                             @if (session()->get('UserMandate') == 'NationalLevel')
@@ -38,7 +63,7 @@
                             @endif
                         </div>
                         <div class="col-md-2"></div>
-                    </div>
+                    </div> --}}
 
                     <div class="card"
                         style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
@@ -84,12 +109,15 @@
                                                             <option value="RegionalLevel">Regional Level</option>
                                                             <option value="ConstituencyLevel">Constituency Level</option>
                                                         </select>
+                                                        {{-- <input type="hidden" value="{{ session()->get('Region') }}"
+                                                            id="my_region_name"> --}}
                                                     @elseif(session()->get('UserMandate') == "ConstituencyLevel")
-                                                        <select class="form-control" name="" id="user_mandate">
-                                                            <option value="">-- Select User Mandate Level -- </option>
+                                                        <select class="form-control" name="" id="user_mandate" disabled>
+                                                            <option value="ConstituencyLevel" selected>Constituency Level
+                                                            </option>
                                                             {{-- <option value="NationalLevel">National Level</option> --}}
                                                             {{-- <option value="RegionalLevel">Regional Level</option> --}}
-                                                            <option value="ConstituencyLevel">Constituency Level</option>
+                                                            {{-- <option value="ConstituencyLevel">Constituency Level</option> --}}
                                                         </select>
                                                     @endif
                                                     {{-- <span class="text-danger" id="regional_user"
@@ -101,24 +129,40 @@
                                                     <label for="simpleinput" class="h4 col-md-12">User
                                                         Constituency</label>
 
-                                                    <select class="form-control col-md-10 ml-2" id="agent_constituency">
-                                                        <option value="">-- Select Constituency--</option>
-                                                    </select>
-                                                    <div class="d-flex align-items-center ml-2">
-                                                        <br>
-                                                        <span class="spinner-border spinner-border-sm mr-1"
-                                                            id="constituency_spinner" role="status" aria-hidden="true"
-                                                            style="display:none"></span>
-                                                    </div>
+                                                    @if (session()->get('UserMandate') != 'ConstituencyLevel')
+
+                                                        <select class="form-control col-md-10 ml-2" id="agent_constituency">
+                                                            <option value="">-- Select Constituency--</option>
+                                                        </select>
+                                                        <div class="d-flex align-items-center ml-2">
+                                                            <br>
+                                                            <span class="spinner-border spinner-border-sm mr-1"
+                                                                id="constituency_spinner" role="status" aria-hidden="true"
+                                                                style="display:none"></span>
+                                                        </div>
+                                                    @elseif(session()->get('UserMandate') == "ConstituencyLevel")
+                                                        <select class="form-control col-md-10 ml-2" id="agent_constituency"
+                                                            style="background: #DCDCDC" disabled>
+                                                            <option value="{{ session()->get('Constituency') }}" selected>
+                                                                {{ session()->get('Constituency') }}</option>
+                                                        </select>
+                                                        {{-- <div class="d-flex align-items-center ml-2">
+                                                            <br>
+                                                            <span class="spinner-border spinner-border-sm mr-1"
+                                                                id="constituency_spinner" role="status" aria-hidden="true"
+                                                                style="display:none"></span>
+                                                        </div> --}}
+
+                                                    @endif
 
                                                 </div>
 
                                                 <div class="form-group mb-1">
-                                                    <label for="user_name" class="h4 text-blue">Admin Password<span
+                                                    <label for="user_name" class="h4 text-blue">User Default Password<span
                                                             class="text-danger">*</span></label>
-                                                    <input class="form-control" type="password" id="admin_password"
-                                                        autocomplete="on" reqiured placeholder="Enter Admin Password"
-                                                        autocomplete="off">
+                                                    <input class="form-control readOnly" type="text" id="admin_password"
+                                                        value="PASS1234" autocomplete="on" readonly placeholder="PASS1234"
+                                                        style="background: #DCDCDC" autocomplete="off">
 
                                                 </div>
                                             </div>
@@ -141,27 +185,38 @@
                                                 <div class="form-group mb-1 agent_select">
                                                     <label for="simpleinput" class="h4">User Region</label>
 
-                                                    <select class="form-control" id="agent_region">
-                                                        <option value="">-- Select Region --</option>
+                                                    @if (session()->get('UserMandate') == 'NationalLevel')
 
-                                                        {{-- <option value="Male" data-tokens="ketchup mustard">Male</option>
+                                                        <select class="form-control" id="agent_region">
+                                                            <option value="">-- Select Region --</option>
+
+                                                            {{-- <option value="Male" data-tokens="ketchup mustard">Male</option>
                                                         <option value="Female">Female</option> --}}
-                                                    </select>
+                                                        </select>
+                                                    @elseif(session()->get('UserMandate') != "NationalLevel")
+                                                        <select class="form-control" id="agent_region" disabled>
+                                                            <option value="{{ session()->get('Region') }}">
+                                                                {{ session()->get('Region') }}</option>
+
+                                                            {{-- <option value="Male" data-tokens="ketchup mustard">Male</option>
+                                                        <option value="Female">Female</option> --}}
+                                                        </select>
+                                                    @endif
                                                 </div>
 
                                                 <div class="form-group mb-1">
                                                     <label for="user_name" class="h4 text-blue">User ID<span
                                                             class="text-danger">*</span></label>
-                                                    <input class="form-control" type="text" id="admin_user_id"
-                                                        placeholder="Enter User ID (eg. KAppiah)" autocomplete="off">
+                                                    <input class="form-control readOnly" type="text" id="admin_user_id"
+                                                        readonly style="background: #DCDCDC" autocomplete="off">
                                                 </div>
 
-                                                <div class="form-group mb-1">
+                                                <div class="form-group mb-1" style="display: none">
                                                     <label for="user_name" class="h4 text-blue">Confirm Admin
                                                         Password<span class="text-danger">*</span></label>
-                                                    <input class="form-control" type="password"
-                                                        id="confirm_admin_password" required autocomplete="on"
-                                                        placeholder="Confirm Admin Password" autocomplete="off">
+                                                    <input class="form-control" type="text" id="confirm_admin_password"
+                                                        style="background: #DCDCDC" required autocomplete="on"
+                                                        value="PASS1234" autocomplete="off">
                                                 </div>
 
 
@@ -220,5 +275,10 @@
 
 
     <script src="{{ asset('assets/js/create_admin.js') }}"></script>
+
+    <script>
+        var my_mandate = "{{ session()->get('UserMandate') }}"
+        var my_region = "{{ session()->get('Region') }}"
+    </script>
 
 @endsection

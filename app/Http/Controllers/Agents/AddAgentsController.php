@@ -392,6 +392,10 @@ class AddAgentsController extends Controller
             "region" => 'required'
         ]);
 
+        // if ($validator->fails()) {
+        //     return back()->with('errors', $validator->messages()->all()[0])->withInput();
+        // }
+
 
         $base_response = new BaseResponse();
 

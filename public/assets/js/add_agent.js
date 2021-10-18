@@ -2,6 +2,7 @@
 
 function get_regions() {
     $("#region_spinner").show();
+    // var my_region = $("#my_region").val();
     $.ajax({
         type: "GET",
         url: "get-regions-api",
@@ -155,7 +156,14 @@ $("#agent_electoral_area").prop("disabled", true);
 $("#agent_electoral_area").css("background", "#DCDCDC");
 $(document).ready(function () {
     setTimeout(function () {
-        get_regions();
+        // alert(my_mandate);
+        if (my_mandate == "NationalLevel") {
+            get_regions();
+        } else if (my_mandate == "RegionalLevel") {
+            get_constituency(my_region);
+        } else if (my_mandate == "ConstituencyLevel") {
+            get_polling_station(my_constituency);
+        }
     }, 200);
 
     function toaster(message, icon, timer) {

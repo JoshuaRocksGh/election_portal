@@ -81,31 +81,31 @@
                     </li>
                 @endif
 
-                @if (session()->get('UserMandate') !== 'ConstituencyLevel')
-                    <li>
-                        <a href="#sidebarLoans" data-toggle="collapse">
-                            <i class="mdi mdi-briefcase-check-outline"></i>
-                            <span> Users </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="sidebarLoans">
-                            <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ url('create-user') }}">Create User</a>
-                                </li>
-                                {{-- <li>
+                {{-- @if (session()->get('UserMandate') !== 'ConstituencyLevel') --}}
+                <li>
+                    <a href="#sidebarLoans" data-toggle="collapse">
+                        <i class="mdi mdi-briefcase-check-outline"></i>
+                        <span> Users </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarLoans">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ url('create-user') }}">Create User</a>
+                            </li>
+                            {{-- <li>
                                 <a href="{{ url('loan-request') }}">Loan Request</a>
                             </li> --}}
-                                {{-- <li>
+                            {{-- <li>
                                 <a href="#">Loan Payment</a>
                             </li> --}}
-                                {{-- <li>
+                            {{-- <li>
                                 <a href="project-create.html">Create Project</a>
                             </li> --}}
-                            </ul>
-                        </div>
-                    </li>
-                @endif
+                        </ul>
+                    </div>
+                </li>
+                {{-- @endif --}}
 
 
 

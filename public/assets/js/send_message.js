@@ -25,6 +25,7 @@ function get_regions() {
 }
 
 function get_constituency(region) {
+    $(".constituency_spinner").show();
     $.ajax({
         type: "GET",
         url: "get-constituency-api?region=" + region,
@@ -37,6 +38,8 @@ function get_constituency(region) {
             if (response.status == "ok") {
                 $("#agent_constituency").prop("disabled", false);
                 $("#agent_constituency").css("background", "#fefefe");
+                $(".constituency_spinner").hide();
+                $("#agent_constituency").show();
 
                 $.each(data, function (index) {
                     // console.log(data[index]);
@@ -54,9 +57,42 @@ function get_constituency(region) {
 $("#send_to").prop("disabled", true);
 $("#send_to").css("background", "#DCDCDC");
 
+function getUserRegion(agent_region) {
+    get_constituency(agent_region);
+    // alert(agent_region);
+}
+
+function toaster(message, icon, timer) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: timer,
+        timerProgressBar: false,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: icon,
+        title: message,
+    });
+}
+
 $(document).ready(function () {
     setTimeout(function () {
-        get_regions();
+        // alert(my_mandate);
+        if (my_mandate == "NationalLevel") {
+            get_regions();
+        } else if (my_mandate == "RegionalLevel") {
+            var agent_region = $("#agent_region").val();
+
+            getUserRegion(agent_region);
+        } else {
+            return false;
+        }
     }, 200);
 
     $("#agent_region").change(function () {
@@ -121,18 +157,11 @@ $(document).ready(function () {
         var recipients = $("#send_to").val();
         var message = $("#text_message").val();
 
-        // console.log("subject =>" + subject);
-        // console.log("recipients =>" + recipients);
-        // console.log("message =>" + message);
+        console.log("subject =>" + subject);
+        console.log("recipients =>" + recipients);
+        console.log("message =>" + message);
 
-        if (
-            subject !== "" ||
-            subject !== undefined ||
-            message !== "" ||
-            message !== undefined ||
-            recipients !== "" ||
-            recipients !== undefined
-        ) {
+        if (subject != "" && message != "" && recipients != "") {
             $.ajax({
                 type: "POST",
                 url: "send-agent-message-api",

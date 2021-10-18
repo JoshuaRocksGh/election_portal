@@ -114,8 +114,6 @@ class AdministrationController extends Controller
                 "Username" => $user_id,
                 "Password" => $password
             ];
-
-            // return $data;
         }
 
         // $data  = [
@@ -124,6 +122,7 @@ class AdministrationController extends Controller
         //     "password" => $password
 
         // ];
+        // return $data;
 
 
 

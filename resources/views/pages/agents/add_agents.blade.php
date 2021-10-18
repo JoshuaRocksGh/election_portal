@@ -215,14 +215,30 @@
                                                     class="text-danger">*</span></label>
                                             {{-- <input type="text" id="agent_region" class="form-control col-md-8"
                                                 placeholder="Enter Agent Region"> --}}
-                                            <div class="d-flex align-items-center ml-1">
 
-                                                <span class="spinner-border spinner-border-sm mr-1" id="region_spinner"
-                                                    role="status" aria-hidden="true" style="display:none"></span>
-                                            </div>
-                                            <select class="form-control col-md-7 ml-3" id="agent_region">
-                                                <option value="">-- Select Region --</option>
-                                            </select>
+                                            @if (session()->get('UserMandate') == 'NationalLevel')
+                                                <div class="d-flex align-items-center ml-1">
+
+                                                    <span class="spinner-border spinner-border-sm mr-1" id="region_spinner"
+                                                        role="status" aria-hidden="true" style="display:none"></span>
+                                                </div>
+                                                <select class="form-control col-md-7 ml-3" id="agent_region">
+                                                    <option value="">-- Select Region --</option>
+                                                </select>
+                                            @elseif(session()->get('UserMandate') != "NationalLevel")
+                                                {{-- <div class="d-flex align-items-center ml-1">
+
+                                                    <span class="spinner-border spinner-border-sm mr-1" id="region_spinner"
+                                                        role="status" aria-hidden="true" style="display:none"></span>
+                                                </div> --}}
+                                                <select class="form-control col-md-7 ml-3" id="agent_region" disabled
+                                                    style="background: #DCDCDC">
+                                                    <option value="{{ session()->get('Region') }}" selected>
+                                                        {{ session()->get('Region') }}</option>
+                                                </select>
+
+                                                {{-- <input type="text" value="{{ session()->get('Region') }}" id="my_region"> --}}
+                                            @endif
                                         </div>
 
                                         <div class="form-group mb-1 row">
@@ -230,15 +246,29 @@
                                                     class="text-danger">*</span></label>
 
                                             <input type="hidden" id="agent_constituency_" class="form-control col-md-4">
-                                            <div class="d-flex align-items-center ml-1">
+                                            @if (session()->get('UserMandate') != 'ConstituencyLevel')
+                                                <div class="d-flex align-items-center ml-1">
 
-                                                <span class="spinner-border spinner-border-sm mr-1"
-                                                    id="constituency_spinner" role="status" aria-hidden="true"
-                                                    style="display:none"></span>
-                                            </div>
-                                            <select class="form-control col-md-7 ml-3" id="agent_constituency">
-                                                <option value="">-- Select Constituency--</option>
-                                            </select>
+                                                    <span class="spinner-border spinner-border-sm mr-1"
+                                                        id="constituency_spinner" role="status" aria-hidden="true"
+                                                        style="display:none"></span>
+                                                </div>
+                                                <select class="form-control col-md-7 ml-3" id="agent_constituency">
+                                                    <option value="">-- Select Constituency--</option>
+                                                </select>
+                                            @elseif(session()->get('UserMandate') == "ConstituencyLevel")
+                                                <div class="d-flex align-items-center ml-1">
+
+                                                    <span class="spinner-border spinner-border-sm mr-1"
+                                                        id="constituency_spinner" role="status" aria-hidden="true"
+                                                        style="display:none"></span>
+                                                </div>
+                                                <select class="form-control col-md-7 ml-3" id="agent_constituency" disabled
+                                                    style="background: #DCDCDC">
+                                                    <option value="{{ session()->get('Constituency') }}">
+                                                        {{ session()->get('Constituency') }}</option>
+                                                </select>
+                                            @endif
 
                                         </div>
 
@@ -423,6 +453,13 @@
 
     <script src="sweetalert2.all.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        var my_mandate = "{{ session()->get('UserMandate') }}"
+
+        var my_region = "{{ session()->get('Region') }}"
+
+        var my_constituency = "{{ session()->get('Constituency') }}"
+    </script>
 
     <script src="{{ asset('assets/js/add_agent.js') }}"></script>
 @endsection
