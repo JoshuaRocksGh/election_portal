@@ -115,7 +115,7 @@ function agent_assignments(constituency) {
                             data[index].ElectoralArea,
                             data[index].UserId,
                             `
-                            <a class="btn btn-danger" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&UserConstituency=${UserConstituency}&user_id=${data[index].UserId}&assign='false' data-value=${data[index].ElectoralArea}>UnAssign</a>
+                            <a class="btn btn-danger" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&UserConstituency=${UserConstituency}&user_id=${data[index].UserId}&assign=false' data-value=${data[index].ElectoralArea}>UnAssign</a>
                             `,
                         ])
                         .draw(false);

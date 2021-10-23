@@ -607,7 +607,7 @@
 
     <script src="{{ asset('assets/js/home.js') }}"></script>
     <script>
-        var AgentDetail = @json(session()->get('AgentDetail'));
+        var AgentDetail = @json(session()->get('Agents'));
         {{-- var AgentDetail = @json($AgentDetails); --}}
         var UserMandate = @json(session()->get('UserMandate'));
         {{-- var UserRegion = @json(session()->get('Region')); --}}

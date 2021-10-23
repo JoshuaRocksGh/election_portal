@@ -85,12 +85,14 @@ function get_polling_station(constituency) {
             // console.log(data);
             let selectize = $("#agent_electoral_area").selectize()[0].selectize;
             // console.log(data);
-            selectize.clearOptions();
+            // selectize.clearOptions();
 
             $("#agent_electoral_area option").remove();
 
             if (response.status == "ok") {
                 $("#polling_station_spinner").hide();
+                // $("#agent_electoral_area").show();
+
                 $.each(data, function (index) {
                     // console.log(data[index]);
                     $("#agent_electoral_area").append(
@@ -420,7 +422,7 @@ $(document).ready(function () {
 
             // window.location.href = "{{ url('add-agent') }}";
         }
-        $(".confirm_agent").prop("disabled", true);
+        $("#confirm_agent").prop("disabled", true);
         $(".spinner-text").show();
         $(".agent_text").hide();
         $.ajax({
@@ -461,7 +463,7 @@ $(document).ready(function () {
                     }, 3000);
                 } else {
                     toaster(response.message, "error", 10000);
-                    $(".confirm_agent").prop("disabled", false);
+                    $("#confirm_agent").prop("disabled", false);
                     $(".spinner-text").hide();
                     $(".agent_text").show();
                 }

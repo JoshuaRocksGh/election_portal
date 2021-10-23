@@ -235,6 +235,9 @@ $("#search_agent_button").click(function (e) {
                     });
                 } else {
                     $("#search_agent_button").prop("disabled", false);
+                    $("#edit_spinner").hide();
+                    $("#new_agent_form").toggle("500");
+
                     return false;
                 }
             },
@@ -344,7 +347,6 @@ $(document).ready(function () {
 
         if (
             fname == "" ||
-            middile_name == "" ||
             surname == "" ||
             gender == "" ||
             dob == "" ||
@@ -424,6 +426,10 @@ $(document).ready(function () {
             window.location.href = "{{ url('add-agent') }}";
         }
 
+        $("#confirm_agent").prop("disabled", true);
+        $(".spinner-text").show();
+        $(".agent_text").hide();
+
         $.ajax({
             type: "POST",
             url: "edit-agent-api",
@@ -455,9 +461,14 @@ $(document).ready(function () {
                 if (response.status == "ok") {
                     Swal.fire(response.message, "", "success");
                     // redirect_page();
-                    location.reload();
+                    setTimeout(function () {
+                        location.reload();
+                    }, 3000);
                 } else {
                     toaster(response.message, "error", 10000);
+                    $("#confirm_agent").prop("disabled", false);
+                    $(".spinner-text").hide();
+                    $(".agent_text").show();
                 }
             },
             error: function (xhr) {

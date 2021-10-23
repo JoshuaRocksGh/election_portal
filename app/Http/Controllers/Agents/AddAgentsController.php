@@ -83,11 +83,11 @@ class AddAgentsController extends Controller
                 $UserConstituency = str_replace(' ', '_', $UserConstituency_);
                 // echo 'has spaces, but not at beginning or end';
                 // echo $UserConstituency;
-                $AgentDetails = session()->get('AgentDetail');
+                $AgentDetails = session()->get('Agents');
                 return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, 'UserConstituency' => $UserConstituency]);
                 // return view('pages.agents.add_agents', ['UserConstituency' => $UserConstituency]);
             } else {
-                $AgentDetails = session()->get('AgentDetail');
+                $AgentDetails = session()->get('Agents');
                 return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, 'UserConstituency' => $UserConstituency_]);
                 // return view('pages.agents.add_agents', ['UserConstituency' => $UserConstituency_]);
             }
@@ -254,7 +254,7 @@ class AddAgentsController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
-        return $request;
+        // return $request;
 
 
         $data = [
@@ -310,6 +310,8 @@ class AddAgentsController extends Controller
 
     public function get_agent_details(Request $request)
     {
+
+        // return $request;
 
         $validator = Validator::make($request->all(), [
             "phone_number" => "required"

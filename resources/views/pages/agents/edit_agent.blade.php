@@ -419,7 +419,14 @@
                                     <div class="col-md-4">
                                         <button type="button"
                                             class="btn btn-success width-lg waves-effect waves-light float-right"
-                                            id="confirm_agent"><i class="mdi mdi-check-all mr-2"></i>Confirm</button>
+                                            id="confirm_agent">
+                                            <span class="agent_text"><i
+                                                    class="mdi mdi-check-all mr-2"></i>Confirm</span>
+
+                                            <span class="spinner-border spinner-border-sm mr-1 spinner-text" role="status"
+                                                aria-hidden="true" style="display: none"></span>
+
+                                        </button>
                                     </div>
                                     <div class="col-md-2"></div>
                                 </div>

@@ -26,7 +26,7 @@
 
     <div class="container-fluid">
         <h3 class="">{{ session()->get('Region') }} &nbsp; > &nbsp;<span class=" text-danger">
-            {{ $UserConstituency }}</span>
+                {{ $UserConstituency }}</span>
             @if (session()->get('Region') == 'ConstituencyLevel')
                 echo (session()->get('Region'))
             @endif
@@ -36,7 +36,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card"
-                    style="background-color: rgba(136, 198, 197, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    style="background-color: rgba(32, 185, 252, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                     <div class="card-body">
                         <h3 class="text-center mt-0">POLLING STATIONS</h3>
                         <div class="row">
@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card"
-                    style="background-color: rgba(32, 185, 252, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    style="background-color: rgba(136, 198, 197, 0.3 );backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                     <div class="card-body">
                         <h3 class="text-center mt-0">ASSIGNED POLLING STATIONS</h3>
                         <div class="row">
@@ -117,69 +117,69 @@
 
                         <div class="row">
                             <div class="col-12">
-                                <div class="" >
+                                <div class="">
                                     <div class=" card-body">
 
-                                    <h4 class="header-title">Assigned Agents</h4>
+                                        <h4 class="header-title">Assigned Agents</h4>
 
 
-                                    <table id="datatable-buttons"
-                                        class="table table-striped dt-responsive nowrap w-100 assigned_agent_list">
-                                        <thead class="bg-info">
-                                            <tr class="text-white">
-                                                <th>No.</th>
-                                                <th>Name</th>
-                                                <th>Region</th>
-                                                <th>Constituency</th>
-                                                <th>Electoral Area</th>
-                                                <th>User Id</th>
-                                                <th>Action</th>
+                                        <table id="datatable-buttons"
+                                            class="table table-striped dt-responsive nowrap w-100 assigned_agent_list">
+                                            <thead class="bg-info">
+                                                <tr class="text-white">
+                                                    <th>No.</th>
+                                                    <th>Name</th>
+                                                    <th>Region</th>
+                                                    <th>Constituency</th>
+                                                    <th>Electoral Area</th>
+                                                    <th>User Id</th>
+                                                    <th>Action</th>
 
 
-                                            </tr>
-                                        </thead>
+                                                </tr>
+                                            </thead>
 
-                                    </table>
+                                        </table>
 
-                                </div> <!-- end card body-->
-                            </div> <!-- end card -->
-                        </div><!-- end col-->
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div>
+
+
+
                     </div>
-
-
-
-                </div>
-                <div class="tab-pane " id="profile">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="" >
+                    <div class="tab-pane " id="profile">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="">
                                     <div class=" card-body">
 
-                                <h4 class="header-title"> UnAssigned Agents</h4>
+                                        <h4 class="header-title"> UnAssigned Agents</h4>
 
 
-                                <table id="datatable-buttons"
-                                    class="table table-striped dt-responsive nowrap w-100 unassigned_agent_list">
-                                    <thead class="bg-info">
-                                        <tr class="text-white">
-                                            <th>No.</th>
-                                            <th>Name</th>
-                                            <th>Region</th>
-                                            <th>Constituency</th>
-                                            <th>Electoral Area</th>
-                                            <th>User Id</th>
-                                            <th>Action</th>
+                                        <table id="datatable-buttons"
+                                            class="table table-striped dt-responsive nowrap w-100 unassigned_agent_list">
+                                            <thead class="bg-info">
+                                                <tr class="text-white">
+                                                    <th>No.</th>
+                                                    <th>Name</th>
+                                                    <th>Region</th>
+                                                    <th>Constituency</th>
+                                                    <th>Electoral Area</th>
+                                                    <th>User Id</th>
+                                                    <th>Action</th>
 
-                                        </tr>
-                                    </thead>
+                                                </tr>
+                                            </thead>
 
-                                </table>
+                                        </table>
 
-                            </div> <!-- end card body-->
-                        </div> <!-- end card -->
-                    </div><!-- end col-->
-                </div>
-                {{-- <div class="tab-pane" id="messages">
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div>
+                        {{-- <div class="tab-pane" id="messages">
                         <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                             Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
                             mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
@@ -189,61 +189,61 @@
                             pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate
                             eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
                     </div> --}}
-            </div>
-        </div> <!-- end card-box-->
-    </div> <!-- end col -->
-
-    <!-- Standard modal content -->
-    <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title text-center text-danger" id="standard-modalLabel">Agent Details</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    {{-- <hr style="mt-0"> --}}
-                </div>
-
-                <div class="modal-body">
-                    <div class="form-group row">
-                        <label for="" class="col-md-4 h4">Agent ID:</label>
-                        <h4 class="col-md-8 agent_id text-blue"></h4>
                     </div>
-                    <div class="form-group row">
-                        <label for="" class="col-md-4 h4">Agent Name:</label>
-                        <h4 class="col-md-8 agent_name text-blue"></h4>
-                    </div>
-                    <div class="form-group row">
-                        <label for="" class="col-md-4 h4">Gender:</label>
-                        <h4 class="col-md-8 agent_gender text-blue"></h4>
-                    </div>
-                    <div class="form-group row">
-                        <label for="" class="col-md-4 h4">Agent Region:</label>
-                        <h4 class="col-md-8 agent_region text-blue"></h4>
-                    </div>
-                    <div class="form-group row">
-                        <label for="" class="col-md-4 h4">Agent Constituency:</label>
-                        <h4 class="col-md-8 agent_constituency text-blue"></h4>
-                    </div>
-                    <div class="form-group row">
-                        <label for="" class="col-md-4 h4">Agent Polling Station:</label>
-                        <h4 class="col-md-8 agent_electoral_area text-blue"></h4>
-                    </div>
+                </div> <!-- end card-box-->
+            </div> <!-- end col -->
 
-                </div>
-                <div class="modal-footer">
-                    {{-- <button type="button" class="btn btn-light" data-dismiss="modal">Close</button> --}}
-                    <button type="button" class="btn btn-info" id="unassign_modal_button">Confirm</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            <!-- Standard modal content -->
+            <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog"
+                aria-labelledby="standard-modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title text-center text-danger" id="standard-modalLabel">Agent Details</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            {{-- <hr style="mt-0"> --}}
+                        </div>
 
-    <!-- Standard  modal -->
-    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#standard-modal">Standard Modal</button> --}}
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 h4">Agent ID:</label>
+                                <h4 class="col-md-8 agent_id text-blue"></h4>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 h4">Agent Name:</label>
+                                <h4 class="col-md-8 agent_name text-blue"></h4>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 h4">Gender:</label>
+                                <h4 class="col-md-8 agent_gender text-blue"></h4>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 h4">Agent Region:</label>
+                                <h4 class="col-md-8 agent_region text-blue"></h4>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 h4">Agent Constituency:</label>
+                                <h4 class="col-md-8 agent_constituency text-blue"></h4>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 h4">Agent Polling Station:</label>
+                                <h4 class="col-md-8 agent_electoral_area text-blue"></h4>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            {{-- <button type="button" class="btn btn-light" data-dismiss="modal">Close</button> --}}
+                            <button type="button" class="btn btn-info" id="unassign_modal_button">Confirm</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+            <!-- Standard  modal -->
+            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#standard-modal">Standard Modal</button> --}}
 
 
-    {{-- <div class="col-xl-6">
+            {{-- <div class="col-xl-6">
             <div class="card-box"
                 style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                 <h4 class="header-title mb-4">Tabs Vertical Left</h4>
@@ -319,8 +319,8 @@
             </div> <!-- end card-box-->
         </div> --}}
 
-    </div>
-    <!-- end row -->
+        </div>
+        <!-- end row -->
     </div>
 
 

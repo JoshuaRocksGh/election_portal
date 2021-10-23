@@ -64,61 +64,53 @@ class LoginController extends Controller
 
                     // return $userDetail;
 
+                    $get_agent = Http::post(env('API_BASE_URL') . "getAllagent");
+                    $agent = json_decode($get_agent->body());
+                    $agentDetails = $agent->data;
+
+
+
+
                     session([
                         "UserMandate" => $userDetail->UserMandate,
                         "Region" => $userDetail->Region,
                         "Constituency" => $userDetail->Constituency,
                         "FirstName" => $userDetail->Fname,
                         "Surname" => $userDetail->SurName,
+                        "Agents" => $agentDetails
                     ]);
 
-                    $get_agent = Http::post(env('API_BASE_URL') . "getAllagent");
 
-                    $agent = json_decode($get_agent->body());
+                    // session([
 
-                    $agentDetails = $agent->data;
+                    // ]);
+
+
+
+
 
                     // return $agentDetails;
 
-                    foreach ($agentDetails as $agentDetail) {
-                        $request->session()->push('AgentDetail', [
-                            'Constituency' => $agentDetail->Constituency,
-                            'DOB' => $agentDetail->DOB,
-                            'EducationalLevel' => $agentDetail->EducationalLevel,
-                            'ElectoralArea' => $agentDetail->ElectoralArea,
-                            'Fname' => $agentDetail->Fname,
-                            'Gender' => $agentDetail->Gender,
-                            'Id' => $agentDetail->Id,
-                            'Institution' => $agentDetail->Institution,
-                            // 'Location' => $agentDetail->Location,
-                            'MiddleName' => $agentDetail->MiddleName,
-                            'Picture' => $agentDetail->Picture,
-                            'Region' => $agentDetail->Region,
-                            'SurName' => $agentDetail->SurName,
-                            'phoneNumber1' => $agentDetail->phoneNumber[0],
-                            'phoneNumber2' => $agentDetail->phoneNumber[1],
-                            'phoneNumber3' => $agentDetail->phoneNumber[2]
-                        ]);
-                        // session(['AgentDetail' => [
-                        //     'Constituency' => $agentDetail->Constituency,
-                        //     'DOB' => $agentDetail->DOB,
-                        //     'EducationalLevel' => $agentDetail->EducationalLevel,
-                        //     'ElectoralArea' => $agentDetail->ElectoralArea,
-                        //     'Fname' => $agentDetail->Fname,
-                        //     'Gender' => $agentDetail->Gender,
-                        //     'Id' => $agentDetail->Id,
-                        //     'Institution' => $agentDetail->Institution,
-                        //     // 'Location' => $agentDetail->Location,
-                        //     'MiddleName' => $agentDetail->MiddleName,
-                        //     'Picture' => $agentDetail->Picture,
-                        //     'Region' => $agentDetail->Region,
-                        //     'SurName' => $agentDetail->SurName,
-                        //     'phoneNumber1' => $agentDetail->phoneNumber[0],
-                        //     'phoneNumber2' => $agentDetail->phoneNumber[1],
-                        //     'phoneNumber3' => $agentDetail->phoneNumber[2]
+                    // foreach ($agentDetails as $agentDetail) {
+                    //     $request->session()->push('AgentDetail', [
+                    //         'Constituency' => $agentDetail->Constituency,
+                    //         'DOB' => $agentDetail->DOB,
+                    //         'EducationalLevel' => $agentDetail->EducationalLevel,
+                    //         'ElectoralArea' => $agentDetail->ElectoralArea,
+                    //         'Fname' => $agentDetail->Fname,
+                    //         'Gender' => $agentDetail->Gender,
+                    //         'Id' => $agentDetail->Id,
+                    //         'Institution' => $agentDetail->Institution,
+                    //         'MiddleName' => $agentDetail->MiddleName,
+                    //         'Picture' => $agentDetail->Picture,
+                    //         'Region' => $agentDetail->Region,
+                    //         'SurName' => $agentDetail->SurName,
+                    //         'phoneNumber1' => $agentDetail->phoneNumber[0],
+                    //         'phoneNumber2' => $agentDetail->phoneNumber[1],
+                    //         'phoneNumber3' => $agentDetail->phoneNumber[2]
+                    //     ]);
 
-                        // ]]);
-                    }
+                    // }
 
 
 

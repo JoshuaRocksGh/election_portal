@@ -112,7 +112,7 @@
     <script src="{{ asset('assets/js/all_agent_all.js') }}"></script>
 
     <script>
-        var AgentDetail = @json($AgentDetails);
+        var AgentDetail = @json(session()->get('Agents'));
     </script>
 
 

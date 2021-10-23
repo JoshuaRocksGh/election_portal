@@ -22,7 +22,7 @@ function get_polling_station(constituency) {
             $.each(data, function (index) {
                 // console.log("Here!!!!!!!!!!!!");
                 // console.log(data[index]);
-                $("#agent_electoral_area").append(
+                $(".agent_electoral_area").append(
                     selectize.addOption({
                         value: data[index].code + "~" + data[index].code,
                         text: data[index].name,
@@ -162,6 +162,7 @@ $(document).ready(function () {
 
     $("#unassign_agent_button").click(function (e) {
         e.preventDefault();
+        $("unassign_agent_button");
         $(".confirm_text").hide();
         $(".spinner-text").show();
         var polling_station = $(".agent_electoral_area").val();
@@ -173,7 +174,7 @@ $(document).ready(function () {
         // return false;
 
         function redirect_page() {
-            window.location.href = "../constituency/" + user_constituency;
+            window.location.href = "constituency/" + UserConstituency;
         }
         $.ajax({
             type: "POST",

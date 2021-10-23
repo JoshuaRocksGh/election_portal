@@ -23,7 +23,7 @@
 
     <div class="container-fluid">
         <h3 class="">{{ session()->get('Region') }} &nbsp; > &nbsp;<span class=" text-danger">
-            {{ $UserConstituency }}</span>
+                {{ $UserConstituency }}</span>
             @if (session()->get('Region') == 'ConstituencyLevel')
                 echo (session()->get('Region'))
             @endif
@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card"
-                    style="background-color: rgba(136, 198, 197, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    style="background-color: rgba( 32, 185, 252, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                     <div class="card-body">
                         <h3 class="text-center mt-0">POLLING STATIONS</h3>
                         <div class="row">
@@ -49,7 +49,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card"
-                    style="background-color: rgba(32, 185, 252, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    style="background-color: rgba(136, 198, 197, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                     <div class="card-body">
                         <h3 class="text-center mt-0">ASSIGNED POLLING STATIONS</h3>
                         <div class="row">
@@ -158,7 +158,8 @@
                                         <div class="row">
                                             <div class="col-md-4"></div>
                                             <div class="col-md-4">
-                                                <button type="button" class="btn btn-info" id="unassign_agent_button">
+                                                <button type="button" class="btn btn-info btn-block"
+                                                    id="unassign_agent_button">
                                                     <span class="confirm_text">Confirm</span>
                                                     <span class="spinner-border spinner-border-sm mr-1 spinner-text"
                                                         role="status" aria-hidden="true" style="display: none"></span>

@@ -1,5 +1,5 @@
 function get_all_agents(AgentDetail) {
-    console.log(AgentDetail);
+    // console.log(AgentDetail);
     // alert("called");
     // return false;
 
@@ -27,5 +27,6 @@ function get_all_agents(AgentDetail) {
 
 setTimeout(function () {
     // alert("Welcome");
+    // console.log(AgentDetail);
     get_all_agents(AgentDetail);
 }, 500);
