@@ -85,9 +85,9 @@ function get_polling_station(constituency) {
             // console.log(data);
             let selectize = $("#agent_electoral_area").selectize()[0].selectize;
             // console.log(data);
-            // selectize.clearOptions();
+            selectize.clearOptions();
 
-            $("#agent_electoral_area option").remove();
+            // $("#agent_electoral_area option").remove();
 
             if (response.status == "ok") {
                 $("#polling_station_spinner").hide();
@@ -323,11 +323,7 @@ $(document).ready(function () {
             return false;
         }
 
-        if (
-            telephone_1.replace(/ /g, "").length != 10 ||
-            (isnum1 === false && telephone_2.replace(/ /g, "").length != 10) ||
-            isnum2 === false
-        ) {
+        if (telephone_1.replace(/ /g, "").length != 10 || isnum1 === false) {
             toaster("Invalid Phone Number", "error", 5000);
             return false;
         } else if (

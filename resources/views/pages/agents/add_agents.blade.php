@@ -448,9 +448,17 @@
                                                 <td>
                                                     <h4 class=" ">Agent Constituency:</h4>
                                                 </td>
-                                                <td>
-                                                    <span class=" text-blue h4" id="display_agent_constituency"></span>
-                                                </td>
+                                                @if (session()->get('UserMandate') != 'ConstituencyLevel')
+                                                    <td>
+                                                        <span class=" text-blue h4"
+                                                            id="display_agent_constituency"></span>
+                                                    </td>
+                                                @elseif(session()->get('UserMandate') == 'ConstituencyLevel')
+                                                    <td>
+                                                        <span class=" text-blue h4" id="display_agent_constituency"
+                                                            value="{{ session()->get('Constituency') }}">{{ session()->get('Constituency') }}</span>
+                                                    </td>
+                                                @endif
                                             </tr>
                                             <tr>
                                                 <td>

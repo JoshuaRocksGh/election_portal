@@ -129,8 +129,7 @@
                                     </div>
 
                                     <div class="form-group mb-1 row">
-                                        <label for="simpleinput" class="col-md-12 h4">Middle Name:<span
-                                                class="text-danger">*</span></label>
+                                        <label for="simpleinput" class="col-md-12 h4">Middle Name:</label>
                                         <input type="text" id="middle_name" class="form-control col-md-11"
                                             autocomplete="off" aria-autocomplete="off"
                                             placeholder="Enter Agent Middle Name">
@@ -205,8 +204,8 @@
                                     </div>
 
                                     <div class="form-group mb-1 row">
-                                        <label for="simpleinput" class="col-md-12 h4">Telephone Number 3:<span
-                                                class="text-danger">*</span></label>
+                                        <label for="simpleinput" class="col-md-12 h4">Telephone Number
+                                            3:(optional)</label>
                                         <input type="text" id="telephone_number_3" class="form-control col-md-11"
                                             autocomplete="off" aria-autocomplete="off"
                                             placeholder="Enter Agent Telephone Number">
