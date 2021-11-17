@@ -234,6 +234,7 @@ $("#search_agent_button").click(function (e) {
                         // }
                     });
                 } else {
+                    Swal.fire(response.message, "", "warning");
                     $("#search_agent_button").prop("disabled", false);
                     $("#edit_spinner").hide();
                     $("#new_agent_form").toggle("500");

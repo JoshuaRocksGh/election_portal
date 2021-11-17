@@ -35,7 +35,7 @@ class LoginController extends Controller
         };
 
         $user_id = strtoupper($request->user_id);
-        $password = $request->password;
+        $password = strtoupper($request->password);
 
         $data  = [
 

@@ -279,6 +279,7 @@
     <script>
         var my_mandate = "{{ session()->get('UserMandate') }}"
         var my_region = "{{ session()->get('Region') }}"
+        var my_constituency = "{{ session()->get('Constituency') }}"
     </script>
 
 @endsection

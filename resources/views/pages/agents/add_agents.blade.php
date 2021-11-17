@@ -104,6 +104,8 @@
                                             <label for="simpleinput" class="col-md-12 h4">Telephone Number
                                                 2:(optional)</label>
                                             <input type="text" id="telephone_number_2" class="form-control col-md-11"
+                                                maxlength="10"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                 autocomplete="off" aria-autocomplete="off"
                                                 placeholder="Enter Agent Telephone Number">
                                         </div>
@@ -113,7 +115,8 @@
                                         <div class="form-group mb-1 row">
                                             <label for="simpleinput" class="col-md-12 h4">Voter ID:<span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" id="id_number" class="form-control col-md-11"
+                                            <input type="text" id="id_number" class="form-control col-md-11" maxlength="10"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                 autocomplete="off" aria-autocomplete="off"
                                                 placeholder="Enter Agent ID Number">
                                         </div>
@@ -159,6 +162,8 @@
                                             <label for="simpleinput" class="col-md-12 h4">Telephone Number 1:<span
                                                     class="text-danger">*</span></label>
                                             <input type="text" id="telephone_number_1" class="form-control col-md-11"
+                                                maxlength="10"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                 autocomplete="off" aria-autocomplete="off"
                                                 placeholder="Enter Agent Telephone Number">
                                         </div>
@@ -167,7 +172,8 @@
                                             <label for="simpleinput" class="col-md-12 h4">Telephone Number
                                                 3:(optional)</label>
                                             <input type="text" id="telephone_number_3" class="form-control col-md-11"
-                                                autocomplete="off" aria-autocomplete="off"
+                                                autocomplete="off" aria-autocomplete="off" maxlength="10"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                 placeholder="Enter Agent Telephone Number">
                                         </div>
 
@@ -481,15 +487,16 @@
                             <br><br><br>
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-4">
-                                        <button type="button" class="btn btn-danger width-lg waves-effect waves-light"
+                                    <div class="col-md-3">
+                                        <button type="button"
+                                            class="btn btn-danger width-lg waves-effect waves-light float-left"
                                             data-dismiss="modal">
                                             <i class="mdi mdi-block-helper mr-2">
                                             </i>Cancel
                                         </button>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-3">
                                         <button type="button"
                                             class="btn btn-success width-lg waves-effect waves-light float-right"
                                             id="confirm_agent">

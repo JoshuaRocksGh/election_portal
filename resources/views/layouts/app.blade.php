@@ -22,7 +22,9 @@
 </head>
 
 
-<body style=" background-image: linear-gradient(#eff5f9, #e0e8f9); ">
+<body
+    style="background-image: url('{{ asset('assets/images/beautiful_gif.gif') }}');background-size: cover;background-repeat: no-repeat;">
+
 
 
     @yield('content')

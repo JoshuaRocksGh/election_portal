@@ -51,6 +51,8 @@
                                             <br><br> --}}
                                             <div class="form-group mb-1 row">
                                                 <input type="text" id="phone_number" class="form-control col-md-9"
+                                                    maxlength="10"
+                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                     name="phone_number" placeholder="Enter Agent Phone Number">
                                                 <div class="col-md-1"></div>
                                                 <button type="submit" id="search_agent_button"
@@ -99,7 +101,7 @@
                                 <div class="col-md-4">
 
                                 </div>
-                                <div class="col-md-4" style="">
+                                {{-- <div class="col-md-4" style="">
 
                                     <div class="form-group text-center">
                                         <img src="{{ url('assets/images/users/new-u.png') }}" alt="image"
@@ -111,7 +113,7 @@
                                         <input type="hidden" id="image_upload_">
 
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-4">
                                     {{-- <b class="float-right"><em>Please fll fields marked with
                                             &nbsp;</em><span class="text-danger h3">*</span></b> --}}
@@ -151,6 +153,8 @@
                                         <label for="simpleinput" class="col-md-12 h4">Telephone Number
                                             2:(optional)</label>
                                         <input type="text" id="telephone_number_2" class="form-control col-md-11"
+                                            maxlength="10"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                             autocomplete="off" aria-autocomplete="off"
                                             placeholder="Enter Agent Telephone Number">
                                     </div>
@@ -160,6 +164,8 @@
                                         <label for="simpleinput" class="col-md-12 h4">Voter ID:<span
                                                 class="text-danger">*</span></label>
                                         <input type="text" id="id_number" class="form-control col-md-11" autocomplete="off"
+                                            maxlength="10"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                             aria-autocomplete="off" placeholder="Enter Agent ID Number">
                                     </div>
 
@@ -199,6 +205,8 @@
                                         <label for="simpleinput" class="col-md-12 h4">Telephone Number 1:<span
                                                 class="text-danger">*</span></label>
                                         <input type="text" id="telephone_number_1" class="form-control col-md-11"
+                                            maxlength="10"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                             autocomplete="off" aria-autocomplete="off"
                                             placeholder="Enter Agent Telephone Number">
                                     </div>
@@ -207,6 +215,8 @@
                                         <label for="simpleinput" class="col-md-12 h4">Telephone Number
                                             3:(optional)</label>
                                         <input type="text" id="telephone_number_3" class="form-control col-md-11"
+                                            maxlength="10"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                             autocomplete="off" aria-autocomplete="off"
                                             placeholder="Enter Agent Telephone Number">
                                     </div>
@@ -283,9 +293,8 @@
                                         <input type="hidden" id="electoral_area_" class="form-control col-md-4">
                                         <div class="d-flex align-items-center ml-1">
 
-                                            <span class="spinner-border spinner-border-sm mr-1"
-                                                id="polling_station_spinner" role="status" aria-hidden="true"
-                                                style="display:none"></span>
+                                            <span class="spinner-border spinner-border-sm mr-1" id="polling_station_spinner"
+                                                role="status" aria-hidden="true" style="display:none"></span>
                                         </div>
                                         <select class="form-control col-md-7 ml-3" id="agent_electoral_area">
                                             <option value="">-- Select Electoral Area--</option>

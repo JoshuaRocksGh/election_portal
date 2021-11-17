@@ -98,7 +98,7 @@ class AddAgentsController extends Controller
             if ($UserRegion_ == trim($UserRegion_) && strpos($UserRegion_, ' ') !== false) {
                 $UserRegion = str_replace(' ', '_', $UserRegion_);
                 // echo 'has spaces, but not at beginning or end';
-                echo $UserRegion;
+                // echo $UserRegion;
                 $AgentDetails = session()->get('AgentDetail');
                 return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, "UserRegion" => $UserRegion]);
                 // return view('pages.agents.add_agents', ['UserRegion' => $UserRegion]);
@@ -118,7 +118,7 @@ class AddAgentsController extends Controller
     {
 
 
-        $AgentDetails = session()->get('AgentDetail');
+        // $AgentDetails = session()->get('AgentDetail');
         // return json_encode($AgentDetails);
         // $response = $AgentDetails;
         // return json_encode($response);
@@ -134,7 +134,7 @@ class AddAgentsController extends Controller
 
 
         // dd($response);
-        // return json_decode($response->body());
+        return json_decode($response->body());
 
 
 

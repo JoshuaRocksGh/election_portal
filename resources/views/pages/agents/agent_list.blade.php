@@ -35,14 +35,14 @@
                     <div class="card-body">
 
                         <h4 class="header-title">List of Agents</h4>
-                        {{-- <div class="row">
+                        <div class="row" id="agent_list_spinner">
                             <div class="col-md-4"></div>
                             <div class="col-md-4 text-center">
                                 <div class="spinner-border avatar-lg text-primary m-2 text-dark" role="status"></div>
                             </div>
                             <div class="col-md-4 "></div>
-                        </div> --}}
-                        <span id="data_table_view">
+                        </div>
+                        <div id="data_table_view" style="display: none">
                             <table id="datatable-buttons"
                                 class="table table-striped dt-responsive nowrap w-100 all_agent_list">
                                 <thead class="bg-info">
@@ -76,7 +76,7 @@
                                 </tbody>
                                 {{-- @endforeach --}}
                             </table>
-                        </span>
+                        </div>
 
 
                     </div> <!-- end card body-->
@@ -113,6 +113,9 @@
 
     <script>
         var AgentDetail = @json(session()->get('Agents'));
+        var my_mandate = "{{ session()->get('UserMandate') }}"
+        var my_region = "{{ session()->get('Region') }}"
+        var my_constituency = "{{ session()->get('Constituency') }}"
     </script>
 
 

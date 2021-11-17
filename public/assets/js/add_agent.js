@@ -347,6 +347,18 @@ $(document).ready(function () {
             agent_constituency == "" ||
             insititution_name == ""
         ) {
+            console.log("fname:", fname);
+            console.log("surname:", surname);
+            console.log("gender:", gender);
+            console.log("dob:", dob);
+            console.log("national_id:", national_id);
+            console.log("telephone_1:", telephone_1);
+            console.log("education_level:", education_level);
+            console.log("year_completion:", year_completion);
+            console.log("agent_region:", agent_region);
+            console.log("agent_electoral_area:", agent_electoral_area);
+            console.log("agent_constituency:", agent_constituency);
+            console.log("insititution_name:", insititution_name);
             // alert("Please fill all required fields");
             // $("#agent_submit_form").removeAttr("data-target");
             toaster("Please fill all required fields", "error", 10000);
