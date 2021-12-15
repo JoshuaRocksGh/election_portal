@@ -60,11 +60,11 @@ function regional_constituencies_assigmnet(UserRegion) {
                     // return false;
                     table.row
                         .add([
-                            count++,
-                            data[index].ConstituencyCode,
-                            data[index].total,
-                            data[index].assigned,
-                            data[index].unAssigned,
+                            `<b class="h4">${count++}</b>`,
+                            `<b class="h4">${data[index].ConstituencyCode}</b>`,
+                            `<b class="h4">${data[index].total}</b>`,
+                            `<b class="h4">${data[index].assigned}</b>`,
+                            `<b class="h4">${data[index].unAssigned}</b>`,
                             `
                             <a class="btn btn-success" href="../constituency/${constituencyName}">View Details</a>
                             `,
@@ -92,6 +92,11 @@ function regional_constituencies_assigmnet(UserRegion) {
             } else {
                 $(".spinner-border").show();
             }
+        },
+        error: function (xhr, status, error) {
+            setTimeout(function () {
+                regional_constituencies_assigmnet(UserRegion);
+            }, $.ajaxSetup().retryAfter);
         },
     });
 }

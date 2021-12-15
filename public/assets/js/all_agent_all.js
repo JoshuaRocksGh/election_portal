@@ -20,7 +20,7 @@ function get_all_agents(my_mandate, my_region, my_constituency) {
                     let data = response.data;
 
                     $.each(data, function (index) {
-                        // console.log(data[index]);
+                        console.log("agent-list", data[index]);
 
                         table.row
                             .add([
@@ -95,9 +95,9 @@ function get_all_agents(my_mandate, my_region, my_constituency) {
         },
     });
 }
-
+// var my_mandate = @json(session()->get('UserMandate'))
 setTimeout(function () {
-    // alert(my_mandate);
+    //alert(my_mandate);
     // console.log(AgentDetail);
     get_all_agents(my_mandate, my_region, my_constituency);
 }, 500);

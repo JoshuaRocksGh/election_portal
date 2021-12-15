@@ -90,7 +90,7 @@ function agent_assignments(constituency) {
         url: "../get-agents-assignments-api?constituency=" + Constituency_,
         datatype: "application/json",
         success: function (response) {
-            console.log(response);
+            //console.log(response);
             // console.log(constituency);
             // return false;
 
@@ -103,17 +103,19 @@ function agent_assignments(constituency) {
                 // alert(constituency);
 
                 $.each(data, function (index) {
-                    console.log(data[index]);
+                    console.log("assigned=>", data[index]);
                     var polling_station_name = data[index].ElectoralArea;
                     // count++;
                     table.row
                         .add([
-                            count++,
-                            data[index].Fname + " " + data[index].SurName,
-                            data[index].Region,
-                            data[index].Constituency,
-                            data[index].ElectoralArea,
-                            data[index].UserId,
+                            `<b class="h4">${count++}</b>`,
+                            `<b class="h4"> ${
+                                data[index].Fname + " " + data[index].SurName
+                            }</b>`,
+                            `<b class="h4">${data[index].Region}</b>`,
+                            `<b class="h4">${data[index].Constituency}</b>`,
+                            `<b class="h4">${data[index].ElectoralArea}</b>`,
+                            `<b class="h4">${data[index].UserId}</b>`,
                             `
                             <a class="btn btn-danger" href='../unassign-agent?electoral_area=${data[index].ElectoralArea}&UserConstituency=${UserConstituency}&user_id=${data[index].UserId}&assign=false' data-value=${data[index].ElectoralArea}>UnAssign</a>
                             `,
@@ -147,14 +149,16 @@ function agent_assignments(constituency) {
                     // count++;
                     unassigned.row
                         .add([
-                            count++,
-                            agent_unassigned[index].Fname +
+                            `<b class="h4">${count++}</b>`,
+                            `<b class="h4">${
+                                agent_unassigned[index].Fname +
                                 " " +
-                                agent_unassigned[index].SurName,
-                            agent_unassigned[index].Region,
-                            agent_unassigned[index].Constituency,
-                            agent_unassigned[index].ElectoralArea,
-                            agent_unassigned[index].UserId,
+                                agent_unassigned[index].SurName
+                            }</b>`,
+                            `<b class="h4">${agent_unassigned[index].Region}</b>`,
+                            `<b class="h4">${agent_unassigned[index].Constituency}</b>`,
+                            `<b class="h4">${agent_unassigned[index].ElectoralArea}</b>`,
+                            `<b class="h4">${agent_unassigned[index].UserIdy}</b>`,
                             `
                             <a class="btn btn-info" href='../unassign-agent?electoral_area=${agent_unassigned[index].ElectoralArea}&user_id=${agent_unassigned[index].UserId}&assign=true&UserConstituency=${UserConstituency}' data-value=${agent_unassigned[index].ElectoralArea}>Assign</a>
                             `,

@@ -18,8 +18,8 @@ function get_regions() {
                 var this_name = $("#my_region_name").val();
                 if (this_name == data[index]) {
                     // alert(data[index]);
-                    $("#agent_region").prop("disabled", true);
-                    $("#agent_region").css("background", "#fefefe");
+                    // $("#agent_region").prop("disabled", true);
+                    // $("#agent_region").css("background", "#fefefe");
                     $("#agent_region ").append(
                         $("<option selected>", {
                             value: data[index],
@@ -88,10 +88,10 @@ function toaster(message, icon, timer) {
     });
 }
 
-$("#agent_region").prop("disabled", true);
-$("#agent_region").css("background", "#DCDCDC");
-$("#agent_constituency").prop("disabled", true);
-$("#agent_constituency").css("background", "#DCDCDC");
+// $("#agent_region").prop("disabled", true);
+// $("#agent_region").css("background", "#DCDCDC");
+// $("#agent_constituency").prop("disabled", true);
+// $("#agent_constituency").css("background", "#DCDCDC");
 
 function dont_call_constituency() {
     $("#constituency_spinner").hide();
@@ -122,14 +122,11 @@ $(document).ready(function () {
         $("#admin_user_id").val($(this).val());
     });
 
-    $("#user_mandate").change(function () {
+    /*$("#user_mandate").change(function () {
         var user_mandate = $(this).val();
         console.log(user_mandate);
 
-        // $("#agent_region").prop("disabled", true);
-        // $("#agent_region").css("background", "#DCDCDC");
-        // $("#agent_constituency").prop("disabled", true);
-        // $("#agent_constituency").css("background", "#DCDCDC");
+
 
         if (my_mandate == "NationalLevel") {
             if (user_mandate === "NationalLevel") {
@@ -149,7 +146,7 @@ $(document).ready(function () {
                 return;
             } else if (user_mandate === "ConstituencyLevel") {
                 $("#agent_region").prop("disabled", false);
-                // $("#agent_region").css("background", "#FFFFFF");
+
 
                 $("#agent_region").change(function () {
                     var region = $(this).val();
@@ -173,7 +170,7 @@ $(document).ready(function () {
                 $("#agent_constituency").prop("disabled", false);
                 $("#agent_constituency").css("background", "#FFFFFF");
 
-                console.log(my_region);
+                //console.log(my_region);
                 get_constituency(my_region);
             } else {
                 $("#agent_constituency").prop("disabled", true);
@@ -182,7 +179,7 @@ $(document).ready(function () {
         } else {
             return false;
         }
-    });
+    }); */
 
     $("#create_admin").click(function (e) {
         e.preventDefault();
@@ -261,6 +258,8 @@ $(document).ready(function () {
                     ),
                 },
                 success: function (response) {
+                    let data = response.message;
+
                     console.log(response);
                     if (response.status == "ok") {
                         Swal.fire(response.message, "", "success");
@@ -273,7 +272,20 @@ $(document).ready(function () {
                         $(".spinner-text").hide();
                         $("#create_admin").attr("disabled", true);
                     } else {
-                        toaster(response.message, "error", 5000);
+                        var validation_error_message = "<ul>";
+                        // $("#bs-example-modal-lg").hide();
+                        $.each(data, function (index) {
+                            string = JSON.stringify(data[index]).replace(
+                                /[\[\]']+/g,
+                                ""
+                            );
+                            new_string = string.replace(/^"|"$/g, "");
+                            validation_error_message += `<li class="text-danger">${new_string}</li>`;
+                        });
+
+                        validation_error_message += "</ul>";
+                        toaster(validation_error_message, "error", 10000);
+
                         $(".log_in_text").show();
                         $(".spinner-text").hide();
                         $("#create_admin").attr("disabled", false);

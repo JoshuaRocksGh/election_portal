@@ -26,7 +26,7 @@
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings mr-1"></i>
+                        <i class="mdi mdi-cog-outline mr-1"></i>
                         <span>Settings</span>
                     </a>
 
@@ -81,57 +81,173 @@
                     </li>
                 @endif
 
-                {{-- @if (session()->get('UserMandate') !== 'ConstituencyLevel') --}}
-                <li>
-                    <a href="#sidebarLoans" data-toggle="collapse">
-                        <i class="mdi mdi-briefcase-check-outline"></i>
-                        <span> Users </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarLoans">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ url('create-user') }}">Create User</a>
-                            </li>
-                            {{-- <li>
-                                <a href="{{ url('loan-request') }}">Loan Request</a>
+                @if (session()->get('UserMandate') == 'NationalLevel')
+                    <li>
+                        <a href="#sidebarLoans" data-toggle="collapse">
+                            <i class="mdi mdi-briefcase-check-outline"></i>
+                            <span> Regional Users </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarLoans">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ url('all-regional-users') }}">All Regional Users</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('create-user') }}">Create Regional User</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#sidebarTransfer" data-toggle="collapse">
+                            <i class="mdi mdi-book-account-outline"></i>
+                            <span> Reported Issue </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarTransfer">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="#">All Reported Issue</a>
+                                </li>
+                                {{-- <li>
+                                <a href="{{ url('same-bank') }}">Same Bank</a>
                             </li> --}}
-                            {{-- <li>
-                                <a href="#">Loan Payment</a>
+                                {{-- <li>
+                                <a href="{{ url('bulk-transfer') }}">Bulk Transfer </a>
                             </li> --}}
-                            {{-- <li>
-                                <a href="project-create.html">Create Project</a>
+
+                                {{-- <li>
+                                <a href="{{ url('local-bank') }}">Local Bank</a>
                             </li> --}}
-                        </ul>
-                    </div>
-                </li>
-                {{-- @endif --}}
+
+
+                                {{-- <li>
+                                <a href="{{ url('international-bank') }}">International Bank</a>
+                            </li> --}}
+                                {{-- <li>
+                                <a href="{{ url('standing-order') }}">Standing Order</a>
+                            </li> --}}
+                                {{-- <li>
+                                <a href="{{ url('add-beneficiary') }}">Add Beneficiary</a>
+                            </li> --}}
+                                {{-- <li>
+                                <a href="{{ url('beneficiary-list') }}">Beneficiary List</a>
+                            </li> --}}
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#sidebarNotifications" data-toggle="collapse">
+                            <i class="mdi mdi-domain"></i>
+                            <span> Notifications & Alerts </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarNotifications">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="send-notifications">Send Notifications</a>
+                                </li>
+                                {{-- <li>
+                                <a href="{{ url('same-bank') }}">Same Bank</a>
+                            </li> --}}
+                                {{-- <li>
+                                <a href="{{ url('bulk-transfer') }}">Bulk Transfer </a>
+                            </li> --}}
+
+                                {{-- <li>
+                                <a href="{{ url('local-bank') }}">Local Bank</a>
+                            </li> --}}
+
+
+                                {{-- <li>
+                                <a href="{{ url('international-bank') }}">International Bank</a>
+                            </li> --}}
+                                {{-- <li>
+                                <a href="{{ url('standing-order') }}">Standing Order</a>
+                            </li> --}}
+                                {{-- <li>
+                                <a href="{{ url('add-beneficiary') }}">Add Beneficiary</a>
+                            </li> --}}
+                                {{-- <li>
+                                <a href="{{ url('beneficiary-list') }}">Beneficiary List</a>
+                            </li> --}}
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#sidebarSettings" data-toggle="collapse">
+                            <i class="mdi mdi-cog-outline"></i>
+                            <span>Settings</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarSettings">
+                            <ul class="nav-second-level">
+                                {{-- <li>
+                                    <a href="#">Change Password</a>
+                                </li> --}}
+                                <li>
+                                    <a href="view-profile">View Profile</a>
+                                </li>
+                                {{-- <li>
+                                <a href="{{ url('bulk-transfer') }}">Bulk Transfer </a>
+                            </li> --}}
+
+                                {{-- <li>
+                                <a href="{{ url('local-bank') }}">Local Bank</a>
+                            </li> --}}
+
+
+                                {{-- <li>
+                                <a href="{{ url('international-bank') }}">International Bank</a>
+                            </li> --}}
+                                {{-- <li>
+                                <a href="{{ url('standing-order') }}">Standing Order</a>
+                            </li> --}}
+                                {{-- <li>
+                                <a href="{{ url('add-beneficiary') }}">Add Beneficiary</a>
+                            </li> --}}
+                                {{-- <li>
+                                <a href="{{ url('beneficiary-list') }}">Beneficiary List</a>
+                            </li> --}}
+
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
 
 
                 {{-- <li class="menu-title mt-2">Apps</li> --}}
 
-                <li>
-                    <a href="#sidebarMyAccount" data-toggle="collapse">
-                        <i class="mdi mdi-book-account-outline"></i>
-                        <span> Agent</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarMyAccount">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ url('add-agent') }}">Add New Agent</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('edit-agent') }}">Edit Agent Details</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('agent-list') }}">List Of Agents</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('send-agent-message') }}">Send Message</a>
-                            </li>
-                            {{-- <li>
+                @if (session()->get('UserMandate') == 'ConstituencyLevel')
+                    <li>
+                        <a href="#sidebarMyAccount" data-toggle="collapse">
+                            <i class="mdi mdi-book-account-outline"></i>
+                            <span> Agent</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarMyAccount">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ url('add-agent') }}">Add New Agent</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('edit-agent') }}">Edit Agent Details</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('agent-list') }}">List Of Agents</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('send-agent-message') }}">Send Message</a>
+                                </li>
+                                {{-- <li>
                                 <a href="#budgeting" data-toggle="collapse">
                                     <span> Budgeting </span>
                                     <span class="menu-arrow"></span>
@@ -147,9 +263,10 @@
                                 </div>
                             </li> --}}
 
-                        </ul>
-                    </div>
-                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
                 @if (session()->get('UserMandate') == 'ConstituencyLevel')
                     <li>

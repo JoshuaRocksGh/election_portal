@@ -466,7 +466,21 @@ $(document).ready(function () {
                         location.reload();
                     }, 3000);
                 } else {
-                    toaster(response.message, "error", 10000);
+                    var validation_error_message = "<ul>";
+                    // $("#bs-example-modal-lg").hide();
+                    $.each(data, function (index) {
+                        string = JSON.stringify(data[index]).replace(
+                            /[\[\]']+/g,
+                            ""
+                        );
+                        new_string = string.replace(/^"|"$/g, "");
+                        validation_error_message += `<li class="text-danger">${new_string}</li>`;
+                    });
+
+                    validation_error_message += "</ul>";
+                    //console.log(validation_error_message);
+
+                    toaster(validation_error_message, "error", 10000);
                     $("#confirm_agent").prop("disabled", false);
                     $(".spinner-text").hide();
                     $(".agent_text").show();

@@ -7,6 +7,7 @@ use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegionalLevelController extends Controller
 {
@@ -78,6 +79,11 @@ class RegionalLevelController extends Controller
 
     }
 
+    public function view_user_profile()
+    {
+        return view('pages.admin.view_profile');
+    }
+
     public function regional_constituency($UserRegion)
     {
         $region = $UserRegion;
@@ -117,5 +123,42 @@ class RegionalLevelController extends Controller
         // echo ($res);
 
         return view('pages.mandate.constituency', ['constituency' => $res]);
+    }
+
+    public function all_regional_users()
+    {
+        return view('pages.admin.all_regional_users');
+    }
+
+    public function all_regional_users_list()
+    {
+        $response = Http::post(env('API_BASE_URL') . "getUsers");
+
+        return json_decode($response->body());
+    }
+
+    public function delete_user(Request $request)
+    {
+        // return $request;
+        $userID = $request->query('userId');
+
+        $response = Http::post(env('API_BASE_URL') . "deleteUser?userId=$userID");
+        // return $response;
+        // return $response['message'];
+        if ($response['status'] == "failed") {
+            Alert::error('', $response['message']);
+            return back();
+        } else {
+            Alert::success('', $response['message']);
+            return back();
+        }
+
+
+        // return json_decode($response->body());
+    }
+
+    public function send_notifications()
+    {
+        return view('pages.admin.send_notifications');
     }
 }

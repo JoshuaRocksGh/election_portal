@@ -1,91 +1,81 @@
-function all_users(AgentDetail) {
-    // console.log(AgentDetail);
-    // return false;
-    // var table = $(".all_agent_list").DataTable();
-    // var nodes = table.rows().nodes();
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
 
-    var ahafo = 0;
-    var ashanti = 0;
-    var bono = 0;
-    var bono_east = 0;
-    var central = 0;
-    var eastern = 0;
-    var greater_accra = 0;
-    var north_east = 0;
-    var northern = 0;
-    var oti = 0;
-    var savannah = 0;
-    var upper_east = 0;
-    var upper_west = 0;
-    var volta = 0;
-    var western = 0;
+function all_users() {
+    $.ajax({
+        type: "GET",
+        url: "national-api",
+        datatype: "application/json",
+        success: function (response) {
+            console.log("national response:", response);
 
-    let data = AgentDetail;
-    $.each(data, function (index) {
-        // console.log(data[index]);
-        // return false;
+            if (response.status === "ok") {
+                $(".spinner-border").hide();
+                $(".national_assigment").show();
+                $("#all_regions_table").show();
+                $("#agent_list_spinner").hide();
 
-        if (data[index].Region === "AHAFO") {
-            ahafo++;
-            $(".ahafo_agents").text(ahafo);
-        } else if (data[index].Region === "ASHANTI") {
-            ashanti++;
-            $(".ashanti_agents").text(ashanti);
-        } else if (data[index].Region === "BONO") {
-            bono++;
-            $(".bono_agents").text(bono);
-        } else if (data[index].Region === "BONO EAST") {
-            bono_east++;
-            $(".bono_east_agents").text(bono_east);
-        } else if (data[index].Region === "CENTRAL") {
-            central++;
-            $(".central_agents").text(central);
-        } else if (data[index].Region === "EASTERN") {
-            eastern++;
-            $(".eastern_agents").text(eastern);
-        } else if (data[index].Region === "GREATER ACCRA") {
-            greater_accra++;
-            $(".greater_accra_agents").text(greater_accra);
-        } else if (data[index].Region === "NORTH EAST") {
-            north_east++;
-            $(".north_east_agents").text(north_east);
-        } else if (data[index].Region === "NORTHERN") {
-            northern++;
-            $(".northern_agents").text(northern);
-        } else if (data[index].Region === "OTI") {
-            oti++;
-            $(".oti_agents").text(oti);
-        } else if (data[index].Region === "SAVANNAH") {
-            savannah++;
-            $(".savannah_agents").text(savannah);
-        } else if (data[index].Region === "UPPER EAST") {
-            upper_east++;
-            $(".upper_east_agents").text(upper_east);
-        } else if (data[index].Region === "UPPER WEST") {
-            upper_west++;
-            $(".upper_west_agents").text(upper_west);
-        } else if (data[index].Region === "VOLTA") {
-            volta++;
-            $(".volta_agents").text(volta);
-        } else if (data[index].Region === "WESTERN") {
-            western++;
-            $(".western_agents").text(western);
-        } else {
-            return false;
-        }
+                let total = response.total;
+                let total_assigned = response.totalAssigned;
+                let total_unassigned = response.totalUnAssigned;
 
-        //     // let regions = data[index].Region;
-        //     // console.log(regions);
-        // });
+                let data = response.data;
 
-        // console.log(greater_accra);
-        // console.log(ashanti);
-        $(".region_data").show();
-        $(".spinner-border ").hide();
+                $(".total").text(numberWithCommas(total));
+                $(".total_assigned").text(numberWithCommas(total_assigned));
+                $(".total_unassigned").text(numberWithCommas(total_unassigned));
+
+                $.each(data, function (index) {
+                    // console.log(data[index]);
+                    // return false;
+                    $(".national_details").append(
+                        `
+                            <tr
+                                        style="background-color: rgba(233, 242, 255, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                                         <td><span class="h2">${
+                                             data[index].region
+                                         }</span></td>
+
+                                        <td><span class="h2">${numberWithCommas(
+                                            data[index].total
+                                        )}</span></td>
+
+                                        <td class="h2">${numberWithCommas(
+                                            data[index].assigned
+                                        )}</td>
+
+                                        <td class="h2">${numberWithCommas(
+                                            data[index].unAssigned
+                                        )}</td>
+
+                                        <td>
+                                            <a href='region/${
+                                                data[index].region
+                                            }' class="btn btn-sm btn-blue">VIEW</a>
+
+                                        </td>
+                                    </tr>
+                        `
+                    );
+
+                    $(".region_data").show();
+                    $(".spinner-border ").hide();
+                });
+            } else {
+                $("#all_regions_table").hide();
+                $("#agent_list_spinner").show();
+            }
+        },
+        error: function (xhr, status, error) {
+            setTimeout(function () {
+                all_users();
+            }, $.ajaxSetup().retryAfter);
+        },
     });
 }
 setTimeout(function () {
     // alert("Winner");
     // console.log(AgentDetail);
-    all_users(AgentDetail);
+    all_users();
 }, 500);

@@ -5,6 +5,7 @@ use App\Http\Controllers\Agents\AddAgentsController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Mandate\ConstituencyLevelController;
+use App\Http\Controllers\Mandate\NationalLevelController;
 use App\Http\Controllers\Mandate\RegionalLevelController;
 use App\Http\Controllers\Requests\GetAllRequestConttroller;
 use Illuminate\Support\Facades\Route;
@@ -50,11 +51,13 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::post('/get-agent-details', [AddAgentsController::class, 'get_agent_details'])->name('get-agent-details');
     Route::get('/send-agent-message', [AddAgentsController::class, 'send_message'])->name('send-agent-message');
     Route::post('/send-agent-message-api', [AddAgentsController::class, 'message_details'])->name('send-agent-message-api');
+    Route::get('/agent-message-replies-api', [AddAgentsController::class, 'message_replies'])->name('agent-message-replies-api');
 
 
     Route::post('/unassign-agent-api', [ConstituencyLevelController::class, 'unassign_'])->name('unassign-agent-api');
 
     //Mandate Route
+    Route::get('/national-api', [NationalLevelController::class, 'national'])->name('national-api');
     Route::get('/region/{UserRegion}', [RegionalLevelController::class, 'region'])->name('region');
     Route::get('/regional', [RegionalLevelController::class, 'regional'])->name('regional/{UserRegion}');
     Route::get('/regional-constituency/{UserRegion}', [RegionalLevelController::class, 'regional_constituency'])->name('regional-constituency/{UserRegion}');
@@ -71,6 +74,16 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/create-user', [AdministrationController::class, 'create_admin'])->name('create-user');
     Route::post('/create-admin-user-api', [AdministrationController::class, 'create_admin_user'])->name('create-admin-user-api');
 
+    //REGIONAL LIST
+    Route::get('all-regional-users', [RegionalLevelController::class, 'all_regional_users']);
+    Route::get('get-all-regional-heads-list', [RegionalLevelController::class, 'all_regional_users_list']);
+
+    Route::get('send-notifications', [RegionalLevelController::class, 'send_notifications']);
+    Route::get('view-profile', [RegionalLevelController::class, 'view_user_profile']);
+
+
+
+    Route::get('delete-regional-user', [RegionalLevelController::class, 'delete_user']);
 
     //LOGOUT
     Route::get('/logout', [HomeController::class, 'logout'])->name('logout');

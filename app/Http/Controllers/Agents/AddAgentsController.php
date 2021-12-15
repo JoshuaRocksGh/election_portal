@@ -84,11 +84,11 @@ class AddAgentsController extends Controller
                 // echo 'has spaces, but not at beginning or end';
                 // echo $UserConstituency;
                 $AgentDetails = session()->get('Agents');
-                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, 'UserConstituency' => $UserConstituency]);
+                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, 'UserConstituency' => $UserConstituency, "UserMandate" => $UserMandate]);
                 // return view('pages.agents.add_agents', ['UserConstituency' => $UserConstituency]);
             } else {
                 $AgentDetails = session()->get('Agents');
-                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, 'UserConstituency' => $UserConstituency_]);
+                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, 'UserConstituency' => $UserConstituency_, "UserMandate" => $UserMandate]);
                 // return view('pages.agents.add_agents', ['UserConstituency' => $UserConstituency_]);
             }
         } elseif ($UserMandate == "RegionalLevel") {
@@ -100,17 +100,17 @@ class AddAgentsController extends Controller
                 // echo 'has spaces, but not at beginning or end';
                 // echo $UserRegion;
                 $AgentDetails = session()->get('AgentDetail');
-                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, "UserRegion" => $UserRegion]);
+                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, "UserRegion" => $UserRegion, "UserMandate" => $UserMandate]);
                 // return view('pages.agents.add_agents', ['UserRegion' => $UserRegion]);
 
             } else {
                 $AgentDetails = session()->get('AgentDetail');
-                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, "UserRegion" => $UserRegion_]);
+                return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, "UserRegion" => $UserRegion_, "UserMandate" => $UserMandate]);
                 // return view('pages.agents.add_agents', ['UserRegion' => $UserRegion_]);
             }
         } else {
             $AgentDetails = session()->get('AgentDetail');
-            return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails]);
+            return view('pages.agents.agent_list', ['AgentDetails' => $AgentDetails, "UserMandate" => $UserMandate]);
         }
     }
 
@@ -150,10 +150,10 @@ class AddAgentsController extends Controller
         $validator = Validator::make($request->all(), [
             'Id' => 'required',
             'PhoneNumber1' => 'required',
-            // 'PhoneNumber2' => 'required',
+            'PhoneNumber2' => 'required',
             'Gender' => 'required',
             'Fname' => 'required',
-            // 'MiddleName' => 'required',
+            'MiddleName' => 'required',
             'SurName' => 'required',
             'DOB' =>  'required',
             // 'Picture' => 'required',
@@ -170,6 +170,8 @@ class AddAgentsController extends Controller
 
         // VALIDATION
         if ($validator->fails()) {
+
+            // return back()->withErrors([$validator->errors(), 'The Message']);
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
@@ -428,6 +430,34 @@ class AddAgentsController extends Controller
 
         try {
             $response = Http::post(env('API_BASE_URL') . "sendNotification", $data);
+            return json_decode($response);
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+        } catch (\Exception $e) {
+
+            // DB::table('tb_error_logs')->insert([
+            //     'platform' => 'ONLINE_INTERNET_BANKING',
+            //     'user_id' => 'AUTH',
+            //     'message' => (string) $e->getMessage()
+            // ]);
+
+            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+
+
+        }
+    }
+
+    public function message_replies(Request $request)
+    {
+        // return $request;
+        $regionId = $request->query("regionId");
+        // return $regionId;
+
+        $base_response = new BaseResponse();
+
+        try {
+            $response = Http::get(env('API_BASE_URL') . "getRegionChat?regionId=$regionId");
             return json_decode($response);
 
             $result = new ApiBaseResponse();

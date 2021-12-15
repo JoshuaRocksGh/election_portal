@@ -56,13 +56,12 @@
 
 
     <!-- Pre-loader -->
-    {{-- <div id="preloader">
-        <div id="status">
-
-            <div class="spinner">Loading...</div>
+    <div id="preloader" class="preloader">
+        <div id="status" class="preloader">
+            <img class="pulse" style="width: 100px; top: -50px;"
+                src="{{ asset('assets/images/preloader.png') }}" />
         </div>
-    </div> --}}
-    <!-- End Preloader-->
+    </div> <!-- End Preloader-->
 
     <!-- Begin page -->
     <div id="wrapper" style="zoom: 0.9;">

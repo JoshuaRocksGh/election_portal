@@ -347,18 +347,18 @@ $(document).ready(function () {
             agent_constituency == "" ||
             insititution_name == ""
         ) {
-            console.log("fname:", fname);
-            console.log("surname:", surname);
-            console.log("gender:", gender);
-            console.log("dob:", dob);
-            console.log("national_id:", national_id);
-            console.log("telephone_1:", telephone_1);
-            console.log("education_level:", education_level);
-            console.log("year_completion:", year_completion);
-            console.log("agent_region:", agent_region);
-            console.log("agent_electoral_area:", agent_electoral_area);
-            console.log("agent_constituency:", agent_constituency);
-            console.log("insititution_name:", insititution_name);
+            //console.log("fname:", fname);
+            //console.log("surname:", surname);
+            //console.log("gender:", gender);
+            //console.log("dob:", dob);
+            //console.log("national_id:", national_id);
+            //console.log("telephone_1:", telephone_1);
+            //console.log("education_level:", education_level);
+            //console.log("year_completion:", year_completion);
+            //console.log("agent_region:", agent_region);
+            //console.log("agent_electoral_area:", agent_electoral_area);
+            //console.log("agent_constituency:", agent_constituency);
+            //console.log("insititution_name:", insititution_name);
             // alert("Please fill all required fields");
             // $("#agent_submit_form").removeAttr("data-target");
             toaster("Please fill all required fields", "error", 10000);
@@ -459,8 +459,9 @@ $(document).ready(function () {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success: function (response) {
-                console.log(response);
-
+                // console.log(response);
+                //console.log(JSON.stringify(response.message));
+                let data = response.message;
                 if (response.status == "ok") {
                     Swal.fire(response.message, "", "success");
                     $(".spinner-text").hide();
@@ -470,7 +471,21 @@ $(document).ready(function () {
                         page_reload();
                     }, 3000);
                 } else {
-                    toaster(response.message, "error", 10000);
+                    var validation_error_message = "<ul>";
+                    // $("#bs-example-modal-lg").hide();
+                    $.each(data, function (index) {
+                        string = JSON.stringify(data[index]).replace(
+                            /[\[\]']+/g,
+                            ""
+                        );
+                        new_string = string.replace(/^"|"$/g, "");
+                        validation_error_message += `<li class="text-danger">${new_string}</li>`;
+                    });
+
+                    validation_error_message += "</ul>";
+                    //console.log(validation_error_message);
+
+                    toaster(validation_error_message, "error", 10000);
                     $("#confirm_agent").prop("disabled", false);
                     $(".spinner-text").hide();
                     $(".agent_text").show();

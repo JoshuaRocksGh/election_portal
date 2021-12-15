@@ -66,3 +66,16 @@
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    function siteLoading(state) {
+        if (state === "show") {
+            $("#preloader").css("background-color", "#4fc6e17a")
+            $(".preloader").fadeIn(500);
+            return
+        }
+        $(".preloader").fadeOut(500);
+        // $("#preloader").css("background-color", "#fff")
+        return
+    }
+</script>
