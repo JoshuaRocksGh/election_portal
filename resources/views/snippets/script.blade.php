@@ -9,6 +9,12 @@
 {{-- Jequery cdn --}}
 
 
+{{-- firebase --}}
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+
 
 <!-- Plugins js-->
 <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
@@ -62,10 +68,32 @@
 {{-- <script src="{{ asset('assets/js/pages/form-validation.init.js') }}">
 </script> --}}
 
+
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js">
+    < /scrip>   <
+    script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" >
+</script>
+
+<script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "{{ config('services.firebase.apiKey') }}",
+        authDomain: "{{ config('services.firebase.authDomain') }}",
+        projectId: "{{ config('services.firebase.projectId') }}",
+        storageBucket: "{{ config('services.firebase.storageBucket') }}",
+        messagingSenderId: "{{ config('services.firebase.messagingSenderId') }}",
+        appId: "{{ config('services.firebase.appId') }}",
+        measurementId: "{{ config('services.firebase.measurementId') }}"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const analytics = firebase.getAnalytics(app);
+</script>
 
 <script>
     function siteLoading(state) {

@@ -29,6 +29,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('login-api', [LoginController::class, 'login'])->name('login-api');
+Route::post('validate-user-details-api', [LoginController::class, 'validate_user_details']);
+Route::post('user-setup-password-api', [LoginController::class, 'user_setup_password']);
 
 
 
@@ -61,6 +63,7 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/region/{UserRegion}', [RegionalLevelController::class, 'region'])->name('region');
     Route::get('/regional', [RegionalLevelController::class, 'regional'])->name('regional/{UserRegion}');
     Route::get('/regional-constituency/{UserRegion}', [RegionalLevelController::class, 'regional_constituency'])->name('regional-constituency/{UserRegion}');
+    // Route::get('get-user-details-api', [NationalLevelController::class, 'get_user_details']);
 
     //
     Route::get('/constituency/{UserConstituency}', [RegionalLevelController::class, 'constituency'])->name('constituency/{UserConstituency}');
@@ -74,6 +77,13 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/create-user', [AdministrationController::class, 'create_admin'])->name('create-user');
     Route::post('/create-admin-user-api', [AdministrationController::class, 'create_admin_user'])->name('create-admin-user-api');
 
+    Route::get('reset-password', [RegionalLevelController::class, "reset_password"]);
+    Route::get('forgot-password', [RegionalLevelController::class, "reset_password"]);
+    Route::get('delete-regional-user', [RegionalLevelController::class, 'delete_user']);
+    Route::get('activate-user', [RegionalLevelController::class, 'activate_user']);
+    Route::get('de_activate-user', [RegionalLevelController::class, 'de_activate_user']);
+
+
     //REGIONAL LIST
     Route::get('all-regional-users', [RegionalLevelController::class, 'all_regional_users']);
     Route::get('get-all-regional-heads-list', [RegionalLevelController::class, 'all_regional_users_list']);
@@ -83,7 +93,7 @@ Route::group(['middleware' => ['userAuth']], function () {
 
 
 
-    Route::get('delete-regional-user', [RegionalLevelController::class, 'delete_user']);
+    Route::get('get-user-details-api', [RegionalLevelController::class, 'get_user_details']);
 
     //LOGOUT
     Route::get('/logout', [HomeController::class, 'logout'])->name('logout');

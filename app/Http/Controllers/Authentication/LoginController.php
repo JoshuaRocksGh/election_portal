@@ -77,7 +77,9 @@ class LoginController extends Controller
                         "Constituency" => $userDetail->Constituency,
                         "FirstName" => $userDetail->Fname,
                         "Surname" => $userDetail->SurName,
-                        "Agents" => $agentDetails
+                        "userDetails" => $userDetail,
+
+                        // "Agents" => $agentDetails,
                     ]);
 
 
@@ -147,6 +149,94 @@ class LoginController extends Controller
             return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
 
 
+        }
+    }
+
+    public function validate_user_details(Request $request)
+    {
+        // return $request;
+        $validator = Validator::make($request->all(), [
+            'first_time_user_id' => 'required',
+            'first_time_voter_id' => 'required',
+            'first_time_dob' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+
+            return response()->json([
+                "status" => "failed",
+                "message" => "All Fields Required",
+                "data" => []
+            ]);
+
+            // return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
+        $user_id = strtoupper($request->first_time_user_id);
+        $voter_id = $request->first_time_voter_id;
+        $dob = $request->first_time_dob;
+
+        $data = [
+            "PhoneNumber" => $user_id,
+            "ID" => $voter_id,
+            "DOB" => $dob,
+            "DeviceId" => "null"
+        ];
+
+        // return $data;
+
+        try {
+            $response = Http::post(env('API_BASE_URL') . "userAuthentication", $data);
+            return json_decode($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => "failed",
+                "message" => "Error Occurred",
+                "data" => []
+            ]);
+        }
+    }
+
+    public function user_setup_password(Request $request)
+    {
+        // return $request;
+        $validator = Validator::make($request->all(), [
+            'user_setup_user_id' => 'required',
+            'user_setup_user_password' => 'required',
+            // 'first_time_dob' => 'required',
+        ]);
+        if ($validator->fails()) {
+
+            return response()->json([
+                "status" => "failed",
+                "message" => "All Fields Required",
+                "data" => []
+            ]);
+
+            // return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
+        $user_id = strtoupper($request->user_setup_user_id);
+        $password = strtoupper($request->user_setup_user_password);
+
+        $data = [
+            "PhoneNumber" => $user_id,
+            "Password" => $password,
+            "DeviceId" => "null",
+            "Location" => "null"
+        ];
+
+        // return $data;
+
+        try {
+            $response = Http::post(env('API_BASE_URL') . "userSetup", $data);
+            return json_decode($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => "failed",
+                "message" => "Error Occurred",
+                "data" => []
+            ]);
         }
     }
 }

@@ -78,4 +78,6 @@
 
     <script src="{{ asset('assets/js/send_notifications.js') }}"></script>
 
+
+
 @endsection

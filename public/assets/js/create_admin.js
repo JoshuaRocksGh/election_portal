@@ -185,18 +185,52 @@ $(document).ready(function () {
         e.preventDefault();
         // alert("Admin create");
 
-        var first_name = $("#user_first_name").val();
-        var last_name = $("#user_last_name").val();
+        var first_name = $("#user_first_name").val(); //yes
+        var last_name = $("#user_last_name").val(); //yes
+        var middle_name = $("#user_middle_name").val(); //yes
+        var dob = $("#user_dob").val(); //yes
         var phone_number = $("#user_telephone_number").val();
-        var voters_id = $("#user_voters_id").val();
-        var user_mandate = $("#user_mandate").val();
-        var user_region = $("#agent_region").val();
-        var user_constituency = $("#agent_constituency").val();
-        var admin_id = $("#admin_user_id").val();
+        var secondary_phone_number = $("#user_telephone_number_2").val(); //yes
+        var other_phone_number = $("#user_telephone_number_3").val(); //yes
+        var voters_id = $("#user_voters_id").val(); //yes
+        var gender = $("#select_gender").val(); //yes
+        var user_mandate = $("#user_mandate").val(); //yes
+        var user_region = $("#agent_region").val(); //yes
+        var user_constituency = $("#agent_constituency").val(); //yes
+        var admin_id = $("#admin_user_id").val(); //yes
         var admin_password = $("#admin_password").val();
         var confirm_admin_password = $("#confirm_admin_password").val();
         var isnum = /^\d+$/.test(phone_number);
         var isnum_ = /^\d+$/.test(voters_id);
+
+        // dobValidate(birth);
+
+        var today = new Date();
+        var nowyear = today.getFullYear();
+        var nowmonth = today.getMonth();
+        var nowday = today.getDate();
+        var b = $("#user_dob").val();
+
+        var birth = new Date(b);
+
+        var birthyear = birth.getFullYear();
+        var birthmonth = birth.getMonth();
+        var birthday = birth.getDate();
+
+        var age = nowyear - birthyear;
+        var age_month = nowmonth - birthmonth;
+        var age_day = nowday - birthday;
+
+        if (age < 18) {
+            // $("#agent_submit_form").removeAttr("data-target");
+            Swal.fire(
+                "",
+                "User should be more than 18 years.Please enter a valid Date of Birth",
+                "warning"
+            );
+
+            return false;
+        }
 
         if (phone_number.replace(/ /g, "").length != 10 || isnum === false) {
             toaster("Invalid Phone Number", "error", 5000);
@@ -229,7 +263,8 @@ $(document).ready(function () {
         } else if (
             first_name.trim() == "" ||
             last_name.trim() == "" ||
-            user_mandate.trim() == ""
+            user_mandate.trim() == "" ||
+            gender.trim() == ""
         ) {
             toaster("Mandatory Fields Required", "error", 5000);
             return false;
@@ -251,6 +286,11 @@ $(document).ready(function () {
                     user_constituency: user_constituency,
                     admin_id: admin_id,
                     admin_password: confirm_admin_password,
+                    middle_name: middle_name,
+                    dob: dob,
+                    secondary_phone_number: secondary_phone_number,
+                    other_phone_number: other_phone_number,
+                    gender: gender,
                 },
                 headers: {
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(

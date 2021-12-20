@@ -80,8 +80,8 @@
                                                             Gender:<span class="text-danger">*</span></label>
                                                         <select class="form-control col-md-12" id="select_gender">
                                                             <option value="">-- Select Agent Gender --</option>
-                                                            <option value="001~Male">Male</option>
-                                                            <option value="002~Female">Female</option>
+                                                            <option value="Male">Male</option>
+                                                            <option value="Female">Female</option>
 
                                                         </select>
                                                     </div>
@@ -156,9 +156,9 @@
                                                 @if (session()->get('UserMandate') == 'NationalLevel')
                                                     <select class="form-control" name="" id="user_mandate">
                                                         <option value="">-- Select User Mandate Level -- </option>
-                                                        <option value="NationalLevel">National Level</option>
+                                                        {{-- <option value="NationalLevel">National Level</option> --}}
                                                         <option value="RegionalLevel" selected>Regional Level</option>
-                                                        <option value="ConstituencyLevel">Constituency Level</option>
+                                                        {{-- <option value="ConstituencyLevel">Constituency Level</option> --}}
                                                     </select>
                                                 @elseif(session()->get('UserMandate') == "RegionalLevel")
                                                     <select class="form-control" name="" id="user_mandate">

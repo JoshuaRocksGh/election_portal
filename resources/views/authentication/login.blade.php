@@ -38,7 +38,7 @@
                                                     </span>
                                                 </a>
                                             </div> --}}
-                                                                <p class=" mb-4 mt-1 text-danger h4">Sign In</p>
+                                                                <p class=" mb-4 mt-1 text-danger h4 sign_in">Sign In</p>
                                                             </div>
 
                                                             <form action="#" id="login_form">
@@ -51,14 +51,16 @@
 
                                                                 <div class="alert alert-danger" role="alert"
                                                                     id="error_alert" style="display: none">
-                                                                    <i class="mdi mdi-block-helper mr-2"></i>
-                                                                    {{-- <span class="error_alert_message">Hello</span> --}}
+                                                                    {{-- <i class="mdi mdi-block-helper mr-2"></i> --}}
+                                                                    <span class="error_alert_message"></span>
                                                                 </div>
-                                                                <p class="error_alert_message"></p>
+                                                                {{-- <p class="error_alert_message"></p> --}}
                                                                 <div class="form-group mb-3">
                                                                     <label class="h4">User ID</label>
                                                                     <input class="form-control" type="text" id="user_id"
-                                                                        required="" placeholder="Enter Your User Id">
+                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                        maxlength="10" required=""
+                                                                        placeholder="Enter Your User Id">
                                                                 </div>
 
                                                                 <div class="form-group mb-3">
@@ -89,6 +91,106 @@
                                                                 </div>
                                                                 <br><br>
 
+                                                            </form>
+
+                                                            <form action="#" id="first_time_login" style="display: none">
+                                                                @csrf
+                                                                <div class="alert alert-success" role="alert"
+                                                                    id="success_alert" style="display: none;">
+                                                                    {{-- <i class="mdi mdi-check-all mr-2 alert-success"></i> --}}
+                                                                    <span class="first_time_success_alert_message"></span>
+
+
+                                                                </div>
+                                                                <div class="alert alert-danger" role="alert"
+                                                                    id="first_time_error_alert" style="display: none">
+                                                                    {{-- <i class="mdi mdi-block-helper mr-2"></i> --}}
+                                                                    <span class="first_time_error_alert_message"></span>
+                                                                </div>
+                                                                <div class="form-group mb-1">
+                                                                    <label class="h4">User ID</label>
+                                                                    <input class="form-control" type="text"
+                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                        maxlength="10" id="first_time_user_id" required=""
+                                                                        placeholder="Enter Your User ID">
+                                                                </div>
+
+                                                                <div class="form-group mb-1">
+                                                                    <label class="h4">Voter ID</label>
+                                                                    <input class="form-control" type="text"
+                                                                        id="first_time_voter_id" required=""
+                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                        maxlength="10" placeholder="Enter Voter ID">
+                                                                </div>
+
+                                                                <div class="form-group mb-1">
+                                                                    <label class="h4">Date of Birth</label>
+                                                                    <input class="form-control" type="date"
+                                                                        id="first_time_dob" required="">
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group mb-0 text-center">
+                                                                    <button class="btn btn-blue btn-block " type="submit"
+                                                                        id="first_time_login_form_button">
+                                                                        <span class="first_time_log_in_text"><b>Verify
+                                                                            </b></span>
+                                                                        <span
+                                                                            class="spinner-border spinner-border-sm mr-1 spinner-text"
+                                                                            role="status" aria-hidden="true"
+                                                                            style="display: none"></span>
+                                                                    </button>
+                                                                </div>
+                                                                <br>
+                                                            </form>
+
+                                                            {{-- USER SETUP FORM --}}
+                                                            <form action="#" id="user_setup" style="display: none">
+                                                                @csrf
+                                                                <div class="alert alert-success" role="alert"
+                                                                    id="success_alert" style="display: none;">
+                                                                    {{-- <i class="mdi mdi-check-all mr-2 alert-success"></i> --}}
+
+                                                                </div>
+                                                                <div class="alert alert-danger" role="alert"
+                                                                    id="user_setup_error_alert" style="display: none">
+                                                                    {{-- <i class="mdi mdi-block-helper mr-2"></i> --}}
+                                                                    <span class="user_setup_error_alert_message"></span>
+                                                                </div>
+
+                                                                <div class="form-group mb-1">
+                                                                    <label class="h4">User ID</label>
+                                                                    <input class="form-control" type="text"
+                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                        maxlength="10" id="user_setup_user_id" required=""
+                                                                        placeholder="Enter Your User ID">
+                                                                </div>
+
+                                                                <div class="form-group mb-1">
+                                                                    <label class="h4">Password</label>
+                                                                    <input class="form-control" type="password"
+                                                                        id="user_setup_user_password" required=""
+                                                                        placeholder="Enter Your Password">
+                                                                </div>
+                                                                <div class="form-group mb-1">
+                                                                    <label class="h4">Confirm Password</label>
+                                                                    <input class="form-control" type="password"
+                                                                        id="user_setup_user_confirm_password" required=""
+                                                                        placeholder="Confrim Your Password">
+                                                                </div>
+
+                                                                <br>
+                                                                <div class="form-group mb-0 text-center">
+                                                                    <button class="btn btn-blue btn-block " type="submit"
+                                                                        id="user_setup_login_form_button">
+                                                                        <span class="user_setup_log_in_text"><b>Register
+                                                                            </b></span>
+                                                                        <span
+                                                                            class="spinner-border spinner-border-sm mr-1 spinner-text"
+                                                                            role="status" aria-hidden="true"
+                                                                            style="display: none"></span>
+                                                                    </button>
+                                                                </div>
+                                                                <br>
                                                             </form>
 
                                                         </div> <!-- end card-body -->

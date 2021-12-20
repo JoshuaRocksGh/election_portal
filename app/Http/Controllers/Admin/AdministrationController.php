@@ -85,10 +85,18 @@ class AdministrationController extends Controller
                 "PhoneNumber" => $request->phone_number,
                 "Id" => $request->voters_id,
                 "UserMandate" => $request->user_mandate,
-                "Region" => "ALL",
+                "Region" => $request->user_region,
                 "Constituency" =>  "ALL",
                 "Username" => $user_id,
-                "Password" => $password
+                "Password" => $password,
+                "FirstTime" => true,
+                "Active" => true,
+                "Picture" => "",
+                "PhoneNumber2" => $request->secondary_phone_number,
+                "PhoneNumber3" => $request->other_phone_number,
+                "MiddleName" => $request->middle_name,
+                "DOB" => $request->dob,
+                "Gender" => $request->gender
             ];
         } elseif ($mandate == "RegionalLevel") {
             $data = [
@@ -100,7 +108,15 @@ class AdministrationController extends Controller
                 "Region" => $request->user_region,
                 "Constituency" =>  "ALL",
                 "Username" => $user_id,
-                "Password" => $password
+                "Password" => $password,
+                "FirstTime" => true,
+                "Active" => true,
+                "Picture" => "",
+                "PhoneNumber2" => $request->secondary_phone_number,
+                "PhoneNumber3" => $request->other_phone_number,
+                "MiddleName" => $request->middle_name,
+                "DOB" => $request->dob,
+                "Gender" => $request->gender
             ];
         } elseif ($mandate == "ConstituencyLevel") {
             $data = [

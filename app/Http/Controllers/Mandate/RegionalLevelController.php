@@ -81,7 +81,9 @@ class RegionalLevelController extends Controller
 
     public function view_user_profile()
     {
-        return view('pages.admin.view_profile');
+        $userDetails =  session()->get('userDetails');
+        // return $userDetails;
+        return view('pages.admin.view_profile', ['userDetails' => $userDetails]);
     }
 
     public function regional_constituency($UserRegion)
@@ -160,5 +162,80 @@ class RegionalLevelController extends Controller
     public function send_notifications()
     {
         return view('pages.admin.send_notifications');
+    }
+
+    public function get_user_details(Request $request)
+    {
+        // return $request;
+        $userID = $request->query('username');
+
+        $response = Http::post(env('API_BASE_URL') . "userSearch?userId=$userID");
+
+        return json_decode($response->body());
+    }
+
+    public function reset_password(Request $request)
+    {
+        // return $request;
+        $userID = $request->query('userId');
+        // return $userID;
+
+        // dd(env('API_BASE_URL') . "userReset?userId=$userID");
+
+        $response = Http::post(env('API_BASE_URL') . "userReset?userId=$userID");
+
+        if ($response['status'] == "failed") {
+            Alert::error('', $response['message']);
+            return back();
+        } else {
+            Alert::success('', $response['message']);
+            return back();
+        }
+    }
+
+    public function activate_user(Request $request)
+    {
+        // return $request;
+        $userID = $request->query('userId');
+
+        $data = [
+            "UserId" => $userID,
+            "Active" => true
+        ];
+
+        // return $data;
+
+        $response = Http::post(env('API_BASE_URL') . "userUpdate", $data);
+
+        if ($response['status'] == "failed") {
+            Alert::error('', $response['message']);
+            return back();
+        } else {
+            Alert::success('', $response['message']);
+            return back();
+        }
+    }
+
+    public function de_activate_user(Request $request)
+    {
+        // return $request;
+        $userID = $request->query('userId');
+
+        $data = [
+            "UserId" => $userID,
+            "Active" => false
+        ];
+        // return $data;
+
+
+        $response = Http::post(env('API_BASE_URL') . "userUpdate", $data);
+
+        if ($response['status'] == "failed") {
+            Alert::error('', $response['message']);
+            return back();
+        } else {
+            Alert::success('', $response['message']);
+            return back();
+        }
     }
 }

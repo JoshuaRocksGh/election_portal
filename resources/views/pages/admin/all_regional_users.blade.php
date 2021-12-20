@@ -67,8 +67,8 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-4"></div>
-                                <div class="col-md-4 text-center user_image_id">
-
+                                <div class="col-md-4 text-center ">
+                                    <img alt="image" class="img-fluid avatar-xxl rounded-circle user_image_id" />
                                 </div>
                                 <div class="col-md-4"></div>
                                 <hr>
@@ -82,6 +82,24 @@
                                     <legend></legend>
                                     <div class="row user_buttons">
 
+                                        <div class="col-md-4">
+                                            <a type="button"
+                                                class="btn btn-outline-warning btn-rounded waves-effect waves-light mb-1 user_reset_password"><b>Reset
+                                                    Password</b></a>
+                                        </div>
+
+                                        <div class="col-md-4 text-center">
+                                            <a type="button"
+                                                class="btn btn-outline-info btn-rounded waves-effect waves-light mb-1 user_forgot_password"><b>Forgot
+                                                    Password</b></a>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <a type="button"
+                                                class="btn btn-outline-pink btn-rounded waves-effect waves-light mb-1 float-right user_delete"><b
+                                                    class="activate_deactivate_user">Delete
+                                                    User</b></a>
+                                        </div>
                                     </div>
                                     <legend></legend>
 
