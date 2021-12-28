@@ -82,8 +82,11 @@ class RegionalLevelController extends Controller
     public function view_user_profile()
     {
         $userDetails =  session()->get('userDetails');
+        $UserRegion = session()->get('Region');
+
         // return $userDetails;
-        return view('pages.admin.view_profile', ['userDetails' => $userDetails]);
+        // return $UserRegion;
+        return view('pages.admin.view_profile', ['userDetails' => $userDetails, "UserRegion" => $UserRegion]);
     }
 
     public function regional_constituency($UserRegion)
@@ -134,9 +137,25 @@ class RegionalLevelController extends Controller
 
     public function all_regional_users_list()
     {
-        $response = Http::post(env('API_BASE_URL') . "getUsers");
+        $UserMandate = session()->get("UserMandate");
+        $UserRegion = session()->get("Region");
 
-        return json_decode($response->body());
+        if ($UserMandate == "NationalLevel") {
+            $response = Http::post(env('API_BASE_URL') . "getUsers");
+
+            return json_decode($response->body());
+        } elseif ($UserMandate == "RegionalLevel") {
+            $response = Http::post(env('API_BASE_URL') . "getUsers?region=$UserRegion");
+
+            return json_decode($response->body());
+        } else {
+            return response()->json([
+                "status" => "failed",
+                "message" => "Error Occured",
+                "data" => []
+            ]);
+        }
+        // return $UserRegion;
     }
 
     public function delete_user(Request $request)
@@ -161,7 +180,9 @@ class RegionalLevelController extends Controller
 
     public function send_notifications()
     {
-        return view('pages.admin.send_notifications');
+        $userDetails =  session()->get('userDetails');
+        $UserRegion = session()->get('Region');
+        return view('pages.admin.send_notifications', ["UserRegion" => $UserRegion]);
     }
 
     public function get_user_details(Request $request)
@@ -199,15 +220,27 @@ class RegionalLevelController extends Controller
         $userID = $request->query('userId');
 
         $data = [
-            "UserId" => $userID,
-            "Active" => true
+            "UserId" => $userID, "data" => [
+                "Active" => true
+            ]
+
+
+
         ];
+
+        // $data = [
+        //     "UserId" => $userID,
+        //     "Active" => true
+        // ];
 
         // return $data;
 
         $response = Http::post(env('API_BASE_URL') . "userUpdate", $data);
 
-        if ($response['status'] == "failed") {
+        if (
+            $response['status'] == "failed" ||
+            $response['status'] == "error"
+        ) {
             Alert::error('', $response['message']);
             return back();
         } else {
@@ -222,15 +255,23 @@ class RegionalLevelController extends Controller
         $userID = $request->query('userId');
 
         $data = [
-            "UserId" => $userID,
-            "Active" => false
+            "UserId" => $userID, "data" => [
+                "Active" => false
+            ]
+
+
+
         ];
         // return $data;
 
 
         $response = Http::post(env('API_BASE_URL') . "userUpdate", $data);
+        // return $response;
 
-        if ($response['status'] == "failed") {
+        if (
+            $response['status'] == "failed" ||
+            $response['status'] == "error"
+        ) {
             Alert::error('', $response['message']);
             return back();
         } else {

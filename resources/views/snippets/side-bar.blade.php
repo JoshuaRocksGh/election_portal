@@ -158,13 +158,13 @@
                     <li>
                         <a href="#sidebarLoans" data-toggle="collapse">
                             <i class="mdi mdi-briefcase-check-outline"></i>
-                            <span> Regional Users </span>
+                            <span> Constituency Users </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <div class="collapse" id="sidebarLoans">
                             <ul class="nav-second-level">
                                 <li>
-                                    <a href="{{ url('all-regional-users') }}">All Constituency Users</a>
+                                    <a href="{{ url('all-constituency-users') }}">All Constituency Users</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('create-user') }}">Create Constituency User</a>
@@ -217,7 +217,7 @@
                             <ul class="nav-second-level">
 
                                 <li>
-                                    <a href="view-profile">View Profile</a>
+                                    <a href="{{ url('view-profile') }}">View Profile</a>
                                 </li>
 
 

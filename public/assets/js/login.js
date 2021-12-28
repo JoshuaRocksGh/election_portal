@@ -135,6 +135,7 @@ function validate_user() {
                 },
                 success: function (response) {
                     console.log(response);
+                    // return false;
 
                     if (response.status == "ok") {
                         $("#success_alert").show();
@@ -246,7 +247,7 @@ function login(email, password) {
                 $(".spinner-text").hide();
                 $(".log_in_text").show();
                 // alert(response.message);
-                $(".error_alert").html(response.message);
+                $(".error_alert_message").html(response.message);
                 $("#error_alert").show();
                 hide_alert();
             }
@@ -262,11 +263,11 @@ $("#login_form_button").click(function (e) {
     // $(".login_form_button").attr("disabled", true);
 
     if (email === "" || email === undefined) {
+        $(".error_alert_message").html("Please Enter User Id");
         $("#error_alert").toggle(500);
-        $("#error_alert_message").text("Please Enter User Id");
     } else if (password === "" || password === undefined) {
+        $(".error_alert_message").html("Please Enter Password");
         $("#error_alert").toggle(500);
-        $("#error_alert_message").text("Please Enter Password");
     } else {
         $(".login_form_button").prop("disabled", true);
         $(".spinner-text").show();

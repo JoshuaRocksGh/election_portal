@@ -61,6 +61,7 @@ Route::group(['middleware' => ['userAuth']], function () {
     //Mandate Route
     Route::get('/national-api', [NationalLevelController::class, 'national'])->name('national-api');
     Route::get('/region/{UserRegion}', [RegionalLevelController::class, 'region'])->name('region');
+    Route::get('/region/view-profile', [RegionalLevelController::class, 'view_user_profile']);
     Route::get('/regional', [RegionalLevelController::class, 'regional'])->name('regional/{UserRegion}');
     Route::get('/regional-constituency/{UserRegion}', [RegionalLevelController::class, 'regional_constituency'])->name('regional-constituency/{UserRegion}');
     // Route::get('get-user-details-api', [NationalLevelController::class, 'get_user_details']);
@@ -87,6 +88,8 @@ Route::group(['middleware' => ['userAuth']], function () {
     //REGIONAL LIST
     Route::get('all-regional-users', [RegionalLevelController::class, 'all_regional_users']);
     Route::get('get-all-regional-heads-list', [RegionalLevelController::class, 'all_regional_users_list']);
+
+    Route::get('all-constituency-users', [ConstituencyLevelController::class, 'all_constituency_users']);
 
     Route::get('send-notifications', [RegionalLevelController::class, 'send_notifications']);
     Route::get('view-profile', [RegionalLevelController::class, 'view_user_profile']);

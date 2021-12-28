@@ -42,6 +42,9 @@ function get_regions() {
     });
 }
 
+$("#agent_constituency").prop("disabled", true);
+$("#agent_constituency").css("background", "#DCDCDC");
+
 function get_constituency(region) {
     $("#constituency_spinner").show();
     $.ajax({
@@ -90,8 +93,6 @@ function toaster(message, icon, timer) {
 
 // $("#agent_region").prop("disabled", true);
 // $("#agent_region").css("background", "#DCDCDC");
-// $("#agent_constituency").prop("disabled", true);
-// $("#agent_constituency").css("background", "#DCDCDC");
 
 function dont_call_constituency() {
     $("#constituency_spinner").hide();
@@ -104,7 +105,12 @@ $(document).ready(function () {
     //call functions
     setTimeout(function () {
         // alert(my_mandate);
+        // alert(my_region);
         get_regions();
+        if (my_mandate == "RegionalLevel") {
+            get_regions();
+            get_constituency(my_region);
+        }
     }, 200);
 
     // $("#agent_region").selectpicker();
@@ -312,6 +318,9 @@ $(document).ready(function () {
                         $(".spinner-text").hide();
                         $("#create_admin").attr("disabled", true);
                     } else {
+                        $(".log_in_text").show();
+                        $(".spinner-text").hide();
+                        $("#create_admin").attr("disabled", false);
                         var validation_error_message = "<ul>";
                         // $("#bs-example-modal-lg").hide();
                         $.each(data, function (index) {
@@ -325,10 +334,6 @@ $(document).ready(function () {
 
                         validation_error_message += "</ul>";
                         toaster(validation_error_message, "error", 10000);
-
-                        $(".log_in_text").show();
-                        $(".spinner-text").hide();
-                        $("#create_admin").attr("disabled", false);
                     }
                 },
             });

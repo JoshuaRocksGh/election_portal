@@ -8,7 +8,7 @@
 
     <link href="src/selectstyle.css" rel="stylesheet">
 
-
+@endsection
 
 @section('content')
 
@@ -72,7 +72,9 @@
                                                         <label for="user_name" class="h4">Voters ID<span
                                                                 class="text-danger">*</span></label>
                                                         <input class="form-control" type="text" id="user_voters_id"
-                                                            placeholder="Enter User Voter Id Number" autocomplete="off">
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                            maxlength="10" placeholder="Enter User Voter Id Number"
+                                                            autocomplete="off">
                                                     </div>
 
                                                     <div class="form-group mb-1">
@@ -97,6 +99,8 @@
                                                         <label for="user_name" class="h4">Primary Phone
                                                             Number<span class="text-danger">*</span></label>
                                                         <input class="form-control" type="text" id="user_telephone_number"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                            maxlength="10"
                                                             placeholder="Enter User Primary Telephone  Number"
                                                             autocomplete="off">
                                                     </div>
@@ -106,7 +110,9 @@
                                                             Number<span class="text-danger">*</span></label>
                                                         <input class="form-control" type="text"
                                                             id="user_telephone_number_3"
-                                                            placeholder="Enter User Other Phone Number" autocomplete="off">
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                            maxlength="10" placeholder="Enter User Other Phone Number"
+                                                            autocomplete="off">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -115,7 +121,8 @@
                                                             Number<span class="text-danger">*</span></label>
                                                         <input class="form-control" type="text"
                                                             id="user_telephone_number_2"
-                                                            placeholder="Enter User Secondary Phone Number"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                            maxlength="10" placeholder="Enter User Secondary Phone Number"
                                                             autocomplete="off">
                                                     </div>
                                                 </div>
@@ -125,27 +132,58 @@
 
                                         <div class="col-md-12">
                                             <h4 class="text-danger"> Region Details</h4>
-                                            <div class="form-group mb-1 agent_select col-md-6">
-                                                <label for="" class="h4">User Region</label>
+                                            <div class="row">
+                                                <div class="form-group mb-1 agent_select col-md-6">
+                                                    <label for="" class="h4">User Region</label>
 
-                                                @if (session()->get('UserMandate') == 'NationalLevel')
+                                                    @if (session()->get('UserMandate') == 'NationalLevel')
 
-                                                    <select class="form-control" id="agent_region">
-                                                        <option value="">-- Select Region --</option>
+                                                        <select class="form-control" id="agent_region">
+                                                            <option value="">-- Select Region --</option>
 
-                                                    </select>
-                                                @elseif(session()->get('UserMandate') != "NationalLevel")
-                                                    <select class="form-control" id="agent_region" disabled>
-                                                        <option value="{{ session()->get('Region') }}">
-                                                            {{ session()->get('Region') }}</option>
+                                                        </select>
+                                                    @elseif(session()->get('UserMandate') != "NationalLevel")
+                                                        <select class="form-control" id="agent_region" disabled>
+                                                            <option value="{{ session()->get('Region') }}">
+                                                                {{ session()->get('Region') }}</option>
 
 
-                                                    </select>
+                                                        </select>
+                                                    @endif
+                                                </div>
+
+
+                                                @if (session()->get('UserMandate') != 'NationalLevel')
+                                                    <div class="form-group mb-1 col-md-6">
+                                                        <label for="simpleinput" class="h4 col-md-12">User
+                                                            Constituency</label>
+
+                                                        @if (session()->get('UserMandate') != 'ConstituencyLevel')
+
+                                                            <select class="form-control col-md-12" id="agent_constituency">
+                                                                <option value="">-- Select Constituency--</option>
+                                                            </select>
+                                                            {{-- <div class="d-flex align-items-center ml-2">
+
+                                                                <span class="spinner-border spinner-border-sm mr-1"
+                                                                    id="constituency_spinner" role="status"
+                                                                    aria-hidden="true" style="display:none"></span>
+                                                            </div> --}}
+                                                        @elseif(session()->get('UserMandate') == "ConstituencyLevel")
+                                                            <select class="form-control col-md-10 ml-2"
+                                                                id="agent_constituency" style="background: #DCDCDC"
+                                                                disabled>
+                                                                <option value="{{ session()->get('Constituency') }}"
+                                                                    selected>
+                                                                    {{ session()->get('Constituency') }}</option>
+                                                            </select>
+
+
+                                                        @endif
+
+                                                    </div>
                                                 @endif
                                             </div>
-
-
-
                                         </div>
                                         <div class="col-md-6">
 
@@ -165,12 +203,13 @@
                                                         <option value="">-- Select User Mandate Level -- </option>
 
                                                         <option value="RegionalLevel">Regional Level</option>
-                                                        <option value="ConstituencyLevel">Constituency Level</option>
+                                                        <option value="ConstituencyLevel" selected>Constituency Level
+                                                        </option>
                                                     </select>
 
                                                 @elseif(session()->get('UserMandate') == "ConstituencyLevel")
                                                     <select class="form-control" name="" id="user_mandate" disabled>
-                                                        <option value="ConstituencyLevel" selected>Constituency Level
+                                                        <option value="ConstituencyLevel">Constituency Level
                                                         </option>
 
                                                     </select>
@@ -178,32 +217,7 @@
 
                                             </div>
 
-                                            <div class="form-group mb-1 row" style="display: none">
-                                                <label for="simpleinput" class="h4 col-md-12">User
-                                                    Constituency</label>
 
-                                                @if (session()->get('UserMandate') != 'ConstituencyLevel')
-
-                                                    <select class="form-control col-md-10 ml-2" id="agent_constituency">
-                                                        <option value="">-- Select Constituency--</option>
-                                                    </select>
-                                                    <div class="d-flex align-items-center ml-2">
-                                                        <br>
-                                                        <span class="spinner-border spinner-border-sm mr-1"
-                                                            id="constituency_spinner" role="status" aria-hidden="true"
-                                                            style="display:none"></span>
-                                                    </div>
-                                                @elseif(session()->get('UserMandate') == "ConstituencyLevel")
-                                                    <select class="form-control col-md-10 ml-2" id="agent_constituency"
-                                                        style="background: #DCDCDC" disabled>
-                                                        <option value="{{ session()->get('Constituency') }}" selected>
-                                                            {{ session()->get('Constituency') }}</option>
-                                                    </select>
-
-
-                                                @endif
-
-                                            </div>
 
                                             <div class="form-group mb-1" style="display: none">
                                                 <label for="user_name" class="h4 text-blue">User Default Password<span

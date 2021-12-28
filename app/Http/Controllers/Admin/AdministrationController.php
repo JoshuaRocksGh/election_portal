@@ -126,9 +126,17 @@ class AdministrationController extends Controller
                 "Id" => $request->voters_id,
                 "UserMandate" => $request->user_mandate,
                 "Region" => $request->user_region,
-                "Constituency" =>  $user_constituency,
+                "Constituency" => $user_constituency,
                 "Username" => $user_id,
-                "Password" => $password
+                "Password" => $password,
+                "FirstTime" => true,
+                "Active" => true,
+                "Picture" => "",
+                "PhoneNumber2" => $request->secondary_phone_number,
+                "PhoneNumber3" => $request->other_phone_number,
+                "MiddleName" => $request->middle_name,
+                "DOB" => $request->dob,
+                "Gender" => $request->gender
             ];
         }
 
@@ -163,7 +171,12 @@ class AdministrationController extends Controller
             //     'message' => (string) $e->getMessage()
             // ]);
 
-            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+            return response()->json([
+                "status" => "failed",
+                "message" => "Internal Server Error",
+                "data" => []
+            ]);
+            // return $base_response->api_response('500', "Internal Server Error",  NULL);
 
 
         }

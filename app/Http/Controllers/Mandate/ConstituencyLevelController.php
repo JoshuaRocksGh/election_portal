@@ -99,4 +99,10 @@ class ConstituencyLevelController extends Controller
             return view('pages.agents.unassign_agent', ['electoral_area' => $electoral_area, 'assign' => $assign, 'user_id' => $user_id, 'constituency' => $constituency, 'UserConstituency' => $UserConstituency]);
         }
     }
+
+    public function all_constituency_users(Request $request)
+    {
+        $UserRegion = session()->get('Region');
+        return view('pages.admin.all_regional_users', ['UserRegion' => $UserRegion]);
+    }
 }
