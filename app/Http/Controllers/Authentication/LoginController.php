@@ -35,7 +35,7 @@ class LoginController extends Controller
         };
 
         $user_id = strtoupper($request->user_id);
-        $password = strtoupper($request->password);
+        $password = $request->password;
 
         $data  = [
 
@@ -62,7 +62,7 @@ class LoginController extends Controller
 
                     $userDetail = $result->data;
 
-                    // return $userDetail;
+                    $userID =  $userDetail->Username;
 
                     $get_agent = Http::post(env('API_BASE_URL') . "getAllagent");
                     $agent = json_decode($get_agent->body());
@@ -78,6 +78,7 @@ class LoginController extends Controller
                         "FirstName" => $userDetail->Fname,
                         "Surname" => $userDetail->SurName,
                         "userDetails" => $userDetail,
+                        "userID" => $userDetail->Username
 
                         // "Agents" => $agentDetails,
                     ]);
@@ -172,7 +173,7 @@ class LoginController extends Controller
             // return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
-        $user_id = strtoupper($request->first_time_user_id);
+        $user_id = $request->first_time_user_id;
         $voter_id = $request->first_time_voter_id;
         $dob = $request->first_time_dob;
 
@@ -216,8 +217,8 @@ class LoginController extends Controller
             // return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
-        $user_id = strtoupper($request->user_setup_user_id);
-        $password = strtoupper($request->user_setup_user_password);
+        $user_id = $request->user_setup_user_id;
+        $password = $request->user_setup_user_password;
 
         $data = [
             "PhoneNumber" => $user_id,

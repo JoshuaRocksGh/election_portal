@@ -10,9 +10,13 @@
 
 
 {{-- firebase --}}
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+{{-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script> --}}
+
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
 
 
 
@@ -92,7 +96,15 @@
 
     // Initialize Firebase
     const app = firebase.initializeApp(firebaseConfig);
-    const analytics = firebase.getAnalytics(app);
+    {{-- const analytics = firebase.getAnalytics(app); --}}
+
+    firebase.analytics.isSupported().then((isSupported) => {
+        if (isSupported) {
+            analytics = firebase.analytics(app);
+        }
+    })
+
+    let db = firebase.firestore();
 </script>
 
 <script>

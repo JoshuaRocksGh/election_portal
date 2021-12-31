@@ -200,7 +200,7 @@
                         <div class="collapse" id="sidebarNotifications">
                             <ul class="nav-second-level">
                                 <li>
-                                    <a href="send-notifications">Send Notifications</a>
+                                    <a href="{{ url('send-notifications') }}">Send Notifications</a>
                                 </li>
 
                             </ul>

@@ -55,6 +55,8 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::post('/send-agent-message-api', [AddAgentsController::class, 'message_details'])->name('send-agent-message-api');
     Route::get('/agent-message-replies-api', [AddAgentsController::class, 'message_replies'])->name('agent-message-replies-api');
 
+    Route::post('/send-notification-api', [AddAgentsController::class, "send_notifiation"]);
+
 
     Route::post('/unassign-agent-api', [ConstituencyLevelController::class, 'unassign_'])->name('unassign-agent-api');
 

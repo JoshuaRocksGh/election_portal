@@ -2,6 +2,21 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 
+// let db = firebase.firestore();
+
+// function getAllData() {
+//     db.collection("candidates")
+//         .get()
+//         .then((querySnapshot) => {
+//             var candidates = [];
+//             querySnapshot.forEach((doc) => {
+//                 candidates.push(doc.data());
+//             });
+//             console.log("querySnapshot =>", querySnapshot);
+//             console.log("candidates=>", candidates);
+//         });
+// }
+
 function all_users() {
     $.ajax({
         type: "GET",
@@ -79,3 +94,7 @@ setTimeout(function () {
     // console.log(AgentDetail);
     all_users();
 }, 500);
+
+$(document).ready(function () {
+    getAllData();
+});

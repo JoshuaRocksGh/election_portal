@@ -29,10 +29,21 @@
                         </div>
                     </div>
                     <div class="container">
-                        <h3 class="text-center"
-                            style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ; font-size:24px">
-                            {{ strtoupper($userDetails->Fname . ' ' . $userDetails->MiddleName . ' ' . $userDetails->SurName) }}
-                        </h3>
+                        @if (isset($userDetails->MiddleName))
+                            <h3 class="text-center"
+                                style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ; font-size:24px">
+
+                                {{ strtoupper($userDetails->Fname . ' ' . $userDetails->MiddleName . ' ' . $userDetails->SurName) }}
+                            </h3>
+                        @else
+                            <h3 class="text-center"
+                                style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ; font-size:24px">
+
+                                {{ strtoupper($userDetails->Fname . ' ' . $userDetails->SurName) }}
+                            </h3>
+
+                        @endif
+
                         <span style="display: block; width: 100% ; border-top: 1px solid #ccc"></span>
                         <br>
 
@@ -102,10 +113,16 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="text-danger">Middle Name</th>
-                                                <td>
-                                                    <b
-                                                        class="float-right">{{ strtoupper($userDetails->MiddleName) }}</b>
-                                                </td>
+                                                @if (isset($userDetails->MiddleName))
+                                                    <td>
+                                                        <b
+                                                            class="float-right">{{ strtoupper($userDetails->MiddleName) }}</b>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <b class="float-right"></b>
+                                                    </td>
+                                                @endif
 
                                             </tr>
                                         </tbody>
@@ -124,14 +141,26 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="text-danger">Gender</th>
-                                                <td><b class="float-right">{{ strtoupper($userDetails->Gender) }}</b>
-                                                </td>
+                                                @if (isset($userDetails->Gender))
+                                                    <td><b
+                                                            class="float-right">{{ strtoupper($userDetails->Gender) }}</b>
+                                                    </td>
+                                                @else
+                                                    <td><b class="float-right"></b>
+                                                    </td>
+                                                @endif
 
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="text-danger">Date of Birth</th>
-                                                <td><b class="float-right">{{ strtoupper($userDetails->DOB) }}</b>
-                                                </td>
+                                                @if (isset($userDetails->DOB))
+
+                                                    <td><b class="float-right">{{ strtoupper($userDetails->DOB) }}</b>
+                                                    </td>
+                                                @else
+                                                    <td><b class="float-right"></b>
+                                                    </td>
+                                                @endif
 
                                             </tr>
                                         </tbody>
@@ -163,10 +192,16 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row" class="text-danger">Secondary Phone Number</th>
-                                                <td>
-                                                    <b
-                                                        class="float-right">{{ strtoupper($userDetails->PhoneNumber2) }}</b>
-                                                </td>
+                                                @if (isset($userDetails->PhoneNumber2))
+                                                    <td>
+                                                        <b
+                                                            class="float-right">{{ strtoupper($userDetails->PhoneNumber2) }}</b>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <b class="float-right"></b>
+                                                    </td>
+                                                @endif
 
                                             </tr>
 
@@ -181,10 +216,16 @@
                                         <tbody>
                                             <tr>
                                                 <th scope="row" class="text-danger">Other Phone Number</th>
-                                                <td>
-                                                    <b
-                                                        class="float-right">{{ strtoupper($userDetails->PhoneNumber3) }}</b>
-                                                </td>
+                                                @if (isset($userDetails->PhoneNumber3))
+                                                    <td>
+                                                        <b
+                                                            class="float-right">{{ strtoupper($userDetails->PhoneNumber3) }}</b>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <b class="float-right"></b>
+                                                    </td>
+                                                @endif
 
                                             </tr>
 
@@ -265,8 +306,12 @@
                                         <td><input class="form-control"
                                                 value="{{ strtoupper($userDetails->Fname) }}" /></td>
                                         <td class="text-danger">Middle Name</td>
-                                        <td><input class="form-control" type="text"
-                                                value="{{ strtoupper($userDetails->MiddleName) }}" /></td>
+                                        @if (isset($userDetails->MiddleName))
+                                            <td><input class="form-control" type="text"
+                                                    value="{{ strtoupper($userDetails->MiddleName) }}" /></td>
+                                        @else
+                                            <td><input class="form-control" type="text" value="" /></td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <td class="text-danger">Last Name</td>
@@ -299,13 +344,21 @@
                                         <td><input class="form-control"
                                                 value="{{ strtoupper($userDetails->PhoneNumber) }}" /></td>
                                         <td class="text-danger">Secondary Phone Number</td>
-                                        <td><input class="form-control" type="text"
-                                                value="{{ strtoupper($userDetails->PhoneNumber2) }}" /></td>
+                                        @if (isset($userDetails->PhoneNumber2))
+                                            <td><input class="form-control" type="text"
+                                                    value="{{ strtoupper($userDetails->PhoneNumber2) }}" /></td>
+                                        @else
+                                            <td><input class="form-control" type="text" value="" /></td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <td class="text-danger">Other Phone Number</td>
-                                        <td><input class="form-control" type="text"
-                                                value="{{ strtoupper($userDetails->PhoneNumber3) }}" /></td>
+                                        @if (isset($userDetails->PhoneNumber3))
+                                            <td><input class="form-control" type="text"
+                                                    value="{{ strtoupper($userDetails->PhoneNumber3) }}" /></td>
+                                        @else
+                                            <td><input class="form-control" type="text" value="" /></td>
+                                        @endif
 
                                     </tr>
 
@@ -361,7 +414,8 @@
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </div>
+    <!-- /.modal -->
 
 
 @endsection

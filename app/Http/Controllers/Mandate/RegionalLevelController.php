@@ -182,7 +182,8 @@ class RegionalLevelController extends Controller
     {
         $userDetails =  session()->get('userDetails');
         $UserRegion = session()->get('Region');
-        return view('pages.admin.send_notifications', ["UserRegion" => $UserRegion]);
+        $userID = session()->get('userID');
+        return view('pages.admin.send_notifications', ["UserRegion" => $UserRegion, $userID => "userID"]);
     }
 
     public function get_user_details(Request $request)

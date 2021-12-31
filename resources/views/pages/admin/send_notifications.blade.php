@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="card"
                             style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
@@ -23,37 +23,72 @@
                             </div>
 
 
-                            <div class="card-body" id="all_regions_table">
-                                <h4 class="header-title mb-3">REGIONS</h4>
+                            <form action="#" id="send_receive_notification">
+                                @csrf
+                                <div class="form-group m-3">
+                                    <label for="example-select" class="h4"><b>Select Region to Send/View
+                                            Notifications<span class="text-danger">*</span></b></label>
+                                    @if (session()->get('UserMandate') == 'NationalLevel')
+                                        <select class="form-control user_region" id="user_region">
+                                            <option selected> -- Select Region -- </option>
 
-                                <div class="table-responsive">
-                                    <table
-                                        class="table table-borderless table-hover table-nowrap table-centered m-0 all_agent_list">
+                                        </select>
+                                    @else
+                                        <select class="form-control readOnly" id="example-select" style="background:#DCDCDC"
+                                            disabled>
+                                            <option id="user_region" selected value="{{ session()->get('Region') }}">
+                                                <b>{{ $UserRegion }}</b>
+                                            </option>
 
-                                        <thead
-                                            style="background-color: rgba(32, 185, 252, 0.3);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                                            <tr>
-                                                <th>Region Name</th>
-                                                <th>Chats</th>
-                                                <th>View</th>
-
-
-                                            </tr>
-                                        </thead>
-                                        <tbody class="national_details">
-
-
-
-
-                                        </tbody>
-                                    </table>
+                                        </select>
+                                    @endif
                                 </div>
-                            </div>
+                                <span style="display: block; width: 90% ; border-top: 1px solid #ccc"
+                                    class="mt-0 m-3"></span>
+
+                                <div class="form-group m-3">
+                                    <label for="example-textarea" class="h4"><b>Message Title<span
+                                                class="text-danger">*</span></b></label>
+                                    <textarea class="form-control" id="message_title" rows="2"
+                                        placeholder="Enter Message Title Here"></textarea>
+                                </div>
+
+                                <div class="form-group m-3">
+                                    <label for="example-textarea" class="h4"><b>Message <span
+                                                class="text-danger">*</span></b></label>
+                                    <textarea class="form-control" id="send_message" rows="5"
+                                        placeholder="Enter Message Here"></textarea>
+                                </div>
+
+                                <div class="row m-3">
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4">
+                                        <button href="#" type="submit"
+                                            class="btn btn-soft-success btn-block waves-effect waves-light send_notification">Send
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
+
+                            </form>
+
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
+                    <div class="col-md-7">
+                        <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                            <div class="card-body" data-simplebar style="max-height: 500px">
+
+                                <label for="example-select" class="h4"><b>Replies</b></label>
+
+                                <span style="display: block; width: 100% ; border-top: 1px solid #ccc"
+                                    class="mt-0 mb-3"></span>
+
+                                <ul class="conversation-list" id="view_chats">
+
+
+
+                                </ul>
+
 
                             </div>
                         </div>
@@ -77,6 +112,13 @@
 
 
     <script src="{{ asset('assets/js/send_notifications.js') }}"></script>
+
+    <script>
+        var my_mandate = "{{ session()->get('UserMandate') }}"
+        var my_region = "{{ session()->get('Region') }}"
+        var my_constituency = "{{ session()->get('Constituency') }}"
+        var userID = "{{ session()->get('userID') }}"
+    </script>
 
 
 

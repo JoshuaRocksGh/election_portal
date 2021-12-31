@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class AddAgentsController extends Controller
 {
@@ -410,7 +411,8 @@ class AddAgentsController extends Controller
         };
 
         // return $request;
-        $region = strtolower($request->region);
+        // $region = strtolower($request->region);
+        $region = $request->region;
 
         $data = [
 
@@ -474,5 +476,27 @@ class AddAgentsController extends Controller
 
 
         }
+    }
+
+    public function send_notifiation(Request $request)
+    {
+        // return $request;
+
+        $validator = Validator::make($request->all(), [
+            "title"  =>  'required',
+            "body"  =>  'required',
+            "region" => 'required'
+        ]);
+
+        if ($validator->fails()) {
+
+            return response()->json([
+                "responseCode" => "failed",
+                "message" => $validator->errors(),
+                "data" => NULL
+            ], 200);
+        };
+
+        $uuid = (string) Str::uuid();
     }
 }

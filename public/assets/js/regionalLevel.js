@@ -1,5 +1,9 @@
 // $("#edit_spinner").hide();
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function regional_constituencies_assigmnet(UserRegion) {
     // alert(UserRegion);
     // return false;
@@ -37,9 +41,15 @@ function regional_constituencies_assigmnet(UserRegion) {
                 let assigned_constituencies = response.totalAssigned;
                 let unassigned_contituencies = response.totalUnAssigned;
 
-                $(".total_constituencies").text(total_constituencies);
-                $(".assigned_constituencies").text(assigned_constituencies);
-                $(".unassigned_constituencies").text(unassigned_contituencies);
+                $(".total_constituencies").text(
+                    numberWithCommas(total_constituencies)
+                );
+                $(".assigned_constituencies").text(
+                    numberWithCommas(assigned_constituencies)
+                );
+                $(".unassigned_constituencies").text(
+                    numberWithCommas(unassigned_contituencies)
+                );
 
                 //Assigned Constituencies
                 var count = 1;
@@ -62,9 +72,15 @@ function regional_constituencies_assigmnet(UserRegion) {
                         .add([
                             `<b class="h4">${count++}</b>`,
                             `<b class="h4">${data[index].ConstituencyCode}</b>`,
-                            `<b class="h4">${data[index].total}</b>`,
-                            `<b class="h4">${data[index].assigned}</b>`,
-                            `<b class="h4">${data[index].unAssigned}</b>`,
+                            `<b class="h4">${numberWithCommas(
+                                data[index].total
+                            )}</b>`,
+                            `<b class="h4">${numberWithCommas(
+                                data[index].assigned
+                            )}</b>`,
+                            `<b class="h4">${numberWithCommas(
+                                data[index].unAssigned
+                            )}</b>`,
                             `
                             <a class="btn btn-success" href="../constituency/${constituencyName}">View Details</a>
                             `,
